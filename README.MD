@@ -34,5 +34,5 @@ The purpose of this app is to create an online space for private book club discu
 | Tables| Monday |
 | Table relationships | Monday |
 | Auth Frontend | Monday |
-| Basic Frontend (user view only w/ hardcoded seed data: landing page, sign in, sign up, clubs display, club detail display) | Tuesday |
+| Basic Frontend (user view only w/ hardcoded seed data) | Tuesday |
 | Admin Club view & functionality | Tuesday |
