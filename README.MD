@@ -27,6 +27,7 @@ The purpose of this app is to create an online space for private book club discu
   - /clubs/:id/book
   - /comments
 * Timeline
+
 | Goal | Complete By |
 | ------------- | ------------- |
 | Auth | Monday  |
