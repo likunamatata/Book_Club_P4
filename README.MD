@@ -19,8 +19,7 @@ The purpose of this app is to create an online space for private book club discu
 * Subcomments to allow for discussion threads on specific aspects of the book
 
 ## Project History and Process
-* You can view the initial wireframes, front-end component hierarchy, and ERD here:
-* Thank you to Goodreads API for book titles, descriptions, and images : https://www.goodreads.com/api
+* You can view the initial wireframes, front-end component hierarchy, and ERD here: https://marvelapp.com/8a3c2d3, (Component Hierarchy and ERD WIP)
+* Thank you to Goodreads API for book titles, descriptions, and images : https://www.goodreads.com/api (endpoints TBD)
 * The app is made using Ruby on Rails and React frameworks; used bcrypt & JWT for authentication
-* server side routes????
-* challenges???
+* server side routes - TBD
