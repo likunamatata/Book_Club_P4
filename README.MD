@@ -22,4 +22,16 @@ The purpose of this app is to create an online space for private book club discu
 * You can view the initial wireframes, front-end component hierarchy, and ERD here: https://marvelapp.com/8a3c2d3 (Component Hierarchy and ERD WIP)
 * Thank you to Goodreads API for book titles, descriptions, and images : https://www.goodreads.com/api (endpoints TBD)
 * The app is made using Ruby on Rails and React frameworks; used bcrypt & JWT for authentication
-* server side routes - TBD
+* server side routes
+  - /users/:id
+  - /clubs/:id/book
+  - /comments
+* Timeline
+| Goal | Complete By |
+| ------------- | ------------- |
+| Auth | Monday  |
+| Tables| Monday |
+| Table relationships | Monday |
+| Auth Frontend | Monday |
+| Basic Frontend (user view only w/ hardcoded seed data: landing page, sign in, sign up, clubs display, club detail display) | Tuesday |
+| Admin Club view & functionality | Tuesday |

@@ -1,0 +1,309 @@
+  [1m[35m (258.8ms)[0m  [1m[35mCREATE DATABASE "Book_Club_P4_development" ENCODING = 'unicode'[0m
+  [1m[35m (118.3ms)[0m  [1m[35mCREATE DATABASE "Book_Club_P4_test" ENCODING = 'unicode'[0m
+  [1m[35m (31.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6746742726745113120)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20200406155705)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200406155705"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-06 17:05:23.106644"], ["updated_at", "2020-04-06 17:05:23.106644"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6746742726745113120)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6746742726745113120)[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6746742726745113120)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/auth" for ::1 at 2020-04-06 14:30:03 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/auth"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/auth/verify" for ::1 at 2020-04-06 14:30:13 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/auth/verify"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/auth/verify" for ::1 at 2020-04-06 14:30:17 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/auth/verify"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/auth/login" for ::1 at 2020-04-06 14:32:57 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#login as */*
+  Parameters: {"user"=>{"email"=>"likuna@gmail.com", "password"=>"[FILTERED]"}, "authentication"=>{"user"=>{"email"=>"likuna@gmail.com", "password"=>"[FILTERED]"}}}
+Completed 400 Bad Request in 4ms (ActiveRecord: 0.0ms | Allocations: 920)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: auth):
+  
+app/controllers/authentication_controller.rb:24:in `login_params'
+app/controllers/authentication_controller.rb:6:in `login'
+Started POST "/auth/login" for ::1 at 2020-04-06 14:33:17 -0400
+Processing by AuthenticationController#login as */*
+  Parameters: {"user"=>{"username"=>"likuna", "password"=>"[FILTERED]"}, "authentication"=>{"user"=>{"username"=>"likuna", "password"=>"[FILTERED]"}}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 136)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: auth):
+  
+app/controllers/authentication_controller.rb:24:in `login_params'
+app/controllers/authentication_controller.rb:6:in `login'
+Started POST "/users" for ::1 at 2020-04-06 14:41:36 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"likuna", "password"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (2.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likuna"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "likuna"], ["password_digest", "$2a$12$c9ZxCP.mTNKqA8tJVejAOeoJmQyUZx3FXOmaHriL1xTtsd5HI2jhe"], ["created_at", "2020-04-06 18:41:36.932540"], ["updated_at", "2020-04-06 18:41:36.932540"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 416ms (Views: 0.8ms | ActiveRecord: 10.0ms | Allocations: 8511)
+
+
+Started POST "/users" for ::1 at 2020-04-06 14:42:43 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"likuna", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likuna"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 422 Unprocessable Entity in 354ms (Views: 0.2ms | ActiveRecord: 7.4ms | Allocations: 9809)
+
+
+Started POST "/users" for ::1 at 2020-04-06 14:42:53 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"likuna2", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likuna2"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "likuna2"], ["password_digest", "$2a$12$ccc0Yn46PgoQVQKUy9kAzOoFYx91DGmKYqJhu/Mstg7/mw0qhLwxK"], ["created_at", "2020-04-06 18:42:53.823900"], ["updated_at", "2020-04-06 18:42:53.823900"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 339ms (Views: 2.0ms | ActiveRecord: 2.6ms | Allocations: 3624)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-06 14:44:44 -0400
+Processing by AuthenticationController#login as */*
+  Parameters: {"user"=>{"username"=>"likuna2", "password"=>"[FILTERED]"}, "authentication"=>{"user"=>{"username"=>"likuna2", "password"=>"[FILTERED]"}}}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 174)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: auth):
+  
+app/controllers/authentication_controller.rb:24:in `login_params'
+app/controllers/authentication_controller.rb:6:in `login'
+Started POST "/auth/login" for ::1 at 2020-04-06 14:45:37 -0400
+Processing by AuthenticationController#login as */*
+  Parameters: {"auth"=>{"username"=>"likuna2", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likuna2", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likuna2"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 306ms (Views: 0.7ms | ActiveRecord: 0.6ms | Allocations: 1237)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-06 14:46:33 -0400
+Processing by AuthenticationController#login as */*
+  Parameters: {"auth"=>{"username"=>"likuna2", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likuna2", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likuna2"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 323ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 990)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-06 14:46:43 -0400
+Processing by AuthenticationController#verify as */*
+  Parameters: {"auth"=>{"username"=>"likuna2", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likuna2", "password"=>"[FILTERED]"}}}
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 135)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-06 15:02:32 -0400
+Processing by AuthenticationController#login as */*
+  Parameters: {"auth"=>{"username"=>"likuna2", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likuna2", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likuna2"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 333ms (Views: 0.5ms | ActiveRecord: 1.7ms | Allocations: 5391)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-06 15:03:00 -0400
+Processing by AuthenticationController#verify as */*
+  Parameters: {"auth"=>{"username"=>"likuna2", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likuna2", "password"=>"[FILTERED]"}}}
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 132)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-06 15:04:02 -0400
+Processing by AuthenticationController#login as */*
+  Parameters: {"auth"=>{"username"=>"likuna2", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likuna2", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likuna2"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 388ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 990)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-06 15:06:27 -0400
+Processing by AuthenticationController#verify as */*
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 134)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-06 15:06:46 -0400
+Processing by AuthenticationController#verify as */*
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `authorize_request'
+Completed 200 OK in 12ms (Views: 0.5ms | ActiveRecord: 1.9ms | Allocations: 951)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-06 15:07:49 -0400
+Processing by AuthenticationController#verify as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `authorize_request'
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 8.7ms | Allocations: 6684)
+
+
+  
+NoMethodError (undefined method `frontend_data' for #<User:0x00007fd71f9884d0>):
+  
+app/controllers/authentication_controller.rb:17:in `verify'
+Started GET "/auth/verify" for ::1 at 2020-04-06 15:08:10 -0400
+Processing by AuthenticationController#verify as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `authorize_request'
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 5.1ms | Allocations: 5583)
+
+
+  
+NoMethodError (undefined method `frontend_data' for nil:NilClass):
+  
+app/controllers/authentication_controller.rb:17:in `verify'
+Started GET "/auth/verify" for ::1 at 2020-04-06 15:08:44 -0400
+Processing by AuthenticationController#verify as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `authorize_request'
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 4.2ms | Allocations: 6674)
+
+
+  
+NoMethodError (undefined method `frontend_data' for #<User:0x00007fd71e8aeb28>):
+  
+app/controllers/authentication_controller.rb:17:in `verify'
+Started GET "/auth/verify" for ::1 at 2020-04-06 15:09:14 -0400
+Processing by AuthenticationController#verify as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `authorize_request'
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 4.3ms | Allocations: 6636)
+
+
+  
+NoMethodError (undefined method `frontend_data' for #<User:0x00007fd71df304c0>):
+  
+app/controllers/authentication_controller.rb:17:in `verify'
+Started GET "/auth/verify" for ::1 at 2020-04-06 15:11:39 -0400
+Processing by AuthenticationController#verify as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `authorize_request'
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 5.7ms | Allocations: 6670)
+
+
+  
+NoMethodError (undefined method `frontend_data' for #<User:0x00007fd71fa26e78>):
+  
+app/controllers/authentication_controller.rb:17:in `verify'
+Started GET "/auth/verify" for ::1 at 2020-04-06 15:11:54 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#verify as */*
+  [1m[36mUser Load (7.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `authorize_request'
+Completed 500 Internal Server Error in 81ms (ActiveRecord: 19.4ms | Allocations: 7485)
+
+
+  
+NoMethodError (undefined method `frontend_data' for #<User:0x00007fa57bbb4a18>):
+  
+app/controllers/authentication_controller.rb:17:in `verify'
+Started GET "/auth/verify" for ::1 at 2020-04-06 15:14:12 -0400
+Processing by AuthenticationController#verify as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `authorize_request'
+Completed 200 OK in 27ms (Views: 0.8ms | ActiveRecord: 5.6ms | Allocations: 5327)
+
+
