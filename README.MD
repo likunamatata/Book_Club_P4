@@ -28,11 +28,14 @@ The purpose of this app is to create an online space for private book club discu
   - /comments
 * Timeline
 
-| Goal | Complete By |
-| ------------ | ----------------- |
-| Auth | Monday  |
+| Goal | Complete By | Status |
+| ------------ | ------------ | ------------ |
+| Auth | Monday  | :white_check_mark: |
 | Tables| Monday |
 | Table relationships | Monday |
+| Connect to Frontend | Monday |
 | Auth Frontend | Monday |
+| Books api search| Tuesday |
 | Basic Frontend (user view only w/ hardcoded seed data) | Tuesday |
-| Admin Club view & functionality | Tuesday |
+| Create club (add book, deadline, rules, users) Wednesday |
+| Admin Club view & functionality | Wednesday |
