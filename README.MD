@@ -29,7 +29,7 @@ The purpose of this app is to create an online space for private book club discu
 * Timeline
 
 | Goal | Complete By |
-| ------------- | ------------- |
+| ------------ | ----------------- |
 | Auth | Monday  |
 | Tables| Monday |
 | Table relationships | Monday |
