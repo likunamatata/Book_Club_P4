@@ -4,16 +4,19 @@ The purpose of this app is to create an online space for private book club discu
 
 ## MVP Goals
 * Authorization (sign up, log in)
-* Create a book club (name, book, rules, members)
-  - Write comments
-  - Update book (only by creator)
-  - Add members (only by creator)
-  - Update rules (only by creator)
-  - Remove members (only by creator)
-  - Write comments
-
+* Create a book club
+  - Define by club name, book, rules of conduct
+  - The book to be searchable using an external api
+* Write comments inside the book club
 
 ## Post-MVP Goals
+* Expand admin-only book club functionality
+  - Update book
+  - Add members
+  - Update rules
+  - Remove members
+
+## Post-Post-MVP Goals
 * Admins need to get permission before adding someone to a club
 * Users can upload their profile pictures to display as thumbnails next to their comments
 * Subcomments to allow for discussion threads on specific aspects of the book
@@ -31,11 +34,16 @@ The purpose of this app is to create an online space for private book club discu
 | Goal | Complete By | Status |
 | ------------ | ------------ | ------------ |
 | Auth | Monday  | :white_check_mark: |
-| Tables| Monday |
+| Tables (User, Club, Comment) | Monday |
 | Table relationships | Monday |
 | Connect to Frontend | Monday |
 | Auth Frontend | Monday |
-| Books api search| Tuesday |
 | Basic Frontend (user view only w/ hardcoded seed data) | Tuesday |
-| Create club (add book, deadline, rules, users) Wednesday |
-| Admin Club view & functionality | Wednesday |
+| Books api endpoints & import| Tuesday |
+| Books search functionality| |Tuesday|
+| Create club (add book, deadline, rules, users) | Wednesday |
+| Clubs display| | Wednesday|
+| Write comments| |Wednesday|
+| Comments display| |Wednesday|
+| Basic Styling | |Thursday|
+| Basic Responsiveness | |Friday|
