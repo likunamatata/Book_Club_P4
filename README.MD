@@ -33,17 +33,17 @@ The purpose of this app is to create an online space for private book club discu
 
 | Goal | Complete By | Status |
 | ------------ | ------------ | ------------ |
-| Auth | Monday  | :white_check_mark: |
-| Tables (User, Club, Comment) | Monday |
-| Table relationships | Monday |
-| Connect to Frontend | Monday |
-| Auth Frontend | Monday |
-| Basic Frontend (user view only w/ hardcoded seed data) | Tuesday |
-| Books api endpoints & import| Tuesday |
-| Books search functionality| |Tuesday|
-| Create club (add book, deadline, rules, users) | Wednesday |
-| Clubs display| | Wednesday|
-| Write comments| |Wednesday|
-| Comments display| |Wednesday|
-| Basic Styling | |Thursday|
-| Basic Responsiveness | |Friday|
+| Auth | Monday  | :white_check_mark: | 
+| Tables (User, Club, Comment) | Monday | | |
+| Table relationships | Monday | | |
+| Connect to Frontend | Monday | | |
+| Auth Frontend | Monday | | |
+| Basic Frontend (user view only w/ hardcoded seed data) | Tuesday | | |
+| Books api endpoints & import| Tuesday | | |
+| Books search functionality| |Tuesday| | |
+| Create club (add book, deadline, rules, users) | Wednesday | | |
+| Clubs display| | Wednesday| | |
+| Write comments| |Wednesday| | |
+| Comments display| |Wednesday| | |
+| Basic Styling | |Thursday| | |
+| Basic Responsiveness | |Friday| | |
