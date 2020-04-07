@@ -34,9 +34,9 @@ The purpose of this app is to create an online space for private book club discu
 | Goal | Complete By | Status |
 | ------------ | ------------ | ------------ |
 | Auth | Monday  | :white_check_mark: | 
-| Tables (User, Club, Comment) | Monday | | 
-| Table relationships | Monday | | 
-| Connect to Frontend | Monday | | 
+| Tables (User, Club, Comment) | Monday | :white_check_mark:| 
+| Table relationships | Monday | :white_check_mark: | 
+| Connect to Frontend | Monday | :white_check_mark: | 
 | Auth Frontend | Monday | | 
 | Basic Frontend (user view only w/ hardcoded seed data) | Tuesday | | 
 | Books api endpoints & import| Tuesday | | 
