@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_06_155705) do
+ActiveRecord::Schema.define(version: 2020_04_07_025033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clubs", force: :cascade do |t|
+    t.string "google_id"
+    t.string "rules"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "clubs_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "club_id", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"

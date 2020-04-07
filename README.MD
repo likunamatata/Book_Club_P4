@@ -46,4 +46,5 @@ The purpose of this app is to create an online space for private book club discu
 | Write comments|Wednesday| | 
 | Comments display|Wednesday| | 
 | Basic Styling |Thursday| | 
+| Add google books button |Thursday| | 
 | Basic Responsiveness |Friday| | 
