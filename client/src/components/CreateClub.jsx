@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { createClub } from '../services/api-helper';
+import SearchFunction from './SearchFunction';
 
 
 
@@ -38,6 +39,7 @@ class CreateClub extends Component {
     console.log('createclub props', this.props)
     return (
       <div>
+        <SearchFunction/>
         <div className="club-create-container">
           <h3>i'm the form</h3>
           <h2>Enter club details here</h2>

@@ -28,7 +28,7 @@ class ClubsIndex extends Component {
 
         {this.state.userClubs.map((club) => {
           return (
-            <Link to={`/clubs/${club.id}`}>
+            <Link to={`/users/${this.props.user_id}/clubs/${club.id}`}>
 
               <p>{club.google_id}</p>
               <p>{club.rules}</p>
