@@ -69,7 +69,7 @@ export const readOneClub = async (club_id) => {
 
 
 export const createClub = async (clubData, user_id) => {
-  console.log('why is createClub running', clubData)
+  console.log('why is createClub running', clubData, `/users/${user_id}/clubs`);
   const response = await api.post(`/users/${user_id}/clubs`, { club: clubData });
   console.log('is this even running');
 

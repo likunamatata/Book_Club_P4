@@ -4952,3 +4952,954 @@ Processing by AuthenticationController#login as HTML
 Completed 200 OK in 615ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 1094)
 
 
+Started POST "/auth/login" for ::1 at 2020-04-08 09:53:50 -0400
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 805ms (Views: 4.6ms | ActiveRecord: 16.8ms | Allocations: 9316)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 09:56:07 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 257ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 1093)
+
+
+Started GET "/clubs" for ::1 at 2020-04-08 09:57:17 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/clubs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/auth/login" for ::1 at 2020-04-08 10:02:04 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 218ms (Views: 0.8ms | ActiveRecord: 0.4ms | Allocations: 1128)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 10:02:48 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 239ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1093)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 10:08:24 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 230ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 1165)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 10:10:27 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 231ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1080)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 10:10:32 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 240ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1090)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 10:10:35 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 232ms (Views: 1.2ms | ActiveRecord: 0.3ms | Allocations: 1076)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 10:10:46 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 233ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1076)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 10:13:53 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 229ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1076)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 10:14:33 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 235ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 1076)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 10:16:21 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 232ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 1076)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 10:31:41 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 230ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 1165)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 10:31:45 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 228ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1076)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 10:33:49 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 239ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1077)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 10:41:48 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 257ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 1166)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 10:42:10 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 231ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 1076)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 10:45:34 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 233ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 1076)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 10:57:38 -0400
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 275ms (Views: 0.5ms | ActiveRecord: 5.1ms | Allocations: 9312)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 10:59:20 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 247ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1093)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 11:03:45 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 257ms (Views: 0.3ms | ActiveRecord: 1.6ms | Allocations: 1096)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 11:03:59 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 241ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 1095)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 11:04:52 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 258ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 1093)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 11:07:25 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 233ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1076)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 11:07:44 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 216ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1076)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 11:08:40 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 232ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 1076)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 11:12:14 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 227ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1076)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 11:12:38 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 240ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 1076)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 11:12:54 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 234ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 1076)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 11:13:19 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 247ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1076)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 11:14:45 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 243ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 1079)
+
+
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 11:14:49 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"26"}
+  [1m[36mClub Load (1.2ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs"[0m
+  ↳ app/controllers/clubs_controller.rb:9:in `index'
+Completed 200 OK in 25ms (Views: 15.8ms | ActiveRecord: 4.8ms | Allocations: 10761)
+
+
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 11:15:08 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"j", "rules"=>"j"}, "user_id"=>"26"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:22:in `authorize_request'
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.3ms | Allocations: 1792)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>26, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:22:in `authorize_request'
+Started POST "/auth/login" for ::1 at 2020-04-08 11:15:45 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 276ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1110)
+
+
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 11:15:47 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"26"}
+  [1m[36mClub Load (0.5ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs"[0m
+  ↳ app/controllers/clubs_controller.rb:9:in `index'
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.5ms | Allocations: 5385)
+
+
+Started POST "/users/26clubs" for ::1 at 2020-04-08 11:18:31 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users/26clubs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 11:18:37 -0400
+Processing by ClubsController#create as */*
+  Parameters: {"club"=>{"google_id"=>"Pn8d9riSL6UC", "rules"=>"don't be mean"}, "user_id"=>"26"}
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 138)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 11:23:22 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 238ms (Views: 0.5ms | ActiveRecord: 4.7ms | Allocations: 9312)
+
+
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 11:23:26 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"26"}
+  [1m[36mClub Load (0.7ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs"[0m
+  ↳ app/controllers/clubs_controller.rb:9:in `index'
+Completed 200 OK in 46ms (Views: 36.3ms | ActiveRecord: 4.2ms | Allocations: 10778)
+
+
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 11:23:37 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"j", "rules"=>"j"}, "user_id"=>"26"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:22:in `authorize_request'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.4ms | Allocations: 1807)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>26, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:22:in `authorize_request'
+Started POST "/auth/login" for ::1 at 2020-04-08 11:24:32 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 244ms (Views: 0.3ms | ActiveRecord: 1.2ms | Allocations: 1129)
+
+
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 11:24:34 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"26"}
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs"[0m
+  ↳ app/controllers/clubs_controller.rb:9:in `index'
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.4ms | Allocations: 5402)
+
+
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 11:24:40 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"w", "rules"=>"w"}, "user_id"=>"26"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:22:in `authorize_request'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms | Allocations: 1791)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>26, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:22:in `authorize_request'
+Started POST "/auth/login" for ::1 at 2020-04-08 11:25:19 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 233ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 1077)
+
+
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 11:25:20 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"26"}
+  [1m[36mClub Load (1.2ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs"[0m
+  ↳ app/controllers/clubs_controller.rb:9:in `index'
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 1.2ms | Allocations: 5373)
+
+
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 11:25:26 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"google_id"=>"s", "rules"=>"d", "user_id"=>"26", "club"=>{"google_id"=>"s", "rules"=>"d"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:22:in `authorize_request'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms | Allocations: 1777)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>26, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:22:in `authorize_request'
+Started POST "/auth/login" for ::1 at 2020-04-08 11:26:49 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 243ms (Views: 0.3ms | ActiveRecord: 3.2ms | Allocations: 7705)
+
+
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 11:26:51 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"26"}
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs"[0m
+  ↳ app/controllers/clubs_controller.rb:9:in `index'
+Completed 200 OK in 23ms (Views: 13.3ms | ActiveRecord: 3.7ms | Allocations: 10574)
+
+
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 11:27:00 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"club", "rules"=>"params likuna"}, "user_id"=>"26"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:22:in `authorize_request'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms | Allocations: 1774)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>26, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:22:in `authorize_request'
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 11:32:27 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"club", "rules"=>"params likuna"}, "user_id"=>"26"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:22:in `authorize_request'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.6ms | Allocations: 4588)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>26, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:22:in `authorize_request'
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 11:35:08 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"club", "rules"=>"params likuna"}, "user_id"=>"26"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:22:in `authorize_request'
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 6.7ms | Allocations: 4762)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>26, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:22:in `authorize_request'
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 11:36:24 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"club", "rules"=>"params likuna"}, "user_id"=>"26"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:22:in `authorize_request'
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 3.1ms | Allocations: 4733)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>26, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:22:in `authorize_request'
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 11:42:12 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"club", "rules"=>"params likuna"}, "user_id"=>"26"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:22:in `authorize_request'
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 4.8ms | Allocations: 4733)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>26, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:22:in `authorize_request'
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 12:10:06 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"club", "rules"=>"params likuna"}, "user_id"=>"26"}
+Completed 400 Bad Request in 16ms (ActiveRecord: 6.0ms | Allocations: 5900)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/clubs_controller.rb:67:in `user_params'
+app/controllers/clubs_controller.rb:22:in `create'
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 12:10:25 -0400
+Processing by ClubsController#create as */*
+  Parameters: {"club"=>{"google_id"=>"Pn8d9riSL6UC", "rules"=>"don't be mean"}, "user_id"=>"26"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 262)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/clubs_controller.rb:67:in `user_params'
+app/controllers/clubs_controller.rb:22:in `create'
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 12:10:42 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"club", "rules"=>"params likuna"}, "user_id"=>"26"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:22:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `create'
+  [1m[36mClub Create (1.9ms)[0m  [1m[32mINSERT INTO "clubs" ("google_id", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["google_id", "club"], ["rules", "params likuna"], ["created_at", "2020-04-08 16:10:42.508191"], ["updated_at", "2020-04-08 16:10:42.508191"]]
+  ↳ app/controllers/clubs_controller.rb:26:in `create'
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+  [1m[36mClub::HABTM_Users Create (0.4ms)[0m  [1m[32mINSERT INTO "clubs_users" ("user_id", "club_id") VALUES ($1, $2)[0m  [["user_id", 26], ["club_id", 62]]
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+Completed 500 Internal Server Error in 114ms (ActiveRecord: 14.0ms | Allocations: 54924)
+
+
+  
+NoMethodError (undefined method `club_url' for #<ClubsController:0x00007fbd254ca358>):
+  
+app/controllers/clubs_controller.rb:28:in `create'
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 12:10:49 -0400
+Processing by ClubsController#create as */*
+  Parameters: {"club"=>{"google_id"=>"Pn8d9riSL6UC", "rules"=>"don't be mean"}, "user_id"=>"26"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:22:in `create'
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `create'
+  [1m[36mClub Create (0.5ms)[0m  [1m[32mINSERT INTO "clubs" ("google_id", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["google_id", "Pn8d9riSL6UC"], ["rules", "don't be mean"], ["created_at", "2020-04-08 16:10:49.812027"], ["updated_at", "2020-04-08 16:10:49.812027"]]
+  ↳ app/controllers/clubs_controller.rb:26:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `create'
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+  [1m[36mClub::HABTM_Users Create (1.3ms)[0m  [1m[32mINSERT INTO "clubs_users" ("user_id", "club_id") VALUES ($1, $2)[0m  [["user_id", 26], ["club_id", 63]]
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+Completed 500 Internal Server Error in 206ms (ActiveRecord: 9.4ms | Allocations: 41146)
+
+
+  
+NoMethodError (undefined method `club_url' for #<ClubsController:0x00007fbd256cc980>):
+  
+app/controllers/clubs_controller.rb:28:in `create'
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 12:13:25 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"club", "rules"=>"params likuna"}, "user_id"=>"26"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:22:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `create'
+  [1m[36mClub Create (0.3ms)[0m  [1m[32mINSERT INTO "clubs" ("google_id", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["google_id", "club"], ["rules", "params likuna"], ["created_at", "2020-04-08 16:13:25.913995"], ["updated_at", "2020-04-08 16:13:25.913995"]]
+  ↳ app/controllers/clubs_controller.rb:26:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+  [1m[36mClub::HABTM_Users Create (0.3ms)[0m  [1m[32mINSERT INTO "clubs_users" ("user_id", "club_id") VALUES ($1, $2)[0m  [["user_id", 26], ["club_id", 64]]
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+Completed 201 Created in 54ms (Views: 0.3ms | ActiveRecord: 14.6ms | Allocations: 16944)
+
+
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 12:13:36 -0400
+Processing by ClubsController#create as */*
+  Parameters: {"club"=>{"google_id"=>"Pn8d9riSL6UC", "rules"=>"don't be mean"}, "user_id"=>"26"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:22:in `create'
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `create'
+  [1m[36mClub Create (0.9ms)[0m  [1m[32mINSERT INTO "clubs" ("google_id", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["google_id", "Pn8d9riSL6UC"], ["rules", "don't be mean"], ["created_at", "2020-04-08 16:13:36.868234"], ["updated_at", "2020-04-08 16:13:36.868234"]]
+  ↳ app/controllers/clubs_controller.rb:26:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+  [1m[36mClub::HABTM_Users Create (0.3ms)[0m  [1m[32mINSERT INTO "clubs_users" ("user_id", "club_id") VALUES ($1, $2)[0m  [["user_id", 26], ["club_id", 65]]
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+Completed 201 Created in 20ms (Views: 0.6ms | ActiveRecord: 4.5ms | Allocations: 5756)
+
+
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 12:13:54 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"club", "rules"=>"params likuna"}, "user_id"=>"26"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:22:in `authorize_request'
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 3.3ms | Allocations: 4734)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>26, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:22:in `authorize_request'
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 12:15:03 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"26"}
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs"[0m
+  ↳ app/controllers/clubs_controller.rb:9:in `index'
+Completed 200 OK in 27ms (Views: 18.9ms | ActiveRecord: 3.8ms | Allocations: 11269)
+
+
+Started POST "/users/" for ::1 at 2020-04-08 12:15:52 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"username"=>"aaron", "email"=>"aaron@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "aaron"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "aaron"], ["email", "aaron@gmail.com"], ["password_digest", "$2a$12$ywmK79IZp2XnipnaFjfLne66X8SfE.1e2Gw7eRxMO7/KoScbVtqX."], ["created_at", "2020-04-08 16:15:53.019269"], ["updated_at", "2020-04-08 16:15:53.019269"]]
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+Completed 201 Created in 245ms (Views: 0.6ms | ActiveRecord: 6.2ms | Allocations: 7740)
+
+
+Started GET "/users/28/clubs" for ::1 at 2020-04-08 12:16:23 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs"[0m
+  ↳ app/controllers/clubs_controller.rb:9:in `index'
+Completed 200 OK in 10ms (Views: 9.7ms | ActiveRecord: 0.4ms | Allocations: 5828)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 12:20:43 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 241ms (Views: 0.4ms | ActiveRecord: 4.1ms | Allocations: 9316)
+
+
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 12:20:46 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"26"}
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.8ms | Allocations: 2588)
+
+
+  
+ActiveRecord::UnknownPrimaryKey (Unknown primary key for table clubs_users in model Club::HABTM_Users.):
+  
+app/controllers/clubs_controller.rb:7:in `index'
+Started POST "/auth/login" for ::1 at 2020-04-08 12:23:27 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 237ms (Views: 0.4ms | ActiveRecord: 3.6ms | Allocations: 7726)
+
+
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 12:23:29 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"26"}
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.8ms | Allocations: 2511)
+
+
+  
+ActiveRecord::UnknownPrimaryKey (Unknown primary key for table clubs_users in model Club::HABTM_Users.):
+  
+app/controllers/clubs_controller.rb:7:in `index'
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 12:24:44 -0400
+Processing by ClubsController#index as */*
+  Parameters: {"club"=>{"google_id"=>"Pn8d9riSL6UC", "rules"=>"don't be mean"}, "user_id"=>"26"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 163)
+
+
+  
+ActiveRecord::UnknownPrimaryKey (Unknown primary key for table clubs_users in model Club::HABTM_Users.):
+  
+app/controllers/clubs_controller.rb:7:in `index'
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 12:27:13 -0400
+Processing by ClubsController#index as */*
+  Parameters: {"club"=>{"google_id"=>"Pn8d9riSL6UC", "rules"=>"don't be mean"}, "user_id"=>"26"}
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 1.2ms | Allocations: 2906)
+
+
+  
+ActiveRecord::UnknownPrimaryKey (Unknown primary key for table clubs_users in model Club::HABTM_Users.):
+  
+app/controllers/clubs_controller.rb:7:in `index'
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 12:28:00 -0400
+Processing by ClubsController#index as */*
+  Parameters: {"club"=>{"google_id"=>"Pn8d9riSL6UC", "rules"=>"don't be mean"}, "user_id"=>"26"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 187)
+
+
+  
+ActiveRecord::UnknownPrimaryKey (Unknown primary key for table clubs_users in model Club::HABTM_Users.):
+  
+app/controllers/clubs_controller.rb:7:in `index'
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 12:29:00 -0400
+Processing by ClubsController#index as */*
+  Parameters: {"club"=>{"google_id"=>"Pn8d9riSL6UC", "rules"=>"don't be mean"}, "user_id"=>"26"}
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:7:in `index'
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 9.5ms | Allocations: 7217)
+
+
+  
+ActiveRecord::UnknownPrimaryKey (Unknown primary key for table clubs_users in model Club::HABTM_Users.):
+  
+app/controllers/clubs_controller.rb:8:in `index'
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 12:40:34 -0400
+Processing by ClubsController#index as */*
+  Parameters: {"club"=>{"google_id"=>"Pn8d9riSL6UC", "rules"=>"don't be mean"}, "user_id"=>"26"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:7:in `index'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.9ms | Allocations: 795)
+
+
+  
+ActiveRecord::UnknownPrimaryKey (Unknown primary key for table clubs_users in model Club::HABTM_Users.):
+  
+app/controllers/clubs_controller.rb:8:in `index'
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 12:41:15 -0400
+Processing by ClubsController#index as */*
+  Parameters: {"club"=>{"google_id"=>"Pn8d9riSL6UC", "rules"=>"don't be mean"}, "user_id"=>"26"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:7:in `index'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 1.7ms | Allocations: 705)
+
+
+  
+ActiveRecord::UnknownPrimaryKey (Unknown primary key for table clubs_users in model Club::HABTM_Users.):
+  
+app/controllers/clubs_controller.rb:8:in `index'
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 12:42:16 -0400
+Processing by ClubsController#index as */*
+  Parameters: {"club"=>{"google_id"=>"Pn8d9riSL6UC", "rules"=>"don't be mean"}, "user_id"=>"26"}
+  [1m[36mClub Load (0.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs"[0m
+  ↳ app/controllers/clubs_controller.rb:9:in `index'
+Completed 200 OK in 38ms (Views: 23.8ms | ActiveRecord: 13.4ms | Allocations: 9190)
+
+
+Started GET "/users/27/clubs" for ::1 at 2020-04-08 12:42:26 -0400
+Processing by ClubsController#index as */*
+  Parameters: {"club"=>{"google_id"=>"Pn8d9riSL6UC", "rules"=>"don't be mean"}, "user_id"=>"27"}
+  [1m[36mClub Load (8.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs"[0m
+  ↳ app/controllers/clubs_controller.rb:9:in `index'
+Completed 200 OK in 22ms (Views: 13.2ms | ActiveRecord: 8.3ms | Allocations: 5831)
+
+
+Started GET "/users/27/clubs" for ::1 at 2020-04-08 12:53:22 -0400
+  
+SyntaxError (/Users/liakapanadze/Mandalorians/PortfolioMaster/Book_Club_P4/app/controllers/clubs_controller.rb:9: syntax error, unexpected ':', expecting ')'
+    @clubs = Club.where(users : @user)
+                              ^):
+  
+app/controllers/clubs_controller.rb:9: syntax error, unexpected ':', expecting ')'
+app/controllers/clubs_controller.rb:9: syntax error, unexpected ':', expecting ')'
+Started GET "/users/27/clubs" for ::1 at 2020-04-08 12:59:35 -0400
+Processing by ClubsController#index as */*
+  Parameters: {"club"=>{"google_id"=>"Pn8d9riSL6UC", "rules"=>"don't be mean"}, "user_id"=>"27"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+Completed 500 Internal Server Error in 174ms (ActiveRecord: 26.0ms | Allocations: 9609)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "user"
+LINE 1: ..." ON "users"."id" = "clubs_users"."user_id" WHERE "user"."id...
+                                                             ^
+):
+  
+app/controllers/clubs_controller.rb:11:in `index'
+Started GET "/users/27/clubs" for ::1 at 2020-04-08 13:18:47 -0400
+Processing by ClubsController#index as */*
+  Parameters: {"club"=>{"google_id"=>"Pn8d9riSL6UC", "rules"=>"don't be mean"}, "user_id"=>"27"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (1.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 27]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 41ms (Views: 6.8ms | ActiveRecord: 6.5ms | Allocations: 10565)
+
+
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 13:18:56 -0400
+Processing by ClubsController#index as */*
+  Parameters: {"club"=>{"google_id"=>"Pn8d9riSL6UC", "rules"=>"don't be mean"}, "user_id"=>"26"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 26]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 15ms (Views: 10.9ms | ActiveRecord: 1.5ms | Allocations: 4748)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 13:19:09 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 239ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 1225)
+
+
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 13:19:11 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"26"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (1.0ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 26]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 9ms (Views: 5.3ms | ActiveRecord: 1.4ms | Allocations: 2096)
+
+
+Started GET "/clubs" for ::1 at 2020-04-08 13:19:37 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/clubs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 13:19:45 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"26"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 26]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 7ms (Views: 3.7ms | ActiveRecord: 1.0ms | Allocations: 2095)
+
+

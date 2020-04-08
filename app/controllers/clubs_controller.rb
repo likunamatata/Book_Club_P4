@@ -1,10 +1,12 @@
 class ClubsController < ApplicationController
   before_action :set_club, only: [:show, :update, :destroy]
-  before_action :authorize_request, only: [:create, :update, :destroy, :add_user]
+  before_action :authorize_request, only: [ :create, :update, :destroy, :add_user]
 
   # GET /clubs
   def index
-    @clubs = Club.all
+    #not all clubs, just the clubs that correspond to 
+    @user = User.find(params[:user_id])
+    @clubs = @user.clubs
 
     render json: @clubs
   end
@@ -16,6 +18,7 @@ class ClubsController < ApplicationController
 
   # POST /clubs
   def create
+    puts "create is running with #{club_params}"
     @club = Club.new(club_params)
     # user that is logged in
     @user = User.find(params[:user_id])
@@ -24,7 +27,7 @@ class ClubsController < ApplicationController
 
     if @club.save
       @club.users << @user
-      render json: @club, status: :created, location: @club
+      render json: @club, status: :created, location: @clubs
     else
       render json: @club.errors, status: :unprocessable_entity
     end
@@ -61,5 +64,8 @@ class ClubsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def club_params
       params.require(:club).permit(:google_id, :rules)
+    end
+    def user_params
+      params.require(:user).permit(:username, :email, :password)
     end
 end

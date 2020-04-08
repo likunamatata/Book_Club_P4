@@ -12,8 +12,8 @@ class CreateClub extends Component {
         google_id: '',
         rules: ''
       }
-
     }
+    console.log('clubcreate props', props)
   }
 
   handleChange = async (e) => {

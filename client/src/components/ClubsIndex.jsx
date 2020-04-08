@@ -8,6 +8,7 @@ class ClubsIndex extends Component {
     this.state = {
       userClubs: []
     }
+    console.log('clubindex props', props.user_id)
   }
 
   async componentDidMount() {

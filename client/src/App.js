@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router'
+import { Route, Link } from 'react-router-dom'
 import './App.css';
 // import { readAllUsers, readUserClubs } from './services/api-helper';
 import ClubsIndex from './components/ClubsIndex';
@@ -28,6 +28,7 @@ class App extends Component {
         password: ""
       }
     }
+    console.log('app.js history', props)
   }
 
   async componentDidMount() {
@@ -47,6 +48,9 @@ class App extends Component {
   handleLogin = async () => {
     const currentUser = await loginUser(this.state.authFormData);
     this.setState({ currentUser });
+    console.log('handle login is running')
+    // this.props.history.push("/login")
+    //likuna-help: I need to also go to homepage from here
   }
 
   handleRegister = async (e) => {
@@ -74,30 +78,63 @@ class App extends Component {
 
 
   render() {
+    console.log('currentUser', this.state.currentUser)
     return (
+
+
+
       <div className="App">
-        <h1>Hi I'm ur app</h1>
+        {this.state.currentUser ?
+          <div className='logged in stuff'>
+            <Header
+              handleLoginButton={this.handleLoginButton}
+              handleLogout={this.handleLogout}
+              currentUser={this.state.currentUser}
+            />
 
-        {/* <Route path='/users' render={() => (
-          <UsersIndex users={this.state.users} />
-        )} />
+            <Route
+              exact path="/users/:user_id/clubs"
+              render={() => (
+                <div>
 
-        <Route path='/clubs' render={() => (
-          <ClubsIndex clubs={this.state.clubs} />
-        )} /> */}
+                  <ClubsIndex clubs={this.state.clubs} user_id={this.state.currentUser.id} />
 
-        <Header
-          handleLoginButton={this.handleLoginButton}
-          handleLogout={this.handleLogout}
-          currentUser={this.state.currentUser}
-          user_id ={this.props.user_id}
-        />
+                </div>
+              )}
+            />
+
+            <Route
+              exact path="/users/:user_id/create-club"
+              render={() => (
+                <CreateClub user_id={this.state.currentUser.id} />
+              )}
+            />
+
+            <Route
+              exact path="/clubs/:id"
+              render={(props) => {
+                const { id } = props.match.params;
+                return <Club id={id} />
+              }}
+            />
+
+
+          </div>
+          :
+          <div className='logged out stuff'>
+            <h1>Hi I'm ur app, u need to log in or register</h1>
+            <Link to='/login'>Login</Link>
+          </div>
+        }
+
 
         <Route exact path="/login" render={() => (
           <Login
             handleLogin={this.handleLogin}
             handleChange={this.authHandleChange}
-            formData={this.state.authFormData} />)} />
+            formData={this.state.authFormData}
+            currentUser={this.state.currentUser}
+          />)} />
 
         <Route exact path="/register" render={() => (
           <Register
@@ -105,27 +142,7 @@ class App extends Component {
             handleChange={this.authHandleChange}
             formData={this.state.authFormData} />)} />
 
-        <Route
-          exact path="/users/:user_id"
-          render={() => (
-            <ClubsIndex clubs={this.state.clubs} user_id={22} />
-          )}
-        />
 
-        <Route
-          exact path="/users/:user_id/create-club"
-          render={() => (
-            <CreateClub user_id={22}/>
-          )}
-        />
-
-        <Route
-          exact path="/clubs/:id"
-          render={(props) => {
-            const { id } = props.match.params;
-            return <Club id={id} />
-          }}
-        />
 
 
       </div>
