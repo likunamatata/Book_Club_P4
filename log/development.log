@@ -5903,3 +5903,83 @@ Processing by ClubsController#index as HTML
 Completed 200 OK in 7ms (Views: 3.7ms | ActiveRecord: 1.0ms | Allocations: 2095)
 
 
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 13:22:25 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"likuna's new book", "rules"=>"have fun"}, "user_id"=>"26"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:22:in `authorize_request'
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 5.8ms | Allocations: 5331)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>26, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:22:in `authorize_request'
+Started POST "/auth/login" for ::1 at 2020-04-08 13:22:32 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 284ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 4830)
+
+
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 13:22:34 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"26"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 26]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 47ms (Views: 28.2ms | ActiveRecord: 7.3ms | Allocations: 8594)
+
+
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 13:22:39 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"fsafea", "rules"=>"fafa"}, "user_id"=>"26"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:22:in `authorize_request'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.5ms | Allocations: 1800)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>26, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:22:in `authorize_request'
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 13:23:01 -0400
+Processing by ClubsController#create as */*
+  Parameters: {"club"=>{"google_id"=>"Pn8d9riSL6UC", "rules"=>"don't be mean"}, "user_id"=>"26"}
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 138)
+
+
+Started POST "/users/26/clubs" for ::1 at 2020-04-08 13:23:28 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"fsafea", "rules"=>"fafa"}, "user_id"=>"26"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:24:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:28:in `create'
+  [1m[36mClub Create (1.2ms)[0m  [1m[32mINSERT INTO "clubs" ("google_id", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["google_id", "fsafea"], ["rules", "fafa"], ["created_at", "2020-04-08 17:23:29.084628"], ["updated_at", "2020-04-08 17:23:29.084628"]]
+  ↳ app/controllers/clubs_controller.rb:28:in `create'
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:28:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:29:in `create'
+  [1m[36mClub::HABTM_Users Create (1.1ms)[0m  [1m[32mINSERT INTO "clubs_users" ("user_id", "club_id") VALUES ($1, $2)[0m  [["user_id", 26], ["club_id", 66]]
+  ↳ app/controllers/clubs_controller.rb:29:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:29:in `create'
+Completed 201 Created in 43ms (Views: 0.3ms | ActiveRecord: 14.7ms | Allocations: 17436)
+
+
+Started GET "/users/26/clubs" for ::1 at 2020-04-08 13:23:31 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"26"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (1.7ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 26]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 9ms (Views: 4.7ms | ActiveRecord: 2.1ms | Allocations: 2559)
+
+

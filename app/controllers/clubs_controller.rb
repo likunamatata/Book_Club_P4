@@ -1,6 +1,6 @@
 class ClubsController < ApplicationController
   before_action :set_club, only: [:show, :update, :destroy]
-  before_action :authorize_request, only: [ :create, :update, :destroy, :add_user]
+  before_action :authorize_request, only: [ :update, :destroy, :add_user]
 
   # GET /clubs
   def index
