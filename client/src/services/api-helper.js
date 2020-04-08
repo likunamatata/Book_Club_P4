@@ -62,9 +62,9 @@ export const readUserClubs = async (user_id) => {
   return response.data;
 }
 
-export const readOneClub = async (club_id) => {
-  const response = await api.get(`/clubs`);
-  return response.data.filter(club => club.id == club_id);
+export const readOneClub = async (user_id,club_id) => {
+  const response = await api.get(`users/${user_id}/clubs/${club_id}`);
+  return response.data;
 }
 
 
