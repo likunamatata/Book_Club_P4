@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::API
   SECRET_KEY = Rails.application.secrets.secret_key_base.to_s
+   
+
+
 
   def encode(payload, exp = 24.hours.from_now)
     payload[:exp] = exp.to_i
@@ -22,6 +25,12 @@ class ApplicationController < ActionController::API
     rescue JWT::DecodeError => e
       render json: { errors: e.message }, status: :unauthorized
     end
+  end
+
+  private
+   
+  def current_user
+   @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
  
 end

@@ -1,5 +1,6 @@
 class ClubsController < ApplicationController
   before_action :set_club, only: [:show, :update, :destroy]
+  before_action :authorize_request, only: [:create, :update, :destroy, :add_user]
 
   # GET /clubs
   def index
@@ -16,8 +17,13 @@ class ClubsController < ApplicationController
   # POST /clubs
   def create
     @club = Club.new(club_params)
+    # user that is logged in
+    @user = User.find(params[:user_id])
+    puts "hello #{@user}"
+    # User.find(22)
 
     if @club.save
+      @club.users << @user
       render json: @club, status: :created, location: @club
     else
       render json: @club.errors, status: :unprocessable_entity
@@ -36,6 +42,14 @@ class ClubsController < ApplicationController
   # DELETE /clubs/1
   def destroy
     @club.destroy
+  end
+
+  def add_user
+    @club = Club.find(params[:club_id])
+    @user = User.find(params[:user_id])
+    @club.users << @user
+
+    render json: @club, include: :users
   end
 
   private
