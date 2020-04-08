@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
 
+  # get 'users/:user_id/clubs', to: 'users#show_clubs'
+  # post 'users/:user_id/clubs', to: 'users#create_club'
+  # get 'clubs/:club_id/users/:user_id', to: 'clubs#add_user'
+
   resources :comments
-  resources :clubs
+
+  resources :users do
+    resources :clubs
+  end 
+
   post '/auth/login', to: 'authentication#login'
   get '/auth/verify', to: 'authentication#verify'
   

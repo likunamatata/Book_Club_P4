@@ -22,11 +22,11 @@ Club.create!([
 ])
 
 user1 = User.first
-user1.clubs.push(Club.find(name: "user1"))
-user1.clubs.push(Club.find(name: "user2"))
-user1.clubs.push(Club.find(name: "user3"))
+user1.clubs.push(Club.where(google_id: "Pn8d9riSL6UC"))
+user1.clubs.push(Club.where(google_id: "pPfVDwAAQBAJ"))
+user1.clubs.push(Club.where(google_id: "CXyJAQAAQBAJ"))
 
 club1 = Club.first
-club1.users.push(User.find())
-club1.users.push(User.find(8))
-club1.users.push(User.find(9))
+club1.users.push(User.where(username: "user1"))
+club1.users.push(User.where(username: "user2"))
+club1.users.push(User.where(username: "user3"))
