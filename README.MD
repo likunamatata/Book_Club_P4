@@ -29,7 +29,7 @@ The purpose of this app is to create an online space for private book club discu
   - /users/:id
   - /clubs/:id/book
   - /comments
-* Timeline
+* MVP Timeline
 
 | Goal | Complete By | Status |
 | ------------ | ------------ | ------------ |
@@ -39,12 +39,17 @@ The purpose of this app is to create an online space for private book club discu
 | Connect to Frontend | Monday | :white_check_mark: | 
 | Auth Frontend | Monday | :white_check_mark: | 
 | Basic Frontend (user view only w/ hardcoded seed data) | Tuesday | :white_check_mark: | 
-| Books api endpoints & import| Tuesday | | 
-| Books search functionality|Tuesday| | 
-| Create club (add book, deadline, rules, users) | Wednesday | | 
-| Clubs display|Wednesday| | 
+| Books api endpoints & import| Tuesday | :white_check_mark: | 
+| Books search functionality|Tuesday| :white_check_mark: | 
+| Create club (add book, rules) | Wednesday |:white_check_mark:  | 
+| Clubs display|Wednesday| :white_check_mark: | 
 | Write comments|Wednesday| | 
 | Comments display|Wednesday| | 
+| Improve create club (add deadline, add users) | Thursday | | 
 | Basic Styling |Thursday| | 
-| Add google books button |Thursday| | 
 | Basic Responsiveness |Friday| | 
+
+* Post-MVP Timeline 
+| Goal | Complete By | Status |
+| ------------ | ------------ | ------------ |
+| Add google books button |Sunday| | 
