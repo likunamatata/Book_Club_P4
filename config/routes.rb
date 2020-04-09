@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   resources :comments
 
+  post 'clubs/:club_id/comments', to: 'comments#create'
+  get 'clubs/:club_id/comments', to: 'comments#index'
+
   resources :users do
     resources :clubs
   end 

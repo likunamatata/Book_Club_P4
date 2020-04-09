@@ -15,7 +15,12 @@ class CommentsController < ApplicationController
 
   # POST /comments
   def create
-    @comment = Comment.new(comment_params)
+    @comment = Comment.new(
+      text: 'i am text - bell jar',
+      user: User.find(1),
+      club: Club.find(params[:club_id]),
+      username: 'likuna - bell jar'
+      )
 
     if @comment.save
       render json: @comment, status: :created, location: @comment
@@ -46,6 +51,6 @@ class CommentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.require(:comment).permit(:text, :user_id, :club_id)
+      params.require(:comment).permit(:text, :user_id, :club_id, :username)
     end
 end

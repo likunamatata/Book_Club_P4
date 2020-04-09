@@ -22,7 +22,6 @@ class ClubsController < ApplicationController
     @club = Club.new(club_params)
     # user that is logged in
     @user = User.find(params[:user_id])
-    puts "hello #{@user}"
     # User.find(22)
 
     if @club.save
