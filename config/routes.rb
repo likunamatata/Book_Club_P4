@@ -9,9 +9,12 @@ Rails.application.routes.draw do
   post 'clubs/:club_id/comments', to: 'comments#create'
   get 'clubs/:club_id/comments', to: 'comments#index'
 
-  resources :users do
-    resources :clubs
-  end 
+  get 'clubs/byuser/:user_id', to: 'clubs#index'
+  get 'clubs/byclub/:club_id', to: 'clubs#read_one'
+  post 'clubs/byclub/:club_id/members', to: 'clubs#add_member'
+
+  resources :users 
+  resources :clubs
 
   post '/auth/login', to: 'authentication#login'
   get '/auth/verify', to: 'authentication#verify'

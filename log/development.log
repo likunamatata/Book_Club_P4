@@ -11334,3 +11334,2242 @@ Processing by ClubsController#show as HTML
 Completed 200 OK in 6ms (Views: 0.5ms | ActiveRecord: 2.6ms | Allocations: 735)
 
 
+Started POST "/auth/login" for ::1 at 2020-04-09 09:16:20 -0400
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 332ms (Views: 0.5ms | ActiveRecord: 13.8ms | Allocations: 9258)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 09:16:47 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.9ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 79ms (Views: 12.8ms | ActiveRecord: 5.9ms | Allocations: 10587)
+
+
+Started GET "/clubs/2/comments" for ::1 at 2020-04-09 09:16:53 -0400
+Started GET "/users/1/clubs/2" for ::1 at 2020-04-09 09:16:53 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"2"}
+  [1m[36mComment Load (4.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Processing by ClubsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"2"}
+  [1m[36mClub Load (1.1ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:60:in `set_club'
+Completed 200 OK in 36ms (Views: 17.8ms | ActiveRecord: 11.6ms | Allocations: 11776)
+
+
+Completed 200 OK in 20ms (Views: 1.8ms | ActiveRecord: 2.4ms | Allocations: 8503)
+
+
+Started POST "/clubs/2/comments" for ::1 at 2020-04-09 09:17:14 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"_json"=>"", "club_id"=>"2", "comment"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mClub Load (0.2ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[36mComment Create (5.5ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "user_id", "club_id", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "i am text - bell jar"], ["created_at", "2020-04-09 13:17:14.435695"], ["updated_at", "2020-04-09 13:17:14.435695"], ["user_id", 1], ["club_id", 2], ["username", "likuna - bell jar"]]
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+Completed 201 Created in 23ms (Views: 0.9ms | ActiveRecord: 8.8ms | Allocations: 4158)
+
+
+Started GET "/clubs/2/comments" for ::1 at 2020-04-09 09:17:14 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"2"}
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 0.7ms | Allocations: 4214)
+
+
+Started POST "/clubs/2/comments" for ::1 at 2020-04-09 09:17:31 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"_json"=>"", "club_id"=>"2", "comment"=>{}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[36mComment Create (0.8ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "user_id", "club_id", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "i am text - bell jar"], ["created_at", "2020-04-09 13:17:31.356736"], ["updated_at", "2020-04-09 13:17:31.356736"], ["user_id", 1], ["club_id", 2], ["username", "likuna - bell jar"]]
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[35m (14.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+Completed 201 Created in 35ms (Views: 1.8ms | ActiveRecord: 17.0ms | Allocations: 3456)
+
+
+Started GET "/clubs/2/comments" for ::1 at 2020-04-09 09:17:31 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"2"}
+  [1m[36mComment Load (1.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 22ms (Views: 19.6ms | ActiveRecord: 1.6ms | Allocations: 4343)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-09 10:34:25 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 691ms (Views: 1.5ms | ActiveRecord: 2.6ms | Allocations: 1114)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 10:34:29 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (1.5ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 82ms (Views: 74.6ms | ActiveRecord: 2.2ms | Allocations: 1876)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-09 10:35:27 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (5.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 729ms (Views: 0.6ms | ActiveRecord: 5.9ms | Allocations: 1027)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 10:35:29 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (1.0ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 13ms (Views: 7.2ms | ActiveRecord: 1.6ms | Allocations: 1867)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-09 10:36:02 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 722ms (Views: 0.6ms | ActiveRecord: 0.8ms | Allocations: 1026)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 10:36:04 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (11.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (2.5ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 22ms (Views: 5.2ms | ActiveRecord: 14.5ms | Allocations: 1867)
+
+
+Started GET "/clubs/1/comments" for ::1 at 2020-04-09 10:36:05 -0400
+Started GET "/users/1/clubs/1" for ::1 at 2020-04-09 10:36:05 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"1"}
+  [1m[36mComment Load (4.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 17ms (Views: 12.7ms | ActiveRecord: 4.0ms | Allocations: 4349)
+
+
+Processing by ClubsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mClub Load (2.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:60:in `set_club'
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 2.8ms | Allocations: 823)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-09 10:40:27 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 780ms (Views: 0.9ms | ActiveRecord: 1.9ms | Allocations: 1030)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 10:40:29 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (1.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 13ms (Views: 6.2ms | ActiveRecord: 2.1ms | Allocations: 1873)
+
+
+Started GET "/clubs/1/comments" for ::1 at 2020-04-09 10:40:32 -0400
+Started GET "/users/1/clubs/1" for ::1 at 2020-04-09 10:40:32 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"1"}
+Processing by ClubsController#show as HTML
+  [1m[36mComment Load (4.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 39ms (Views: 33.6ms | ActiveRecord: 4.5ms | Allocations: 5095)
+
+
+  [1m[36mClub Load (3.2ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:60:in `set_club'
+Completed 200 OK in 50ms (Views: 0.9ms | ActiveRecord: 3.2ms | Allocations: 4610)
+
+
+Started POST "/clubs/1/comments" for ::1 at 2020-04-09 10:40:41 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"s", "username"=>"likunamatata", "club_id"=>"1", "comment"=>{"text"=>"s", "username"=>"likunamatata"}}
+  [1m[36mUser Load (12.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mClub Load (13.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (4.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[36mComment Create (2.3ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "user_id", "club_id", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "i am text - bell jar"], ["created_at", "2020-04-09 14:40:41.578673"], ["updated_at", "2020-04-09 14:40:41.578673"], ["user_id", 1], ["club_id", 1], ["username", "likuna - bell jar"]]
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+Completed 201 Created in 66ms (Views: 1.3ms | ActiveRecord: 37.9ms | Allocations: 3459)
+
+
+Started GET "/clubs/1/comments" for ::1 at 2020-04-09 10:40:41 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"1"}
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 48ms (Views: 46.4ms | ActiveRecord: 0.8ms | Allocations: 4473)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-09 10:41:20 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 716ms (Views: 0.7ms | ActiveRecord: 0.7ms | Allocations: 1026)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 10:41:22 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (1.0ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 18ms (Views: 10.3ms | ActiveRecord: 1.8ms | Allocations: 1867)
+
+
+Started GET "/users/1/clubs/2" for ::1 at 2020-04-09 10:41:24 -0400
+Started GET "/clubs/2/comments" for ::1 at 2020-04-09 10:41:24 -0400
+Processing by ClubsController#show as HTML
+Processing by CommentsController#index as HTML
+  Parameters: {"user_id"=>"1", "id"=>"2"}
+  Parameters: {"club_id"=>"2"}
+  [1m[36mClub Load (4.2ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:60:in `set_club'
+Completed 200 OK in 12ms (Views: 0.7ms | ActiveRecord: 4.2ms | Allocations: 847)
+
+
+  [1m[36mComment Load (9.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 171ms (Views: 161.2ms | ActiveRecord: 9.2ms | Allocations: 5408)
+
+
+Started POST "/clubs/2/comments" for ::1 at 2020-04-09 10:41:29 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"f", "username"=>"likunamatata", "club_id"=>"2", "comment"=>{"text"=>"f", "username"=>"likunamatata"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mClub Load (0.5ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[36mComment Create (2.8ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "user_id", "club_id", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "i am text - bell jar"], ["created_at", "2020-04-09 14:41:29.070406"], ["updated_at", "2020-04-09 14:41:29.070406"], ["user_id", 1], ["club_id", 2], ["username", "likuna - bell jar"]]
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+Completed 201 Created in 23ms (Views: 1.8ms | ActiveRecord: 6.2ms | Allocations: 3459)
+
+
+Started GET "/clubs/2/comments" for ::1 at 2020-04-09 10:41:29 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"2"}
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 23ms (Views: 21.3ms | ActiveRecord: 0.9ms | Allocations: 4603)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-09 10:42:45 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 728ms (Views: 0.6ms | ActiveRecord: 0.7ms | Allocations: 1026)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 10:42:47 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 9ms (Views: 4.5ms | ActiveRecord: 1.4ms | Allocations: 1867)
+
+
+Started GET "/clubs/1/comments" for ::1 at 2020-04-09 10:42:51 -0400
+Started GET "/users/1/clubs/1" for ::1 at 2020-04-09 10:42:51 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"1"}
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Processing by ClubsController#show as HTML
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+Completed 200 OK in 25ms (Views: 23.6ms | ActiveRecord: 1.1ms | Allocations: 5292)
+
+
+  [1m[36mClub Load (1.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:60:in `set_club'
+Completed 200 OK in 32ms (Views: 0.9ms | ActiveRecord: 1.3ms | Allocations: 916)
+
+
+Started POST "/clubs/1/comments" for ::1 at 2020-04-09 10:45:14 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"jdhe", "username"=>"likunamatata", "club_id"=>"1", "comment"=>{"text"=>"jdhe", "username"=>"likunamatata"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mClub Load (1.0ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[36mComment Create (1.6ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "user_id", "club_id", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "i am text - bell jar"], ["created_at", "2020-04-09 14:45:14.980537"], ["updated_at", "2020-04-09 14:45:14.980537"], ["user_id", 1], ["club_id", 1], ["username", "likuna - bell jar"]]
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+Completed 201 Created in 19ms (Views: 1.0ms | ActiveRecord: 4.9ms | Allocations: 3457)
+
+
+Started GET "/clubs/1/comments" for ::1 at 2020-04-09 10:45:15 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"1"}
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.6ms | Allocations: 4733)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6746742726745113120)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUserIdToComments (20200409145204)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "comments" ADD "user_id" int[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6746742726745113120)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (54.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Book_Club_P4_development"[0m
+  [1m[35m (74.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Book_Club_P4_test"[0m
+  [1m[35m (210.3ms)[0m  [1m[35mCREATE DATABASE "Book_Club_P4_development" ENCODING = 'unicode'[0m
+  [1m[35m (113.4ms)[0m  [1m[35mCREATE DATABASE "Book_Club_P4_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "clubs" CASCADE[0m
+  [1m[35m (16.1ms)[0m  [1m[35mCREATE TABLE "clubs" ("id" bigserial primary key, "google_id" character varying, "rules" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "clubs_users" CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "clubs_users" ("user_id" bigint NOT NULL, "club_id" bigint NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "text" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint NOT NULL, "club_id" bigint NOT NULL, "username" character varying)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_club_id" ON "comments"  ("club_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.4ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_57a4c23f02"
+FOREIGN KEY ("club_id")
+  REFERENCES "clubs" ("id")
+[0m
+  [1m[35m (2.1ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200409025406)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200406155705),
+(20200407024330),
+(20200407025033),
+(20200407041633),
+(20200408221804),
+(20200408221822),
+(20200408230412),
+(20200408230429);
+
+[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-09 14:52:58.795474"], ["updated_at", "2020-04-09 14:52:58.795474"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "f5c1b70be0f85a60e7c1f33d6ad70a20ce2a76df"], ["created_at", "2020-04-09 14:52:58.805004"], ["updated_at", "2020-04-09 14:52:58.805004"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "clubs" CASCADE[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE TABLE "clubs" ("id" bigserial primary key, "google_id" character varying, "rules" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "clubs_users" CASCADE[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "clubs_users" ("user_id" bigint NOT NULL, "club_id" bigint NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "text" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint NOT NULL, "club_id" bigint NOT NULL, "username" character varying)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_club_id" ON "comments"  ("club_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_57a4c23f02"
+FOREIGN KEY ("club_id")
+  REFERENCES "clubs" ("id")
+[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200409025406)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200406155705),
+(20200407024330),
+(20200407025033),
+(20200407041633),
+(20200408221804),
+(20200408221822),
+(20200408230412),
+(20200408230429);
+
+[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-09 14:52:58.888157"], ["updated_at", "2020-04-09 14:52:58.888157"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-04-09 14:52:58.894332"], ["key", "environment"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "f5c1b70be0f85a60e7c1f33d6ad70a20ce2a76df"], ["created_at", "2020-04-09 14:52:58.899747"], ["updated_at", "2020-04-09 14:52:58.899747"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6746742726745113120)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUserIdToComments (20200409145204)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "comments" ADD "user_id" int[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6746742726745113120)[0m
+Started POST "/clubs/1/comments" for ::1 at 2020-04-09 10:55:03 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (6.0.2.2) lib/active_record/migration.rb:587:in `check_pending!'
+activerecord (6.0.2.2) lib/active_record/migration.rb:564:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/clubs/1/comments" for ::1 at 2020-04-09 10:55:18 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (6.0.2.2) lib/active_record/migration.rb:587:in `check_pending!'
+activerecord (6.0.2.2) lib/active_record/migration.rb:564:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/clubs/1/comments" for ::1 at 2020-04-09 10:56:36 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (6.0.2.2) lib/active_record/migration.rb:587:in `check_pending!'
+activerecord (6.0.2.2) lib/active_record/migration.rb:564:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/clubs/2/comments" for ::1 at 2020-04-09 10:56:43 -0400
+  [1m[35m (9.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (6.0.2.2) lib/active_record/migration.rb:587:in `check_pending!'
+activerecord (6.0.2.2) lib/active_record/migration.rb:564:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/clubs/2/comments" for ::1 at 2020-04-09 10:57:39 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CommentsController#create as */*
+  Parameters: {"comment"=>{"text"=>"my comment"}, "club_id"=>"2"}
+Completed 422 Unprocessable Entity in 63ms (Views: 0.4ms | ActiveRecord: 7.2ms | Allocations: 13027)
+
+
+Started POST "/clubs/1/comments" for ::1 at 2020-04-09 10:59:04 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"jdhe", "username"=>"likunamatata", "club_id"=>"1", "comment"=>{"text"=>"jdhe", "username"=>"likunamatata"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+Completed 404 Not Found in 14ms (ActiveRecord: 4.9ms | Allocations: 4035)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  
+app/controllers/comments_controller.rb:20:in `create'
+Started POST "/auth/login" for ::1 at 2020-04-09 10:59:35 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 1.3ms | Allocations: 4488)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/authentication_controller.rb:7:in `login'
+Started POST "/users/" for ::1 at 2020-04-09 10:59:40 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"username"=>"likunamatata", "email"=>"likuna@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "likunamatata"], ["email", "likuna@gmail.com"], ["password_digest", "$2a$12$.GxLkHM7NtfqMEBujRtWFe81oyg8wyv8L6dB3Lmwpl3LrQe9FUUuC"], ["created_at", "2020-04-09 14:59:41.083873"], ["updated_at", "2020-04-09 14:59:41.083873"]]
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+Completed 201 Created in 273ms (Views: 0.6ms | ActiveRecord: 5.4ms | Allocations: 7596)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 10:59:42 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.9ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 61ms (Views: 21.5ms | ActiveRecord: 5.4ms | Allocations: 7118)
+
+
+Started POST "/users/1/clubs" for ::1 at 2020-04-09 11:00:04 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"G-f1CQAAQBAJ", "rules"=>"dsadsdas"}, "user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:24:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+  [1m[36mClub Create (0.7ms)[0m  [1m[32mINSERT INTO "clubs" ("google_id", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["google_id", "G-f1CQAAQBAJ"], ["rules", "dsadsdas"], ["created_at", "2020-04-09 15:00:04.104379"], ["updated_at", "2020-04-09 15:00:04.104379"]]
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:28:in `create'
+  [1m[36mClub::HABTM_Users Create (0.5ms)[0m  [1m[32mINSERT INTO "clubs_users" ("user_id", "club_id") VALUES ($1, $2)[0m  [["user_id", 1], ["club_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:28:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:28:in `create'
+Completed 201 Created in 24ms (Views: 0.4ms | ActiveRecord: 5.2ms | Allocations: 9840)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 11:00:06 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.7ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 8ms (Views: 3.0ms | ActiveRecord: 1.2ms | Allocations: 1761)
+
+
+Started GET "/clubs/1/comments" for ::1 at 2020-04-09 11:00:07 -0400
+Started GET "/users/1/clubs/1" for ::1 at 2020-04-09 11:00:07 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"1"}
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Processing by ClubsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+Completed 200 OK in 9ms (Views: 3.8ms | ActiveRecord: 2.7ms | Allocations: 2982)
+
+
+  [1m[36mClub Load (1.0ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:60:in `set_club'
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 1.7ms | Allocations: 1660)
+
+
+Started POST "/clubs/1/comments" for ::1 at 2020-04-09 11:00:11 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"dsa", "username"=>"likunamatata", "club_id"=>"1", "comment"=>{"text"=>"dsa", "username"=>"likunamatata"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mClub Load (0.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[36mComment Create (2.2ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "user_id", "club_id", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "i am text - bell jar"], ["created_at", "2020-04-09 15:00:11.038168"], ["updated_at", "2020-04-09 15:00:11.038168"], ["user_id", 1], ["club_id", 1], ["username", "rails"]]
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+Completed 201 Created in 26ms (Views: 0.7ms | ActiveRecord: 8.4ms | Allocations: 7470)
+
+
+Started GET "/clubs/1/comments" for ::1 at 2020-04-09 11:00:11 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"1"}
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.3ms | Allocations: 950)
+
+
+Started POST "/clubs/1/comments" for ::1 at 2020-04-09 11:00:47 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"dsa", "username"=>"likunamatata", "club_id"=>"1", "comment"=>{"text"=>"dsa", "username"=>"likunamatata"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mClub Load (0.2ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (5.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[36mComment Create (0.7ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "user_id", "club_id", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "i am text - bell jar"], ["created_at", "2020-04-09 15:00:47.280126"], ["updated_at", "2020-04-09 15:00:47.280126"], ["user_id", 1], ["club_id", 1], ["username", "likunamatata"]]
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+Completed 201 Created in 49ms (Views: 0.7ms | ActiveRecord: 19.0ms | Allocations: 18988)
+
+
+Started GET "/clubs/1/comments" for ::1 at 2020-04-09 11:00:47 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"1"}
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.8ms | Allocations: 1085)
+
+
+Started POST "/clubs/1/comments" for ::1 at 2020-04-09 11:01:31 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"dsa", "username"=>"likunamatata", "club_id"=>"1", "comment"=>{"text"=>"dsa", "username"=>"likunamatata"}}
+Completed 404 Not Found in 8ms (ActiveRecord: 4.4ms | Allocations: 3063)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/comments_controller.rb:20:in `create'
+Started POST "/auth/login" for ::1 at 2020-04-09 11:01:44 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 256ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 4506)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 11:01:46 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 35ms (Views: 15.4ms | ActiveRecord: 7.9ms | Allocations: 7758)
+
+
+Started GET "/clubs/1/comments" for ::1 at 2020-04-09 11:01:47 -0400
+Started GET "/users/1/clubs/1" for ::1 at 2020-04-09 11:01:47 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"1"}
+Processing by ClubsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mComment Load (1.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+  [1m[36mClub Load (0.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:60:in `set_club'
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 1515)
+
+
+Completed 200 OK in 21ms (Views: 15.7ms | ActiveRecord: 4.4ms | Allocations: 6502)
+
+
+Started POST "/clubs/1/comments" for ::1 at 2020-04-09 11:01:49 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"s", "username"=>"likunamatata", "club_id"=>"1", "comment"=>{"text"=>"s", "username"=>"likunamatata"}}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 143)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/comments_controller.rb:20:in `create'
+Started POST "/clubs/1/comments" for ::1 at 2020-04-09 11:02:26 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"s", "username"=>"likunamatata", "club_id"=>"1", "comment"=>{"text"=>"s", "username"=>"likunamatata"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mClub Load (0.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[36mComment Create (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "user_id", "club_id", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "s"], ["created_at", "2020-04-09 15:02:27.076801"], ["updated_at", "2020-04-09 15:02:27.076801"], ["user_id", 1], ["club_id", 1], ["username", "likunamatata"]]
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+Completed 201 Created in 38ms (Views: 0.7ms | ActiveRecord: 10.8ms | Allocations: 18985)
+
+
+Started GET "/clubs/1/comments" for ::1 at 2020-04-09 11:02:27 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"1"}
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.5ms | Allocations: 1215)
+
+
+Started POST "/clubs/1/comments" for ::1 at 2020-04-09 11:03:26 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"s", "username"=>"likunamatata", "club_id"=>"1", "comment"=>{"text"=>"s", "username"=>"likunamatata"}}
+Completed 404 Not Found in 9ms (ActiveRecord: 4.3ms | Allocations: 3059)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/comments_controller.rb:20:in `create'
+Started POST "/clubs/1/comments" for ::1 at 2020-04-09 11:05:14 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"s", "username"=>"likunamatata", "club_id"=>"1", "comment"=>{"text"=>"s", "username"=>"likunamatata"}}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 1.3ms | Allocations: 3006)
+
+
+  
+NoMethodError (undefined method `to_str' for nil:NilClass):
+  
+app/controllers/comments_controller.rb:20:in `create'
+Started POST "/clubs/1/comments" for ::1 at 2020-04-09 11:05:20 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"s", "username"=>"likunamatata", "club_id"=>"1", "comment"=>{"text"=>"s", "username"=>"likunamatata"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 552)
+
+
+  
+NoMethodError (undefined method `to_str' for nil:NilClass):
+  
+app/controllers/comments_controller.rb:20:in `create'
+Started POST "/clubs/2/comments" for ::1 at 2020-04-09 11:05:30 -0400
+Processing by CommentsController#create as */*
+  Parameters: {"comment"=>{"text"=>"my comment"}, "club_id"=>"2"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 553)
+
+
+  
+NoMethodError (undefined method `to_str' for nil:NilClass):
+  
+app/controllers/comments_controller.rb:20:in `create'
+Started POST "/auth/login" for ::1 at 2020-04-09 11:07:48 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 245ms (Views: 0.5ms | ActiveRecord: 3.3ms | Allocations: 4935)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 11:07:50 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (12.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 43ms (Views: 13.5ms | ActiveRecord: 21.6ms | Allocations: 7753)
+
+
+Started GET "/clubs/1/comments" for ::1 at 2020-04-09 11:07:52 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"1"}
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Started GET "/users/1/clubs/1" for ::1 at 2020-04-09 11:07:52 -0400
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Processing by ClubsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+Completed 200 OK in 20ms (Views: 16.2ms | ActiveRecord: 3.6ms | Allocations: 6291)
+
+
+  [1m[36mClub Load (12.9ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:60:in `set_club'
+Completed 200 OK in 17ms (Views: 0.8ms | ActiveRecord: 12.9ms | Allocations: 5228)
+
+
+Started POST "/clubs/1/comments" for ::1 at 2020-04-09 11:07:55 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"s", "username"=>"likunamatata", "club_id"=>"1", "user_id"=>1, "comment"=>{"text"=>"s", "user_id"=>1, "club_id"=>"1", "username"=>"likunamatata"}}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 901)
+
+
+  
+NoMethodError (undefined method `to_str' for 1:Integer
+Did you mean?  to_s
+               to_r):
+  
+app/controllers/comments_controller.rb:20:in `create'
+Started POST "/clubs/2/comments" for ::1 at 2020-04-09 11:08:01 -0400
+Processing by CommentsController#create as */*
+  Parameters: {"comment"=>{"text"=>"my comment"}, "club_id"=>"2"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 552)
+
+
+  
+NoMethodError (undefined method `to_str' for nil:NilClass):
+  
+app/controllers/comments_controller.rb:20:in `create'
+Started POST "/clubs/1/comments" for ::1 at 2020-04-09 11:08:18 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"s", "username"=>"likunamatata", "club_id"=>"1", "user_id"=>1, "comment"=>{"text"=>"s", "user_id"=>1, "club_id"=>"1", "username"=>"likunamatata"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mClub Load (0.7ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[36mComment Create (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "user_id", "club_id", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "s"], ["created_at", "2020-04-09 15:08:18.655530"], ["updated_at", "2020-04-09 15:08:18.655530"], ["user_id", 1], ["club_id", 1], ["username", "likunamatata"]]
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[35m (6.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+Completed 201 Created in 75ms (Views: 1.1ms | ActiveRecord: 19.0ms | Allocations: 19032)
+
+
+Started GET "/clubs/1/comments" for ::1 at 2020-04-09 11:08:18 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"1"}
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.4ms | Allocations: 1346)
+
+
+Started POST "/clubs/1/comments" for ::1 at 2020-04-09 11:08:34 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"likunamatata comment", "username"=>"likunamatata", "club_id"=>"1", "user_id"=>1, "comment"=>{"text"=>"likunamatata comment", "user_id"=>1, "club_id"=>"1", "username"=>"likunamatata"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mClub Load (0.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[36mComment Create (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "user_id", "club_id", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "likunamatata comment"], ["created_at", "2020-04-09 15:08:34.686059"], ["updated_at", "2020-04-09 15:08:34.686059"], ["user_id", 1], ["club_id", 1], ["username", "likunamatata"]]
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+Completed 201 Created in 10ms (Views: 0.5ms | ActiveRecord: 3.1ms | Allocations: 3461)
+
+
+Started GET "/clubs/1/comments" for ::1 at 2020-04-09 11:08:34 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"1"}
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.3ms | Allocations: 1462)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 11:09:27 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 13ms (Views: 8.4ms | ActiveRecord: 1.7ms | Allocations: 2496)
+
+
+Started POST "/users/1/clubs" for ::1 at 2020-04-09 11:09:59 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"-WxKAAAAYAAJ", "rules"=>"get money"}, "user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:24:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+  [1m[36mClub Create (0.4ms)[0m  [1m[32mINSERT INTO "clubs" ("google_id", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["google_id", "-WxKAAAAYAAJ"], ["rules", "get money"], ["created_at", "2020-04-09 15:09:59.481216"], ["updated_at", "2020-04-09 15:09:59.481216"]]
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:28:in `create'
+  [1m[36mClub::HABTM_Users Create (0.5ms)[0m  [1m[32mINSERT INTO "clubs_users" ("user_id", "club_id") VALUES ($1, $2)[0m  [["user_id", 1], ["club_id", 2]]
+  ↳ app/controllers/clubs_controller.rb:28:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:28:in `create'
+Completed 201 Created in 29ms (Views: 0.3ms | ActiveRecord: 4.7ms | Allocations: 7076)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 11:10:01 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 11ms (Views: 7.0ms | ActiveRecord: 1.2ms | Allocations: 1867)
+
+
+Started GET "/clubs/2/comments" for ::1 at 2020-04-09 11:10:02 -0400
+Started GET "/users/1/clubs/2" for ::1 at 2020-04-09 11:10:02 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"2"}
+Processing by ClubsController#show as HTML
+  [1m[36mComment Load (2.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  Parameters: {"user_id"=>"1", "id"=>"2"}
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 6.2ms | ActiveRecord: 2.1ms | Allocations: 1836)
+
+
+  [1m[36mClub Load (4.0ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:60:in `set_club'
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 4.0ms | Allocations: 1669)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-09 11:10:49 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 239ms (Views: 0.5ms | ActiveRecord: 3.0ms | Allocations: 7538)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 11:10:50 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 25ms (Views: 6.5ms | ActiveRecord: 3.2ms | Allocations: 7899)
+
+
+Started GET "/users/1/clubs/2" for ::1 at 2020-04-09 11:10:52 -0400
+Started GET "/clubs/2/comments" for ::1 at 2020-04-09 11:10:52 -0400
+Processing by ClubsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"2"}
+Processing by CommentsController#index as HTML
+  [1m[36mClub Load (3.7ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Parameters: {"club_id"=>"2"}
+  ↳ app/controllers/clubs_controller.rb:60:in `set_club'
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 3.7ms | Allocations: 2132)
+
+
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6:in `index'
+Completed 404 Not Found in 8ms (ActiveRecord: 2.7ms | Allocations: 2485)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Comment with 'id'={:club_id=>"2"}):
+  
+app/controllers/comments_controller.rb:6:in `index'
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 11:11:00 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.5ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.8ms | Allocations: 1866)
+
+
+Started GET "/clubs/1/comments" for ::1 at 2020-04-09 11:11:01 -0400
+Started GET "/users/1/clubs/1" for ::1 at 2020-04-09 11:11:01 -0400
+Processing by ClubsController#show as HTML
+Processing by CommentsController#index as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  Parameters: {"club_id"=>"1"}
+  [1m[36mClub Load (1.0ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:60:in `set_club'
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 926)
+
+
+  [1m[36mComment Load (2.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6:in `index'
+Completed 404 Not Found in 6ms (ActiveRecord: 2.2ms | Allocations: 1783)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Comment with 'id'={:club_id=>"1"}):
+  
+app/controllers/comments_controller.rb:6:in `index'
+Started GET "/clubs/2/comments" for ::1 at 2020-04-09 11:11:24 -0400
+Processing by CommentsController#index as */*
+  Parameters: {"comment"=>{"text"=>"my comment"}, "club_id"=>"2"}
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6:in `index'
+Completed 404 Not Found in 4ms (ActiveRecord: 1.2ms | Allocations: 859)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Comment with 'id'={:club_id=>"2"}):
+  
+app/controllers/comments_controller.rb:6:in `index'
+Started GET "/clubs/2/comments" for ::1 at 2020-04-09 11:12:55 -0400
+Processing by CommentsController#index as */*
+  Parameters: {"comment"=>{"text"=>"my comment"}, "club_id"=>"2"}
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 1.8ms | ActiveRecord: 1.5ms | Allocations: 1428)
+
+
+Started GET "/clubs/1/comments" for ::1 at 2020-04-09 11:13:00 -0400
+Processing by CommentsController#index as */*
+  Parameters: {"comment"=>{"text"=>"my comment"}, "club_id"=>"1"}
+  [1m[36mComment Load (1.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 1]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 47ms (Views: 40.7ms | ActiveRecord: 5.2ms | Allocations: 5417)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-09 11:13:07 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 256ms (Views: 0.3ms | ActiveRecord: 2.9ms | Allocations: 7299)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 11:13:08 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 27ms (Views: 9.7ms | ActiveRecord: 6.1ms | Allocations: 7863)
+
+
+Started GET "/clubs/1/comments" for ::1 at 2020-04-09 11:13:10 -0400
+Started GET "/users/1/clubs/1" for ::1 at 2020-04-09 11:13:10 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"1"}
+Processing by ClubsController#show as HTML
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 1]]
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 1.2ms | Allocations: 2010)
+
+
+  [1m[36mClub Load (2.7ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:60:in `set_club'
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 2.7ms | Allocations: 1775)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 11:13:13 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 7ms (Views: 3.4ms | ActiveRecord: 1.0ms | Allocations: 1867)
+
+
+Started GET "/users/1/clubs/2" for ::1 at 2020-04-09 11:13:14 -0400
+Started GET "/clubs/2/comments" for ::1 at 2020-04-09 11:13:14 -0400
+Processing by ClubsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"2"}
+Processing by CommentsController#index as HTML
+  [1m[36mClub Load (2.1ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Parameters: {"club_id"=>"2"}
+  ↳ app/controllers/clubs_controller.rb:60:in `set_club'
+Completed 200 OK in 6ms (Views: 0.5ms | ActiveRecord: 2.1ms | Allocations: 1566)
+
+
+  [1m[36mComment Load (1.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 1.6ms | Allocations: 1316)
+
+
+Started POST "/clubs/2/comments" for ::1 at 2020-04-09 11:13:24 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"acquire currency", "username"=>"likunamatata", "club_id"=>"2", "user_id"=>1, "comment"=>{"text"=>"acquire currency", "user_id"=>1, "club_id"=>"2", "username"=>"likunamatata"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[36mComment Create (0.6ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "user_id", "club_id", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "acquire currency"], ["created_at", "2020-04-09 15:13:24.159456"], ["updated_at", "2020-04-09 15:13:24.159456"], ["user_id", 1], ["club_id", 2], ["username", "likunamatata"]]
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+Completed 201 Created in 12ms (Views: 0.8ms | ActiveRecord: 2.2ms | Allocations: 3678)
+
+
+Started GET "/clubs/2/comments" for ::1 at 2020-04-09 11:13:24 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"2"}
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.4ms | Allocations: 1013)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-09 12:22:11 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 232ms (Views: 0.3ms | ActiveRecord: 1.9ms | Allocations: 1114)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 12:22:12 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (1.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 7ms (Views: 2.8ms | ActiveRecord: 1.7ms | Allocations: 1873)
+
+
+Started GET "/clubs/2/comments" for ::1 at 2020-04-09 12:22:14 -0400
+Started GET "/users/1/clubs/2" for ::1 at 2020-04-09 12:22:14 -0400
+Processing by ClubsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"2"}
+  [1m[36mClub Load (0.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:60:in `set_club'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 738)
+
+
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"2"}
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.9ms | Allocations: 1103)
+
+
+Started POST "/clubs/2/comments" for ::1 at 2020-04-09 12:22:18 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"d", "username"=>"likunamatata", "club_id"=>"2", "user_id"=>1, "comment"=>{"text"=>"d", "user_id"=>1, "club_id"=>"2", "username"=>"likunamatata"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mClub Load (0.7ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[36mComment Create (1.2ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "user_id", "club_id", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "d"], ["created_at", "2020-04-09 16:22:18.215357"], ["updated_at", "2020-04-09 16:22:18.215357"], ["user_id", 1], ["club_id", 2], ["username", "likunamatata"]]
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[35m (21.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+Completed 201 Created in 36ms (Views: 0.7ms | ActiveRecord: 24.5ms | Allocations: 3469)
+
+
+Started GET "/clubs/2/comments" for ::1 at 2020-04-09 12:22:18 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"2"}
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.5ms | Allocations: 1143)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 12:22:21 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (1.1ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 8ms (Views: 4.0ms | ActiveRecord: 1.7ms | Allocations: 1870)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-09 12:23:47 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 248ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1027)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 12:23:48 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 6ms (Views: 3.4ms | ActiveRecord: 1.1ms | Allocations: 1867)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-09 12:26:15 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 251ms (Views: 0.7ms | ActiveRecord: 12.4ms | Allocations: 7605)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 12:26:17 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.5ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 42ms (Views: 20.2ms | ActiveRecord: 6.3ms | Allocations: 7863)
+
+
+Started POST "/clubs" for ::1 at 2020-04-09 12:26:27 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/clubs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/clubs" for ::1 at 2020-04-09 12:28:14 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"likunas test", "rules"=>"j", "user_id"=>1}}
+[31mUnpermitted parameter: :user_id[0m
+[31mUnpermitted parameter: :user_id[0m
+Completed 404 Not Found in 16ms (ActiveRecord: 6.0ms | Allocations: 6378)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/clubs_controller.rb:24:in `create'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6746742726745113120)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUserIdToClubs (20200409162903)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.4ms)[0m  [1m[35mALTER TABLE "clubs" ADD "user_id" int[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200409162903"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6746742726745113120)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/clubs" for ::1 at 2020-04-09 12:29:17 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"likunas test", "rules"=>"j", "user_id"=>1}}
+[31mUnpermitted parameter: :user_id[0m
+[31mUnpermitted parameter: :user_id[0m
+Completed 404 Not Found in 19ms (ActiveRecord: 7.0ms | Allocations: 7771)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/clubs_controller.rb:24:in `create'
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 12:30:25 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/clubs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/clubs" for ::1 at 2020-04-09 12:30:30 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"ds", "rules"=>"dsd", "user_id"=>1}}
+[31mUnpermitted parameter: :user_id[0m
+[31mUnpermitted parameter: :user_id[0m
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 392)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/clubs_controller.rb:24:in `create'
+Started POST "/clubs" for ::1 at 2020-04-09 12:31:16 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"ds", "rules"=>"dsd", "user_id"=>1}}
+Completed 404 Not Found in 17ms (ActiveRecord: 6.4ms | Allocations: 7029)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/clubs_controller.rb:24:in `create'
+Started POST "/clubs" for ::1 at 2020-04-09 12:31:57 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"google_id"=>"ds", "rules"=>"dsd", "user_id"=>1}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:24:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+  [1m[36mClub Create (0.7ms)[0m  [1m[32mINSERT INTO "clubs" ("google_id", "rules", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["google_id", "ds"], ["rules", "dsd"], ["created_at", "2020-04-09 16:31:57.705111"], ["updated_at", "2020-04-09 16:31:57.705111"], ["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:27:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:28:in `create'
+  [1m[36mClub::HABTM_Users Create (0.4ms)[0m  [1m[32mINSERT INTO "clubs_users" ("user_id", "club_id") VALUES ($1, $2)[0m  [["user_id", 1], ["club_id", 3]]
+  ↳ app/controllers/clubs_controller.rb:28:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:28:in `create'
+Completed 201 Created in 47ms (Views: 0.6ms | ActiveRecord: 11.5ms | Allocations: 20340)
+
+
+Started GET "/users/1/clubs" for ::1 at 2020-04-09 12:32:01 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/clubs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/auth/login" for ::1 at 2020-04-09 12:43:56 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 241ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 7407)
+
+
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-09 12:43:57 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (2.5ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 40ms (Views: 10.9ms | ActiveRecord: 3.2ms | Allocations: 8898)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-09 12:46:22 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 235ms (Views: 0.3ms | ActiveRecord: 1.3ms | Allocations: 1030)
+
+
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-09 12:46:23 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.5ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 0.8ms | Allocations: 2007)
+
+
+Started GET "/clubs/2/comments" for ::1 at 2020-04-09 12:46:26 -0400
+Started GET "/clubs/byclub/1" for ::1 at 2020-04-09 12:46:26 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"2"}
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 33ms (Views: 12.1ms | ActiveRecord: 15.8ms | Allocations: 6569)
+
+
+  
+AbstractController::ActionNotFound (The action 'read_one' could not be found for ClubsController):
+  
+actionpack (6.0.2.2) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.2.2) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.2.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+activerecord (6.0.2.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-09 12:46:33 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 12ms (Views: 6.3ms | ActiveRecord: 1.9ms | Allocations: 2112)
+
+
+Started GET "/clubs/byclub/1" for ::1 at 2020-04-09 12:46:35 -0400
+Started GET "/clubs/2/comments" for ::1 at 2020-04-09 12:46:35 -0400
+  
+AbstractController::ActionNotFound (The action 'read_one' could not be found for ClubsController):
+  
+actionpack (6.0.2.2) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.2.2) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.2.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+activerecord (6.0.2.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"2"}
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.5ms | Allocations: 1852)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-09 12:50:02 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 240ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 1028)
+
+
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-09 12:50:05 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.5ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.8ms | Allocations: 2011)
+
+
+Started GET "/clubs/byclub/1" for ::1 at 2020-04-09 12:50:06 -0400
+Started GET "/clubs/2/comments" for ::1 at 2020-04-09 12:50:06 -0400
+  
+AbstractController::ActionNotFound (The action 'read_one' could not be found for ClubsController):
+  
+actionpack (6.0.2.2) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.2.2) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.2.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+activerecord (6.0.2.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"2"}
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.7ms | Allocations: 1905)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-09 12:51:05 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 253ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 1025)
+
+
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-09 12:51:06 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 6ms (Views: 3.6ms | ActiveRecord: 0.7ms | Allocations: 2007)
+
+
+Started GET "/clubs/2/comments" for ::1 at 2020-04-09 12:51:07 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"2"}
+Started GET "/clubs/byclub/1" for ::1 at 2020-04-09 12:51:07 -0400
+  
+AbstractController::ActionNotFound (The action 'read_one' could not be found for ClubsController):
+  
+actionpack (6.0.2.2) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.2.2) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.2.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+activerecord (6.0.2.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 61ms (Views: 59.6ms | ActiveRecord: 1.2ms | Allocations: 45382)
+
+
+Started GET "/clubs/byclub/2" for ::1 at 2020-04-09 12:52:24 -0400
+  
+AbstractController::ActionNotFound (The action 'read_one' could not be found for ClubsController):
+  
+actionpack (6.0.2.2) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.2.2) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.2.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+activerecord (6.0.2.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/auth/login" for ::1 at 2020-04-09 12:54:04 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 255ms (Views: 0.3ms | ActiveRecord: 7.0ms | Allocations: 7621)
+
+
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-09 12:54:06 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 22ms (Views: 9.3ms | ActiveRecord: 4.6ms | Allocations: 8626)
+
+
+Started GET "/clubs/2/comments" for ::1 at 2020-04-09 12:54:07 -0400
+Started GET "/clubs/byclub/1" for ::1 at 2020-04-09 12:54:07 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"2"}
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"1"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 137)
+
+
+  [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 2]]
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/clubs_controller.rb:16:in `read_one'
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 127ms (Views: 118.7ms | ActiveRecord: 5.3ms | Allocations: 99161)
+
+
+Started GET "/clubs/byclub/2" for ::1 at 2020-04-09 12:54:14 -0400
+Processing by ClubsController#read_one as */*
+  Parameters: {"comment"=>{"text"=>"my comment"}, "club_id"=>"2", "club"=>{}}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 149)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/clubs_controller.rb:16:in `read_one'
+Started GET "/clubs/byclub/2" for ::1 at 2020-04-09 12:54:37 -0400
+Processing by ClubsController#read_one as */*
+  Parameters: {"comment"=>{"text"=>"my comment"}, "club_id"=>"2", "club"=>{}}
+Completed 400 Bad Request in 4ms (ActiveRecord: 1.4ms | Allocations: 2599)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/clubs_controller.rb:76:in `user_params'
+app/controllers/clubs_controller.rb:16:in `read_one'
+Started GET "/clubs/byclub/2" for ::1 at 2020-04-09 12:55:14 -0400
+Processing by ClubsController#read_one as */*
+  Parameters: {"comment"=>{"text"=>"my comment"}, "club_id"=>"2", "club"=>{}}
+  [1m[36mClub Load (0.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 5.5ms | Allocations: 4201)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-09 12:55:22 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 270ms (Views: 0.3ms | ActiveRecord: 5.0ms | Allocations: 7298)
+
+
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-09 12:55:24 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 10ms (Views: 4.5ms | ActiveRecord: 2.6ms | Allocations: 2802)
+
+
+Started GET "/clubs/1/comments" for ::1 at 2020-04-09 12:55:25 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"1"}
+Started GET "/clubs/byclub/1" for ::1 at 2020-04-09 12:55:25 -0400
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 1]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"1"}
+  [1m[36mClub Load (0.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 738)
+
+
+Completed 200 OK in 23ms (Views: 12.6ms | ActiveRecord: 5.8ms | Allocations: 8463)
+
+
+Started POST "/clubs/byclub/2" for ::1 at 2020-04-09 12:59:31 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/clubs/byclub/2"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/users/" for ::1 at 2020-04-09 13:01:10 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"username"=>"aaron", "email"=>"likuna@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "aaron"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "aaron"], ["email", "likuna@gmail.com"], ["password_digest", "$2a$12$RlU4.bTQ2i.8LMembBvlrOMPl4qg1xQl24masNmmliZJZN13mU9c6"], ["created_at", "2020-04-09 17:01:10.977729"], ["updated_at", "2020-04-09 17:01:10.977729"]]
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[35m (4.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+Completed 201 Created in 247ms (Views: 0.6ms | ActiveRecord: 5.2ms | Allocations: 4051)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-09 13:01:21 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"likuna@gmail.com", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"likuna@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 238ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 1024)
+
+
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-09 13:01:23 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.9ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 10ms (Views: 4.2ms | ActiveRecord: 2.2ms | Allocations: 2007)
+
+
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:10:18 -0400
+  
+SyntaxError (/Users/liakapanadze/Mandalorians/PortfolioMaster/Book_Club_P4/app/controllers/clubs_controller.rb:24: syntax error, unexpected ':', expecting ')'
+...  @user = User.where(username : member_params[:username])
+...                              ^
+/Users/liakapanadze/Mandalorians/PortfolioMaster/Book_Club_P4/app/controllers/clubs_controller.rb:24: syntax error, unexpected ')', expecting end
+...ame : member_params[:username])
+...                              ^):
+  
+app/controllers/clubs_controller.rb:24: syntax error, unexpected ':', expecting ')'
+app/controllers/clubs_controller.rb:24: syntax error, unexpected ')', expecting end
+app/controllers/clubs_controller.rb:24: syntax error, unexpected ':', expecting ')'
+app/controllers/clubs_controller.rb:24: syntax error, unexpected ')', expecting end
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:24:57 -0400
+  
+SyntaxError (/Users/liakapanadze/Mandalorians/PortfolioMaster/Book_Club_P4/app/controllers/clubs_controller.rb:24: syntax error, unexpected ':', expecting ')'
+...  @user = User.where(username : 'aaron')
+...                              ^
+/Users/liakapanadze/Mandalorians/PortfolioMaster/Book_Club_P4/app/controllers/clubs_controller.rb:24: syntax error, unexpected ')', expecting end
+... User.where(username : 'aaron')
+...                              ^):
+  
+app/controllers/clubs_controller.rb:24: syntax error, unexpected ':', expecting ')'
+app/controllers/clubs_controller.rb:24: syntax error, unexpected ')', expecting end
+app/controllers/clubs_controller.rb:24: syntax error, unexpected ':', expecting ')'
+app/controllers/clubs_controller.rb:24: syntax error, unexpected ')', expecting end
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:25:39 -0400
+  
+SyntaxError (/Users/liakapanadze/Mandalorians/PortfolioMaster/Book_Club_P4/app/controllers/clubs_controller.rb:24: syntax error, unexpected ':', expecting ')'
+...  @user = User.where(username : member_params[:username])
+...                              ^
+/Users/liakapanadze/Mandalorians/PortfolioMaster/Book_Club_P4/app/controllers/clubs_controller.rb:24: syntax error, unexpected ')', expecting end
+...ame : member_params[:username])
+...                              ^):
+  
+app/controllers/clubs_controller.rb:24: syntax error, unexpected ':', expecting ')'
+app/controllers/clubs_controller.rb:24: syntax error, unexpected ')', expecting end
+app/controllers/clubs_controller.rb:24: syntax error, unexpected ':', expecting ')'
+app/controllers/clubs_controller.rb:24: syntax error, unexpected ')', expecting end
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username : 'aaron') LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = 'aaron') LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "aaron"], ["LIMIT", 11]]
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:30:37 -0400
+  [1m[35m (4.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ClubsController#add_member as */*
+  Parameters: {"club_id"=>"2"}
+Completed 400 Bad Request in 8ms (ActiveRecord: 0.0ms | Allocations: 3692)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: member):
+  
+app/controllers/clubs_controller.rb:89:in `member_params'
+app/controllers/clubs_controller.rb:24:in `add_member'
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:32:00 -0400
+Processing by ClubsController#add_member as */*
+  Parameters: {"club_id"=>"2"}
+  [1m[36mClub Load (0.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:25:in `add_member'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "aaron"]]
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[36mClub::HABTM_Users Create (0.6ms)[0m  [1m[32mINSERT INTO "clubs_users" ("user_id", "club_id") VALUES ($1, $2)[0m  [["user_id", 2], ["club_id", 2]]
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+Completed 200 OK in 125ms (Views: 0.6ms | ActiveRecord: 15.5ms | Allocations: 21559)
+
+
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:32:31 -0400
+Processing by ClubsController#add_member as */*
+  Parameters: {"club_id"=>"2"}
+  [1m[36mClub Load (0.2ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:25:in `add_member'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "aaron"]]
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[36mClub::HABTM_Users Create (0.3ms)[0m  [1m[32mINSERT INTO "clubs_users" ("user_id", "club_id") VALUES ($1, $2)[0m  [["user_id", 2], ["club_id", 2]]
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/clubs_controller.rb:28:in `add_member'
+Completed 200 OK in 95ms (Views: 9.3ms | ActiveRecord: 13.7ms | Allocations: 20000)
+
+
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:34:10 -0400
+Processing by ClubsController#add_member as */*
+  Parameters: {"club_id"=>"2"}
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:25:in `add_member'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "aaron"]]
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[36mClub::HABTM_Users Create (0.6ms)[0m  [1m[32mINSERT INTO "clubs_users" ("user_id", "club_id") VALUES ($1, $2)[0m  [["user_id", 2], ["club_id", 2]]
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/clubs_controller.rb:28:in `add_member'
+Completed 500 Internal Server Error in 65ms (ActiveRecord: 14.2ms | Allocations: 19009)
+
+
+  
+TypeError (no implicit conversion of Symbol into Integer):
+  
+app/controllers/clubs_controller.rb:28:in `add_member'
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:34:26 -0400
+Processing by ClubsController#add_member as */*
+  Parameters: {"club_id"=>"2"}
+  [1m[36mClub Load (0.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:25:in `add_member'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "aaron"]]
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[36mClub::HABTM_Users Create (0.3ms)[0m  [1m[32mINSERT INTO "clubs_users" ("user_id", "club_id") VALUES ($1, $2)[0m  [["user_id", 2], ["club_id", 2]]
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/clubs_controller.rb:28:in `add_member'
+Completed 200 OK in 73ms (Views: 5.8ms | ActiveRecord: 18.6ms | Allocations: 19789)
+
+
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:35:32 -0400
+Processing by ClubsController#add_member as */*
+  Parameters: {"club_id"=>"2"}
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:25:in `add_member'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/clubs_controller.rb:28:in `add_member'
+Completed 200 OK in 94ms (Views: 14.6ms | ActiveRecord: 13.9ms | Allocations: 15913)
+
+
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:35:38 -0400
+Processing by ClubsController#add_member as */*
+  Parameters: {"club_id"=>"2"}
+  [1m[36mClub Load (2.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:25:in `add_member'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/clubs_controller.rb:28:in `add_member'
+Completed 200 OK in 15ms (Views: 5.5ms | ActiveRecord: 3.7ms | Allocations: 2962)
+
+
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:35:49 -0400
+Processing by ClubsController#add_member as */*
+  Parameters: {"club_id"=>"2"}
+  [1m[36mClub Load (4.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:25:in `add_member'
+  [1m[36mUser Load (7.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/clubs_controller.rb:28:in `add_member'
+Completed 200 OK in 21ms (Views: 4.7ms | ActiveRecord: 13.3ms | Allocations: 2962)
+
+
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:36:53 -0400
+Processing by ClubsController#add_member as */*
+  Parameters: {"club_id"=>"2"}
+  [1m[36mClub Load (2.2ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:25:in `add_member'
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/clubs_controller.rb:28:in `add_member'
+Completed 200 OK in 15ms (Views: 4.0ms | ActiveRecord: 6.6ms | Allocations: 2963)
+
+
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:37:10 -0400
+Processing by ClubsController#add_member as */*
+  Parameters: {"club_id"=>"2"}
+  [1m[36mClub Load (0.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:25:in `add_member'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/clubs_controller.rb:28:in `add_member'
+Completed 200 OK in 10ms (Views: 4.1ms | ActiveRecord: 1.2ms | Allocations: 2962)
+
+
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:37:37 -0400
+Processing by ClubsController#add_member as */*
+  Parameters: {"club_id"=>"2"}
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:25:in `add_member'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "likunamatata"]]
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[36mClub::HABTM_Users Create (0.3ms)[0m  [1m[32mINSERT INTO "clubs_users" ("user_id", "club_id") VALUES ($1, $2)[0m  [["user_id", 1], ["club_id", 2]]
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[35m (4.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/clubs_controller.rb:28:in `add_member'
+Completed 200 OK in 53ms (Views: 3.2ms | ActiveRecord: 17.1ms | Allocations: 19898)
+
+
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:38:06 -0400
+Processing by ClubsController#add_member as */*
+  Parameters: {"club_id"=>"2"}
+Completed 400 Bad Request in 15ms (ActiveRecord: 0.0ms | Allocations: 2734)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: member):
+  
+app/controllers/clubs_controller.rb:89:in `member_params'
+app/controllers/clubs_controller.rb:24:in `add_member'
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:39:00 -0400
+Processing by ClubsController#add_member as */*
+  Parameters: {"club_id"=>"2"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 123)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: member):
+  
+app/controllers/clubs_controller.rb:89:in `member_params'
+app/controllers/clubs_controller.rb:24:in `add_member'
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:39:24 -0400
+Processing by ClubsController#add_member as */*
+  Parameters: {"club_id"=>"2"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 123)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: member):
+  
+app/controllers/clubs_controller.rb:89:in `member_params'
+app/controllers/clubs_controller.rb:24:in `add_member'
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:43:16 -0400
+Processing by ClubsController#add_member as */*
+  Parameters: {"club_id"=>"2"}
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:25:in `add_member'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "likunamatata"]]
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[36mClub::HABTM_Users Create (0.7ms)[0m  [1m[32mINSERT INTO "clubs_users" ("user_id", "club_id") VALUES ($1, $2)[0m  [["user_id", 1], ["club_id", 2]]
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[35m (19.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:26:in `add_member'
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 2]]
+  ↳ app/controllers/clubs_controller.rb:28:in `add_member'
+Completed 200 OK in 445ms (Views: 33.5ms | ActiveRecord: 72.3ms | Allocations: 20046)
+
+
+Started POST "/clubs/byclub/2/members" for ::1 at 2020-04-09 13:45:03 -0400
+Processing by ClubsController#add_member as */*
+  Parameters: {"club_id"=>"2"}
+Completed 400 Bad Request in 20ms (ActiveRecord: 0.0ms | Allocations: 2734)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: member):
+  
+app/controllers/clubs_controller.rb:89:in `member_params'
+app/controllers/clubs_controller.rb:24:in `add_member'

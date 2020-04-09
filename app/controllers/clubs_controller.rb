@@ -11,6 +11,23 @@ class ClubsController < ApplicationController
     render json: @clubs
   end
 
+  def read_one
+    #not all clubs, just the clubs that correspond to 
+    # @user = User.find(user_params[:user_id])
+    @club = Club.find(params[:club_id])
+
+    render json: @club
+  end
+
+  def add_member
+    #not all clubs, just the clubs that correspond to 
+    @user = User.where({username: member_params[:username]})
+    @club = Club.find(params[:club_id])
+    @club.users << @user
+
+    render json: @club.users
+  end
+
   # GET /clubs/1
   def show
     render json: @club
@@ -21,7 +38,7 @@ class ClubsController < ApplicationController
     puts "create is running with #{club_params}"
     @club = Club.new(club_params)
     # user that is logged in
-    @user = User.find(params[:user_id])
+    @user = User.find(club_params[:user_id])
     # User.find(22)
 
     if @club.save
@@ -62,9 +79,14 @@ class ClubsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def club_params
-      params.require(:club).permit(:google_id, :rules)
+      params.require(:club).permit(:google_id, :rules, :user_id)
     end
     def user_params
       params.require(:user).permit(:username, :email, :password)
     end
+
+    def member_params
+      params.require(:member).permit(:username)
+    end
+
 end

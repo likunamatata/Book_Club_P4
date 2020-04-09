@@ -11,7 +11,8 @@ class CreateClub extends Component {
     this.state = {
       clubFormData: {
         google_id: '',
-        rules: ''
+        rules: '',
+        user_id: props.user_id
       }
     }
     console.log('clubcreate props', props)
