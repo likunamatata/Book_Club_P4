@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { readOneClub } from '../services/api-helper';
 import axios from 'axios'
+import CommentCreate from './CommentCreate';
 
 class Club extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class Club extends Component {
           :
           <p>Book info loading</p>
         }
-
+        <CommentCreate user_id={this.props.user_id} club_id={this.props.club_id}/>
       </div>
     )
 

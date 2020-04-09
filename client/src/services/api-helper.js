@@ -91,3 +91,29 @@ export const addUser = async (user_id, club_id) => {
   const response = await api.get(`/users/${user_id}/clubs/${club_id}`);
   return response.data;
 }
+
+// ==================================
+// ================Comments==========
+// ==================================
+
+
+export const createComment = async (club_id, comment) => {
+  try {
+    console.log('post clubs/?/comments', club_id)
+    const resp = await api.post(`/clubs/${club_id}/comments`, comment)
+    return resp
+  } catch (error) {
+    throw error
+  }
+}
+
+
+export const getComments = async (club_id) => {
+  try {
+    console.log('get clubs/?/comments', club_id)
+    const resp = await api.get(`/clubs/${club_id}/comments`)
+    return resp
+  } catch (error) {
+    throw error
+  }
+}

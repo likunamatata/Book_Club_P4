@@ -39,7 +39,6 @@ class CreateClub extends Component {
     console.log('createclub props', this.props)
     return (
       <div>
-        <SearchFunction/>
         <div className="club-create-container">
           <h3>i'm the form</h3>
           <h2>Enter club details here</h2>
@@ -54,6 +53,7 @@ class CreateClub extends Component {
             />
             <button>Create</button>
           </form>
+          <SearchFunction/>
         </div>
       </div>
     )
