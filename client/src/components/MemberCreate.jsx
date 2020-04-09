@@ -1,33 +1,26 @@
 import React, { Component } from 'react'
-import CommentForm from './CommentForm'
-import Comments from './Comments'
-import { createComment, getComments } from '../services/api-helper'
+import MemberForm from './MemberForm'
+import Members from './Members'
+import { createMember, getMembers } from '../services/api-helper'
 
-class CommentCreate extends Component {
+class MemberCreate extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      comment: {
-        text: '',
-        username: props.username,
-        club_id: props.club_id,
-        user_id: props.user_id
-      },
-      createdComment: null,
-      comments: ''
+      member: '',
+      createdMember: null,
+      members: ''
     }
    
   }
 
 
 
-  getComments = async () => {
+  getMembers = async () => {
     try {
-      console.log('getComments happened')
-      const comments = await getComments(this.props.club_id)
-      console.log( 'this is what Im shoving into comments state' ,comments.data)
+      const members = await getMembers(this.props.club_id)
       this.setState(
-        { comments: comments.data }
+        { members: members.data }
       )
     } catch (err) {
         console.error(err)

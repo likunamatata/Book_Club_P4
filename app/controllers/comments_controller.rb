@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   # GET /comments
   def index
-    @comments = Comment.all
+    @comments = Comment.where(club_id: params[:club_id])
 
     render json: @comments
   end
@@ -16,10 +16,10 @@ class CommentsController < ApplicationController
   # POST /comments
   def create
     @comment = Comment.new(
-      text: 'i am text - bell jar',
-      user: User.find(1),
+      text: params[:text],
+      user: User.find(params[:user_id]),
       club: Club.find(params[:club_id]),
-      username: 'likuna - bell jar'
+      username: params[:username]
       )
 
     if @comment.save

@@ -57,21 +57,19 @@ export const addClub = async (user_id, club_id) => {
 
 export const readUserClubs = async (user_id) => {
   console.log('running the reader function?')
-  const response = await api.get(`/users/${user_id}/clubs`);
+  const response = await api.get(`/clubs/byuser/${user_id}`);
   console.log('clubsresponse', response)
   return response.data;
 }
 
-export const readOneClub = async (user_id,club_id) => {
-  const response = await api.get(`users/${user_id}/clubs/${club_id}`);
+export const readOneClub = async (club_id) => {
+  const response = await api.get(`clubs/byclub/${club_id}`);
   return response.data;
 }
 
 
-export const createClub = async (clubData, user_id) => {
-  console.log('why is createClub running', clubData, `/users/${user_id}/clubs`);
-  const response = await api.post(`/users/${user_id}/clubs`, { club: clubData });
-  console.log('is this even running');
+export const createClub = async (clubData) => {
+  const response = await api.post(`/clubs`, { club: clubData });
 
   return response.data
 }
@@ -112,6 +110,19 @@ export const getComments = async (club_id) => {
   try {
     console.log('get clubs/?/comments', club_id)
     const resp = await api.get(`/clubs/${club_id}/comments`)
+    return resp
+  } catch (error) {
+    throw error
+  }
+}
+
+// ==================================
+// ================Members===========
+// ==================================
+
+export const addMember = async (club_id, member) => {
+  try {
+    const resp = await api.post(`/clubs/byclub/${club_id}/members`, member)
     return resp
   } catch (error) {
     throw error

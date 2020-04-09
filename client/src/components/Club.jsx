@@ -11,10 +11,10 @@ class Club extends Component {
       clubData: '',
       bookData: ''
     }
-    console.log('club.jsx props', props)
   }
 
   async componentDidMount() {
+    console.log('<<<<<club.jsx props>>>>>', this.props)
     const response = await readOneClub(this.props.user_id, this.props.club_id)
     console.log('response club', response)
     this.setState({
@@ -49,7 +49,7 @@ class Club extends Component {
           :
           <p>Book info loading</p>
         }
-        <CommentCreate user_id={this.props.user_id} club_id={this.props.club_id}/>
+        <CommentCreate username={this.props.currentUser.username} user_id={this.props.user_id} club_id={this.props.club_id}/>
       </div>
     )
 

@@ -93,11 +93,11 @@ class App extends Component {
             />
 
             <Route
-              exact path="/users/:user_id/clubs"
+              exact path="/clubs"
               render={() => (
                 <div>
 
-                  <ClubsIndex clubs={this.state.clubs} user_id={this.state.currentUser.id} />
+                  <ClubsIndex clubs={this.state.clubs} user_id={this.state.currentUser.id} currentUser={this.state.currentUser}/>
 
                 </div>
               )}
@@ -106,7 +106,7 @@ class App extends Component {
             <Route
               exact path="/users/:user_id/create-club"
               render={() => (
-                <CreateClub user_id={this.state.currentUser.id} />
+                <CreateClub user_id={this.state.currentUser.id} currentUser={this.state.currentUser}/>
               )}
             />
 
@@ -114,11 +114,9 @@ class App extends Component {
               exact path="/users/:user_id/clubs/:club_id"
               render={(props) => {
                 const { club_id } = props.match.params;
-                const { user_id } = props.match.params;
-                return <Club club_id={club_id} user_id={user_id}/>
+                return <Club club_id={club_id} user_id={this.state.currentUser.id} currentUser={this.state.currentUser}/>
               }}
             />
-
 
           </div>
           :
