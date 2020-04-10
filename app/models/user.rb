@@ -13,5 +13,8 @@ class User < ApplicationRecord
       username:username
   }
   end
+
+  has_and_belongs_to_many :clubs
+  has_many :comments
   
 end

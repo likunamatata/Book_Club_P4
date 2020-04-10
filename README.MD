@@ -4,16 +4,19 @@ The purpose of this app is to create an online space for private book club discu
 
 ## MVP Goals
 * Authorization (sign up, log in)
-* Create a book club (name, book, rules, members)
-  - Write comments
-  - Update book (only by creator)
-  - Add members (only by creator)
-  - Update rules (only by creator)
-  - Remove members (only by creator)
-  - Write comments
-
+* Create a book club
+  - Define by club name, book, rules of conduct
+  - The book to be searchable using an external api
+* Write comments inside the book club
 
 ## Post-MVP Goals
+* Expand admin-only book club functionality
+  - Update book
+  - Add members
+  - Update rules
+  - Remove members
+
+## Post-Post-MVP Goals
 * Admins need to get permission before adding someone to a club
 * Users can upload their profile pictures to display as thumbnails next to their comments
 * Subcomments to allow for discussion threads on specific aspects of the book
@@ -26,13 +29,27 @@ The purpose of this app is to create an online space for private book club discu
   - /users/:id
   - /clubs/:id/book
   - /comments
-* Timeline
+* MVP Timeline
 
-| Goal | Complete By |
-| ------------ | ----------------- |
-| Auth | Monday  |
-| Tables| Monday |
-| Table relationships | Monday |
-| Auth Frontend | Monday |
-| Basic Frontend (user view only w/ hardcoded seed data) | Tuesday |
-| Admin Club view & functionality | Tuesday |
+| Goal | Complete By | Status |
+| ------------ | ------------ | ------------ |
+| Auth | Monday  | :white_check_mark: | 
+| Tables (User, Club, Comment) | Monday | :white_check_mark:| 
+| Table relationships | Monday | :white_check_mark: | 
+| Connect to Frontend | Monday | :white_check_mark: | 
+| Auth Frontend | Monday | :white_check_mark: | 
+| Basic Frontend (user view only w/ hardcoded seed data) | Tuesday | :white_check_mark: | 
+| Books api endpoints & import| Tuesday | :white_check_mark: | 
+| Books search functionality|Tuesday| :white_check_mark: | 
+| Create club (add book, rules) | Wednesday |:white_check_mark:  | 
+| Clubs display|Wednesday| :white_check_mark: | 
+| Write comments|Wednesday| | 
+| Comments display|Wednesday| | 
+| Improve create club (add deadline, add users) | Thursday | | 
+| Basic Styling |Thursday| | 
+| Basic Responsiveness |Friday| | 
+
+* Post-MVP Timeline 
+| Goal | Complete By | Status |
+| ------------ | ------------ | ------------ |
+| Add google books button |Sunday| | 
