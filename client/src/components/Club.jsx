@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { readOneClub } from '../services/api-helper';
 import axios from 'axios'
 import CommentCreate from './CommentCreate';
+import MemberCreate from './MemberCreate';
 
 class Club extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class Club extends Component {
 
   async componentDidMount() {
     console.log('<<<<<club.jsx props>>>>>', this.props)
-    const response = await readOneClub(this.props.user_id, this.props.club_id)
+    const response = await readOneClub(this.props.club_id)
     console.log('response club', response)
     this.setState({
       clubData: response
@@ -49,7 +50,8 @@ class Club extends Component {
           :
           <p>Book info loading</p>
         }
-        <CommentCreate username={this.props.currentUser.username} user_id={this.props.user_id} club_id={this.props.club_id}/>
+        <CommentCreate username={this.props.currentUser.username} user_id={this.props.user_id} club_id={this.props.club_id} />
+        <MemberCreate username={this.props.currentUser.username} user_id={this.props.user_id} club_id={this.props.club_id}/>
       </div>
     )
 

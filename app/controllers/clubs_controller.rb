@@ -25,8 +25,16 @@ class ClubsController < ApplicationController
     @club = Club.find(params[:club_id])
     @club.users << @user
 
-    render json: @club.users
+    render json: @club.users.map{ |n| n.frontend_data}
+    
   end
+
+  def get_members
+    @club = Club.find(params[:club_id])
+
+    render json: @club.users.map{ |n| n.frontend_data}
+  end
+
 
   # GET /clubs/1
   def show

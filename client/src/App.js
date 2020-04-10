@@ -111,7 +111,7 @@ class App extends Component {
             />
 
             <Route
-              exact path="/users/:user_id/clubs/:club_id"
+              exact path="/clubs/byclub/:club_id"
               render={(props) => {
                 const { club_id } = props.match.params;
                 return <Club club_id={club_id} user_id={this.state.currentUser.id} currentUser={this.state.currentUser}/>
