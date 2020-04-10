@@ -17,7 +17,8 @@ class Comments extends Component {
 
   render() {
   
-    const { comments } = this.props
+    const { comments, user_id } = this.props
+    console.log('comments props', this.props)
     console.log('comments in render', comments)
 
   const renderComments = () => {
@@ -27,6 +28,7 @@ class Comments extends Component {
           <div className="comment" key={comment._id}>
             <p className='comment-text'>"{comment.text}"</p>
             <p className='comment-user'>says - {comment.username}</p>
+            {user_id == comment.user_id ? <button>Delete Comment</button>: null}
           </div>
         )
       })
