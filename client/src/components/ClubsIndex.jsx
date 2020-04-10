@@ -8,7 +8,6 @@ class ClubsIndex extends Component {
     this.state = {
       userClubs: []
     }
-    console.log('clubindex props', props.user_id)
   }
 
   async componentDidMount() {
@@ -20,8 +19,6 @@ class ClubsIndex extends Component {
 
 
   render() {
-
-    console.log('clubs inside clubsindes')
     return (
       <div>
         <h3>Clubs list:</h3>

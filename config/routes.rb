@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   post 'clubs/:club_id/comments', to: 'comments#create'
   get 'clubs/:club_id/comments', to: 'comments#index'
+  delete 'clubs/:club_id/comments/:comment_id', to: 'comments#destroy'
 
   get 'clubs/byuser/:user_id', to: 'clubs#index'
   get 'clubs/byclub/:club_id', to: 'clubs#read_one'

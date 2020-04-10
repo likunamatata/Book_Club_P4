@@ -15,9 +15,7 @@ class Club extends Component {
   }
 
   async componentDidMount() {
-    console.log('<<<<<club.jsx props>>>>>', this.props)
     const response = await readOneClub(this.props.club_id)
-    console.log('response club', response)
     this.setState({
       clubData: response
     })
@@ -25,7 +23,6 @@ class Club extends Component {
   }
 
   fetchInfo = async (google_id) => {
-    console.log('google id from fetchinfo', google_id)
     const response = await axios.get(`https://www.googleapis.com/books/v1/volumes/${google_id}`)
     this.setState({
       bookData: response.data
@@ -33,8 +30,6 @@ class Club extends Component {
   }
 
   render() {
-    console.log('one club data', this.state.clubData)
-    console.log('one book data', this.state.bookData)
     const { volumeInfo } = this.state.bookData
 
     return (

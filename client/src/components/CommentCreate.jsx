@@ -23,9 +23,7 @@ class CommentCreate extends Component {
 
   getComments = async () => {
     try {
-      console.log('getComments happened')
       const comments = await getComments(this.props.club_id)
-      console.log( 'this is what Im shoving into comments state' ,comments.data)
       this.setState(
         { comments: comments.data }
       )
@@ -37,7 +35,6 @@ class CommentCreate extends Component {
   handleChange = event => {
     const updatedField = { [event.target.name]: event.target.value }
     const editedComment = Object.assign(this.state.comment, updatedField)
-    console.log('edited comment', editedComment)
     this.setState({ comment: editedComment })
   }
 
@@ -51,8 +48,6 @@ class CommentCreate extends Component {
     const res = await createComment(this.props.club_id,this.state.comment)
 
     if (res.status === 201) {
-      console.log('addComment is next', this.state.comments)
-      console.log('this is res', res.data)
       this.addComment(res.data)
       this.setState({
         createdComment: res.data
