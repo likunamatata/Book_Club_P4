@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
 
-class Comments extends Component {
+class Members extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: []
+      members: []
     }
-    console.log('comments props', props)
+    console.log('members props', props)
   }
 
 
@@ -17,16 +17,15 @@ class Comments extends Component {
 
   render() {
   
-    const { comments } = this.props
-    console.log('comments in render', comments)
+    const { members } = this.props
+    console.log('members in render', members)
 
-  const renderComments = () => {
-    if (comments) {
-      return comments.map(comment => {
+  const renderMembers = () => {
+    if (members) {
+      return members.map(member => {
         return (
-          <div className="comment" key={comment._id}>
-            <p className='comment-text'>"{comment.text}"</p>
-            <p className='comment-user'>says - {comment.username}</p>
+          <div className="member" key={member._id}>
+            <p className='member-username'>"{member.username}"</p>
           </div>
         )
       })
@@ -36,10 +35,10 @@ class Comments extends Component {
   }
 
   return (
-    <div className='comments-display'>
+    <div className='members-display'>
       <h4>Our Movie-Goers Are Saying:</h4>
-      {!comments ? <h3>No comments at this time.</h3> : null}
-      <div className='comments'>{renderComments()}</div>
+      {!members ? <h3>No members at this time.</h3> : null}
+      <div className='members'>{renderMembers()}</div>
     </div>
   )
     
@@ -48,4 +47,4 @@ class Comments extends Component {
 }
 
 
-export default Comments
+export default Members
