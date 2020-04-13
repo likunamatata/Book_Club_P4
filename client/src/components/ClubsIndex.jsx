@@ -8,7 +8,6 @@ class ClubsIndex extends Component {
     this.state = {
       userClubs: []
     }
-    console.log('clubindex props', props.user_id)
   }
 
   async componentDidMount() {
@@ -20,15 +19,13 @@ class ClubsIndex extends Component {
 
 
   render() {
-
-    console.log('clubs inside clubsindes')
     return (
       <div>
         <h3>Clubs list:</h3>
 
         {this.state.userClubs.map((club) => {
           return (
-            <Link to={`/users/${this.props.user_id}/clubs/${club.id}`}>
+            <Link to={`/clubs/byclub/${club.id}`}>
 
               <p>{club.name}</p>
             </Link>

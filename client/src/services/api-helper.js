@@ -1,6 +1,7 @@
 const axios = require('axios');
 const api = axios.create({
   baseURL: 'http://localhost:3000'
+    //  'https://likunamatata-book-club.herokuapp.com/'
 })
 
 
@@ -75,7 +76,7 @@ export const createClub = async (clubData) => {
 }
 
 export const updateClub = async (clubData, club_id) => {
-  const response = await api.put(`/clubs/${club_id}`, { club: clubData });
+  const response = await api.put(`/clubs/byclub/${club_id}`, { club: clubData });
   return response.data;
 }
 
@@ -97,7 +98,7 @@ export const addUser = async (user_id, club_id) => {
 
 export const createComment = async (club_id, comment) => {
   try {
-    console.log('post clubs/?/comments', club_id)
+    console.log('createcomment', comment)
     const resp = await api.post(`/clubs/${club_id}/comments`, comment)
     return resp
   } catch (error) {
@@ -116,13 +117,33 @@ export const getComments = async (club_id) => {
   }
 }
 
+export const deleteComment = async (club_id, comment_id) => {
+  try {
+    const resp = await api.delete(`clubs/${club_id}/comments/${comment_id}`)
+    return resp
+  } catch (error) {
+    throw error
+  }
+}
+
 // ==================================
 // ================Members===========
 // ==================================
 
-export const addMember = async (club_id, member) => {
+export const createMember = async (club_id, member) => {
   try {
-    const resp = await api.post(`/clubs/byclub/${club_id}/members`, member)
+    console.log('createmember', member)
+    const resp = await api.post(`/clubs/byclub/${club_id}/members`, { member: member })
+    return resp
+  } catch (error) {
+    throw error
+  }
+}
+
+export const getMembers = async (club_id) => {
+  try {
+    console.log('get clubs/?/comments', club_id)
+    const resp = await api.get(`/clubs/byclub/${club_id}/members`)
     return resp
   } catch (error) {
     throw error

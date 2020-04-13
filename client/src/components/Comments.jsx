@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { deleteComment } from '../services/api-helper'
 
 
 class Comments extends Component {
@@ -7,44 +8,40 @@ class Comments extends Component {
     this.state = {
       comments: []
     }
-    console.log('comments props', props)
+
   }
 
-
-  async componentDidMount() {
-  }
-  
 
   render() {
-  
-    const { comments } = this.props
-    console.log('comments in render', comments)
 
-  const renderComments = () => {
-    if (comments) {
-      return comments.map(comment => {
-        return (
-          <div className="comment" key={comment._id}>
-            <p className='comment-text'>"{comment.text}"</p>
-            <p className='comment-user'>says - {comment.username}</p>
-          </div>
-        )
-      })
-    } else {
-      return null
+    const { comments, user_id, club_id } = this.props
+
+    const renderComments = () => {
+      if (comments) {
+        return comments.map(comment => {
+          return (
+            <div className="comment" key={comment._id}>
+              <p className='comment-text'>"{comment.text}"</p>
+              <p className='comment-user'>says - {comment.username}</p>
+              {user_id == comment.user_id ? <button onClick={() =>deleteComment(club_id, comment.id) }>)}>Delete Comment: {comment.id}</button> : null}
+            </div>
+          )
+        })
+      } else {
+        return null
+      }
     }
+
+    return (
+      <div className='comments-display'>
+        <h4>Our Movie-Goers Are Saying:</h4>
+        {!comments ? <h3>No comments at this time.</h3> : null}
+        <div className='comments'>{renderComments()}</div>
+      </div>
+    )
+
   }
 
-  return (
-    <div className='comments-display'>
-      <h4>Our Movie-Goers Are Saying:</h4>
-      {!comments ? <h3>No comments at this time.</h3> : null}
-      <div className='comments'>{renderComments()}</div>
-    </div>
-  )
-    
-  }
- 
 }
 
 

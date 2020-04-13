@@ -1,15 +1,15 @@
 import React from 'react'
 
-const CommentForm = (props) => {
-  const { text} = props.comment
+const MemberForm = (props) => {
+  const { username} = props.member
   return (
-      <form onSubmit={props.handleSubmit} className='comments-form'>
-      <h4>Your Comment</h4>
+      <form onSubmit={props.handleSubmit} className='members-form'>
+      <h4>Add a User</h4>
       <div className='input-container'>
       <input
-          placeholder='Your comment goes here'
-          value={text}
-          name='text'
+          placeholder='Username'
+          value={username}
+          name='username'
           type='text'
           required
           onChange={props.handleChange}
@@ -21,4 +21,4 @@ const CommentForm = (props) => {
   )
 }
 
-export default CommentForm
+export default MemberForm

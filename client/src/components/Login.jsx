@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 
 const Login = (props) => {
-  console.log('login props ', props)
 
   return (
     <div className="auth-container">

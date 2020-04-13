@@ -18,7 +18,6 @@ class CreateClub extends Component {
         next_book_up: ''
       }
     }
-    console.log('clubcreate props', props)
   }
 
   handleChange = async (e) => {
@@ -33,14 +32,11 @@ class CreateClub extends Component {
 
   
   handleCreate = async (e) => {
-    console.log('handlecreate is running', this.state.clubFormData)
     e.preventDefault();
-    console.log(this.state.clubFormData)
     createClub(this.state.clubFormData, this.props.user_id)
   }
 
   render() {
-    console.log('createclub props', this.props)
     return (
       <div>
         <div className="club-create-container">

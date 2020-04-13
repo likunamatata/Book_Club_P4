@@ -7,7 +7,9 @@ class MemberCreate extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      member: '',
+      member: {
+        username: ''
+      },
       createdMember: null,
       members: ''
     }
@@ -29,52 +31,49 @@ class MemberCreate extends Component {
 
   handleChange = event => {
     const updatedField = { [event.target.name]: event.target.value }
-    const editedComment = Object.assign(this.state.comment, updatedField)
-    console.log('edited comment', editedComment)
-    this.setState({ comment: editedComment })
+    const editedMember = Object.assign(this.state.member, updatedField)
+    this.setState({ member: editedMember })
   }
 
-  addComment = comment =>
+  addmember = member =>
   this.setState(prevstate => ({
-    comments: [...this.state.comments, comment]
+    members: [...this.state.members, member]
   }))
 
   handleSubmit = async event => {
     event.preventDefault()
-    const res = await createComment(this.props.club_id,this.state.comment)
+    const res = await createMember(this.props.club_id, this.state.member)
 
     if (res.status === 201) {
-      console.log('addComment is next', this.state.comments)
-      console.log('this is res', res.data)
-      this.addComment(res.data)
+      this.addMember(res.data)
       this.setState({
-        createdComment: res.data
+        createdMember: res.data
       })
     }
-    this.getComments()
+    this.getMembers()
   } 
 
   async componentDidMount() {
-    this.getComments()
-    console.log('commentcreate props', this.props)
+    console.log('membercreate props', this.props)
+    this.getMembers()
   }
 
   render() {
     const { handleChange, handleSubmit } = this
-    const { comment, comments } = this.state
+    const { member, members } = this.state
     const { history, user_id, club_id } = this.props
     return (
-        <div className='comments-section'>
-        <CommentForm
-          comment={comment}
+        <div className='members-section'>
+        <MemberForm
+          member={member}
           history={history}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           cancelPath="../"
         />
-        <Comments user_id={user_id} club_id={club_id} comments={comments}/>
+        <Members user_id={user_id} club_id={club_id} members={members}/>
         </div> 
     )
   }
 }
-export default CommentCreate
+export default MemberCreate

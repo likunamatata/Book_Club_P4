@@ -1,6 +1,6 @@
 class ClubsController < ApplicationController
   before_action :set_club, only: [:show, :update, :destroy]
-  before_action :authorize_request, only: [ :update, :destroy, :add_user]
+  before_action :authorize_request, only: [ :destroy, :add_user]
 
   # GET /clubs
   def index
@@ -25,8 +25,16 @@ class ClubsController < ApplicationController
     @club = Club.find(params[:club_id])
     @club.users << @user
 
-    render json: @club.users
+    render json: @club.users.map{ |n| n.frontend_data}
+    
   end
+
+  def get_members
+    @club = Club.find(params[:club_id])
+
+    render json: @club.users.map{ |n| n.frontend_data}
+  end
+
 
   # GET /clubs/1
   def show
@@ -74,7 +82,7 @@ class ClubsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_club
-      @club = Club.find(params[:id])
+      @club = Club.find(params[:club_id])
     end
 
     # Only allow a trusted parameter "white list" through.
