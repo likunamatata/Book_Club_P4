@@ -43,13 +43,15 @@ The purpose of this app is to create an online space for private book club discu
 | Books search functionality|Tuesday| :white_check_mark: | 
 | Create club (add book, rules) | Wednesday |:white_check_mark:  | 
 | Clubs display|Wednesday| :white_check_mark: | 
-| Write comments|Wednesday| | 
-| Comments display|Wednesday| | 
-| Improve create club (add deadline, add users) | Thursday | | 
-| Basic Styling |Thursday| | 
-| Basic Responsiveness |Friday| | 
+| Write comments|Wednesday|:white_check_mark: | 
+| Comments display|Wednesday|:white_check_mark: | 
+| Improve create club (add deadline, add users, update book) | Thursday | :white_check_mark: | 
+| Titles and Text Clean Up |Monday|| 
+| Styling |Tuesday| | 
+| Basic Responsiveness |Tuesday| | 
 
 * Post-MVP Timeline 
+
 | Goal | Complete By | Status |
 | ------------ | ------------ | ------------ |
 | Add google books button |Sunday| | 
