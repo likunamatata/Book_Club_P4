@@ -79,7 +79,7 @@ class ClubsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def club_params
-      params.require(:club).permit(:google_id, :rules, :user_id)
+      params.require(:club).permit(:google_id, :rules, :user_id, :name, :read_by, :next_book_up)
     end
     def user_params
       params.require(:user).permit(:username, :email, :password)

@@ -30,8 +30,7 @@ class ClubsIndex extends Component {
           return (
             <Link to={`/users/${this.props.user_id}/clubs/${club.id}`}>
 
-              <p>{club.google_id}</p>
-              <p>{club.rules}</p>
+              <p>{club.name}</p>
             </Link>
           )
         })}

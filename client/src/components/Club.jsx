@@ -41,8 +41,9 @@ class Club extends Component {
         <h3>Hi I'm club detail page</h3>
         {volumeInfo ?
           <div>
-            <img src={volumeInfo.imageLinks.thumbnail}/>
-            <h3>{volumeInfo.title}</h3>
+            <img src={volumeInfo.imageLinks.thumbnail} />
+            <h3>Club Name Needs to go here</h3>
+            <p>{volumeInfo.title}</p>
             <p>{volumeInfo.authors[0]}</p>
             <p>{volumeInfo.description}</p>
           </div>
