@@ -20,9 +20,7 @@ class MemberCreate extends Component {
 
   getMembers = async () => {
     try {
-      console.log('lets see if getmembers works')
       const members = await getMembers(this.props.club_id)
-      console.log('getmembers running', members)
       this.setState(
         { members: members.data }
       )
@@ -34,7 +32,6 @@ class MemberCreate extends Component {
   handleChange = event => {
     const updatedField = { [event.target.name]: event.target.value }
     const editedMember = Object.assign(this.state.member, updatedField)
-    console.log('edited member', editedMember)
     this.setState({ member: editedMember })
   }
 
@@ -45,12 +42,9 @@ class MemberCreate extends Component {
 
   handleSubmit = async event => {
     event.preventDefault()
-    console.log('handlesubmit', this.state.member)
     const res = await createMember(this.props.club_id, this.state.member)
 
     if (res.status === 201) {
-      console.log('addmember is next', this.state.createdMember)
-      console.log('this is res', res.data)
       this.addMember(res.data)
       this.setState({
         createdMember: res.data

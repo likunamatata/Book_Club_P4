@@ -1,6 +1,6 @@
 class ClubsController < ApplicationController
   before_action :set_club, only: [:show, :update, :destroy]
-  before_action :authorize_request, only: [ :update, :destroy, :add_user]
+  before_action :authorize_request, only: [ :destroy, :add_user]
 
   # GET /clubs
   def index
@@ -82,12 +82,12 @@ class ClubsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_club
-      @club = Club.find(params[:id])
+      @club = Club.find(params[:club_id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def club_params
-      params.require(:club).permit(:google_id, :rules, :user_id)
+      params.require(:club).permit(:google_id, :rules, :user_id, :name, :read_by, :next_book_up)
     end
     def user_params
       params.require(:user).permit(:username, :email, :password)

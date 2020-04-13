@@ -7,7 +7,6 @@ class Members extends Component {
     this.state = {
       members: []
     }
-    console.log('members props', props)
   }
 
 
@@ -18,7 +17,6 @@ class Members extends Component {
   render() {
   
     const { members } = this.props
-    console.log('members in render', members)
 
   const renderMembers = () => {
     if (members) {

@@ -16,9 +16,7 @@ class SearchFunction extends Component {
 
   fetchInfo = async (searchQuery) => {
     try {
-      console.log('searchquery', searchQuery)
       const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchQuery}`)
-      console.log(response)
       this.setState({
         books: response.data
       })
@@ -60,7 +58,6 @@ class SearchFunction extends Component {
   }
 
   render() {
-    console.log('this state books', this.state.books.items)
     let books = this.state.books.length !== 0 && this.state.books.items.map((book, index) => {
       const volumeInfo = book.volumeInfo
       return (

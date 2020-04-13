@@ -2,7 +2,6 @@ import React from 'react';
 
 //Likuna: This component handles our register form
 const Register = (props) => {
-  console.log('register props', props)
 
   return (
     <div className="auth-container">

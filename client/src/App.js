@@ -8,6 +8,7 @@ import Register from './components/Register'
 import Login from './components/Login'
 import CreateClub from './components/CreateClub'
 import Club from './components/Club'
+import UpdateClub from './components/UpdateClub'
 
 import {
   loginUser,
@@ -87,7 +88,6 @@ class App extends Component {
         {this.state.currentUser ?
           <div className='logged in stuff'>
             <Header
-              handleLoginButton={this.handleLoginButton}
               handleLogout={this.handleLogout}
               currentUser={this.state.currentUser}
             />
@@ -97,7 +97,7 @@ class App extends Component {
               render={() => (
                 <div>
 
-                  <ClubsIndex clubs={this.state.clubs} user_id={this.state.currentUser.id} currentUser={this.state.currentUser}/>
+                  <ClubsIndex clubs={this.state.clubs} user_id={this.state.currentUser.id} currentUser={this.state.currentUser} />
 
                 </div>
               )}
@@ -106,7 +106,7 @@ class App extends Component {
             <Route
               exact path="/users/:user_id/create-club"
               render={() => (
-                <CreateClub user_id={this.state.currentUser.id} currentUser={this.state.currentUser}/>
+                <CreateClub user_id={this.state.currentUser.id} currentUser={this.state.currentUser} />
               )}
             />
 
@@ -114,15 +114,26 @@ class App extends Component {
               exact path="/clubs/byclub/:club_id"
               render={(props) => {
                 const { club_id } = props.match.params;
-                return <Club club_id={club_id} user_id={this.state.currentUser.id} currentUser={this.state.currentUser}/>
+                return <Club club_id={club_id} user_id={this.state.currentUser.id} currentUser={this.state.currentUser} />
+              }}
+            />
+
+            <Route
+              exact path="/update-club/:club_id"
+              render={(props) => {
+                const { club_id } = props.match.params;
+                return <UpdateClub club_id={club_id} />
               }}
             />
 
           </div>
           :
           <div className='logged out stuff'>
-            <h1>Hi I'm ur app, u need to log in or register</h1>
-            <Link to='/login'>Login</Link>
+            <h1>Book Club</h1>
+            <h3>Welcome to the Club, please login to get started</h3>
+            <Link to='/login'>
+              <button>Login</button>
+            </Link>
           </div>
         }
 
@@ -140,10 +151,6 @@ class App extends Component {
             handleRegister={this.handleRegister}
             handleChange={this.authHandleChange}
             formData={this.state.authFormData} />)} />
-
-
-
-
       </div>
     );
 

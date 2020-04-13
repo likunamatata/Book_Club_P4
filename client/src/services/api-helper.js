@@ -1,6 +1,7 @@
 const axios = require('axios');
 const api = axios.create({
   baseURL: 'http://localhost:3000'
+    //  'https://likunamatata-book-club.herokuapp.com/'
 })
 
 
@@ -75,7 +76,7 @@ export const createClub = async (clubData) => {
 }
 
 export const updateClub = async (clubData, club_id) => {
-  const response = await api.put(`/clubs/${club_id}`, { club: clubData });
+  const response = await api.put(`/clubs/byclub/${club_id}`, { club: clubData });
   return response.data;
 }
 
@@ -110,6 +111,15 @@ export const getComments = async (club_id) => {
   try {
     console.log('get clubs/?/comments', club_id)
     const resp = await api.get(`/clubs/${club_id}/comments`)
+    return resp
+  } catch (error) {
+    throw error
+  }
+}
+
+export const deleteComment = async (club_id, comment_id) => {
+  try {
+    const resp = await api.delete(`clubs/${club_id}/comments/${comment_id}`)
     return resp
   } catch (error) {
     throw error
