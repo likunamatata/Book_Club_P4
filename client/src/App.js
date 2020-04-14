@@ -33,6 +33,8 @@ class App extends Component {
     }
   }
 
+
+
   // -------------- AUTH ------------------
 
   handleLoginButton = () => {
@@ -71,6 +73,21 @@ class App extends Component {
     }));
   }
 
+  handleVerify = async () => {
+    const currentUser = await verifyUser();
+    if (currentUser) {
+      this.setState({
+        currentUser
+      })
+    }
+  }
+
+  componentDidMount = () => {
+    this.handleVerify()
+  }
+
+  // -------------------------
+  // -------------------------
 
   render() {
     console.log('currentUser', this.state.currentUser)

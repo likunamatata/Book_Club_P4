@@ -44,7 +44,7 @@ class Club extends Component {
     let description = document.createElement("div")
     const html = volumeInfo ? volumeInfo.description : ''
     description = this.addHTML(description, html)
-    console.log('description', description)
+    console.log('description', description, html)
 
     return (
       <div id='club-detail'>
@@ -56,7 +56,8 @@ class Club extends Component {
               <div className='volume-text'>
                 <h3>{volumeInfo.title}</h3>
                 <p>{volumeInfo.authors[0]}</p>
-                {/* {description} */}
+                <div dangerouslySetInnerHTML={{__html: volumeInfo.description}}></div>
+                {/* <>{description}</> */}
               </div>
             </div>
             :

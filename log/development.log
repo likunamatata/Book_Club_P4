@@ -29284,3 +29284,1030 @@ Processing by ClubsController#index as HTML
 Completed 200 OK in 8ms (Views: 4.7ms | ActiveRecord: 1.1ms | Allocations: 4505)
 
 
+Started POST "/auth/login" for ::1 at 2020-04-14 18:35:21 -0400
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 327ms (Views: 0.8ms | ActiveRecord: 26.5ms | Allocations: 9259)
+
+
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-14 18:35:22 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (1.0ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 166ms (Views: 60.3ms | ActiveRecord: 78.0ms | Allocations: 15814)
+
+
+Started GET "/clubs/12/comments" for ::1 at 2020-04-14 18:35:24 -0400
+Started GET "/clubs/byclub/12" for ::1 at 2020-04-14 18:35:24 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"12"}
+  [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 12]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 132ms (Views: 59.5ms | ActiveRecord: 66.0ms | Allocations: 7183)
+
+
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"12"}
+  [1m[36mClub Load (0.9ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 1.4ms | Allocations: 1007)
+
+
+Started GET "/clubs/byclub/12/members" for ::1 at 2020-04-14 18:35:25 -0400
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"12"}
+  [1m[36mClub Load (24.2ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (13.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 12]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 51ms (Views: 0.6ms | ActiveRecord: 37.5ms | Allocations: 2001)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-14 18:37:30 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 449ms (Views: 1.2ms | ActiveRecord: 0.4ms | Allocations: 1048)
+
+
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-14 18:37:30 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (4.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 51ms (Views: 17.0ms | ActiveRecord: 5.5ms | Allocations: 4511)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-14 18:37:51 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (26.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 479ms (Views: 2.3ms | ActiveRecord: 26.9ms | Allocations: 1042)
+
+
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-14 18:37:52 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (1.1ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 21ms (Views: 16.1ms | ActiveRecord: 2.4ms | Allocations: 4506)
+
+
+Started GET "/clubs/12/comments" for ::1 at 2020-04-14 18:37:53 -0400
+Started GET "/clubs/byclub/12" for ::1 at 2020-04-14 18:37:53 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"12"}
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"12"}
+  [1m[36mClub Load (2.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 50ms (Views: 1.7ms | ActiveRecord: 2.6ms | Allocations: 805)
+
+
+  [1m[36mComment Load (8.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 12]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 63ms (Views: 54.4ms | ActiveRecord: 8.1ms | Allocations: 4144)
+
+
+Started GET "/clubs/byclub/12/members" for ::1 at 2020-04-14 18:37:54 -0400
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"12"}
+  [1m[36mClub Load (0.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 12]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 1579)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-14 18:39:35 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 361ms (Views: 2.2ms | ActiveRecord: 1.6ms | Allocations: 1024)
+
+
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-14 18:39:36 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 10ms (Views: 7.1ms | ActiveRecord: 1.3ms | Allocations: 4508)
+
+
+Started GET "/clubs/byclub/12" for ::1 at 2020-04-14 18:39:37 -0400
+Started GET "/clubs/12/comments" for ::1 at 2020-04-14 18:39:37 -0400
+Processing by ClubsController#read_one as HTML
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"12"}
+  Parameters: {"club_id"=>"12"}
+  [1m[36mClub Load (1.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 12]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.9ms | Allocations: 2935)
+
+
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 1.3ms | Allocations: 1597)
+
+
+Started GET "/clubs/byclub/12/members" for ::1 at 2020-04-14 18:39:37 -0400
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"12"}
+  [1m[36mClub Load (0.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (42.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 12]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 51ms (Views: 0.3ms | ActiveRecord: 42.9ms | Allocations: 1582)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-14 18:41:27 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 392ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 1026)
+
+
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-14 18:41:27 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.5ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 9ms (Views: 6.5ms | ActiveRecord: 0.9ms | Allocations: 4506)
+
+
+Started GET "/clubs/12/comments" for ::1 at 2020-04-14 18:41:29 -0400
+Started GET "/clubs/byclub/12" for ::1 at 2020-04-14 18:41:29 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"12"}
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"12"}
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 12]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.8ms | Allocations: 2328)
+
+
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 6ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 3007)
+
+
+Started GET "/clubs/byclub/12/members" for ::1 at 2020-04-14 18:41:29 -0400
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"12"}
+  [1m[36mClub Load (0.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 12]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 31ms (Views: 1.8ms | ActiveRecord: 1.1ms | Allocations: 1579)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:45:52 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (251.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 261ms (ActiveRecord: 251.0ms | Allocations: 1780)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:45:55 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (66.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 66.3ms | Allocations: 9158)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started POST "/auth/login" for ::1 at 2020-04-14 18:45:57 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (19.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 989ms (Views: 1.6ms | ActiveRecord: 19.3ms | Allocations: 1041)
+
+
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-14 18:45:59 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (18.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (49.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 471ms (Views: 400.4ms | ActiveRecord: 67.8ms | Allocations: 4511)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:46:04 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (9.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 9.6ms | Allocations: 1772)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:47:27 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (22.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 283ms (ActiveRecord: 260.8ms | Allocations: 5008)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started POST "/auth/login" for ::1 at 2020-04-14 18:47:30 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 464ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 4509)
+
+
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-14 18:47:31 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 182ms (Views: 38.5ms | ActiveRecord: 132.3ms | Allocations: 12969)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:47:34 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 1772)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:50:23 -0400
+Processing by AuthenticationController#verify as HTML
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 28ms (Views: 0.3ms | ActiveRecord: 19.0ms | Allocations: 3367)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-14 18:50:26 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 609ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 4438)
+
+
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-14 18:50:26 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.7ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 77ms (Views: 31.3ms | ActiveRecord: 36.5ms | Allocations: 12956)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:50:31 -0400
+Processing by AuthenticationController#verify as HTML
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 265)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:51:46 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (17.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 90ms (ActiveRecord: 55.7ms | Allocations: 4866)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started POST "/users/" for ::1 at 2020-04-14 18:52:01 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"username"=>"mike", "email"=>"likuna@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[35m (2.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "mike"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mUser Create (21.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "mike"], ["email", "likuna@gmail.com"], ["password_digest", "$2a$12$fSeN24/iDqdcTBhJBqnF3ukay0DISPFQEGcm75AfSgDLwhKUXNrOG"], ["created_at", "2020-04-14 22:52:01.658331"], ["updated_at", "2020-04-14 22:52:01.658331"]]
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[35m (67.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+Completed 201 Created in 622ms (Views: 1.4ms | ActiveRecord: 93.1ms | Allocations: 7466)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:52:09 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (99.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 200 OK in 102ms (Views: 0.2ms | ActiveRecord: 99.3ms | Allocations: 893)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-14 18:52:34 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 441ms (Views: 0.9ms | ActiveRecord: 0.4ms | Allocations: 1184)
+
+
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-14 18:52:35 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (18.7ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 94ms (Views: 21.0ms | ActiveRecord: 61.5ms | Allocations: 12860)
+
+
+Started GET "/clubs/byclub/12" for ::1 at 2020-04-14 18:52:37 -0400
+Started GET "/clubs/12/comments" for ::1 at 2020-04-14 18:52:37 -0400
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"12"}
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"12"}
+  [1m[36mClub Load (71.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 76ms (Views: 0.7ms | ActiveRecord: 71.8ms | Allocations: 2964)
+
+
+Started GET "/clubs/byclub/12/members" for ::1 at 2020-04-14 18:52:37 -0400
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"12"}
+  [1m[36mComment Load (98.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 12]]
+  [1m[36mClub Load (0.7ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (9.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 12]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 24ms (Views: 0.3ms | ActiveRecord: 10.6ms | Allocations: 2743)
+
+
+Completed 200 OK in 205ms (Views: 19.5ms | ActiveRecord: 181.3ms | Allocations: 11667)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:52:49 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (18.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 18.2ms | Allocations: 1771)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started POST "/auth/login" for ::1 at 2020-04-14 18:52:59 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"mike", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"mike", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "mike"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 469ms (Views: 0.6ms | ActiveRecord: 0.7ms | Allocations: 1028)
+
+
+Started GET "/clubs/byuser/6" for ::1 at 2020-04-14 18:52:59 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (22.1ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 28ms (Views: 3.8ms | ActiveRecord: 22.4ms | Allocations: 1647)
+
+
+Started POST "/clubs" for ::1 at 2020-04-14 18:53:44 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"name"=>"MIke Likuna Raul", "google_id"=>"vHlTOVTKHeUC", "rules"=>"don't error out", "user_id"=>6, "read_by"=>"", "next_book_up"=>""}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:49:in `create'
+  [1m[35m (16.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:52:in `create'
+  [1m[36mClub Create (3.7ms)[0m  [1m[32mINSERT INTO "clubs" ("google_id", "rules", "created_at", "updated_at", "user_id", "name", "read_by", "next_book_up") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["google_id", "vHlTOVTKHeUC"], ["rules", "don't error out"], ["created_at", "2020-04-14 22:53:44.935098"], ["updated_at", "2020-04-14 22:53:44.935098"], ["user_id", 6], ["name", "MIke Likuna Raul"], ["read_by", ""], ["next_book_up", ""]]
+  ↳ app/controllers/clubs_controller.rb:52:in `create'
+  [1m[35m (18.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:52:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:53:in `create'
+  [1m[36mClub::HABTM_Users Create (0.5ms)[0m  [1m[32mINSERT INTO "clubs_users" ("user_id", "club_id") VALUES ($1, $2)[0m  [["user_id", 6], ["club_id", 13]]
+  ↳ app/controllers/clubs_controller.rb:53:in `create'
+  [1m[35m (18.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:53:in `create'
+Completed 201 Created in 125ms (Views: 0.8ms | ActiveRecord: 78.1ms | Allocations: 8993)
+
+
+Started GET "/clubs/byuser/6" for ::1 at 2020-04-14 18:53:47 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (17.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.9ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 25ms (Views: 4.3ms | ActiveRecord: 18.0ms | Allocations: 1815)
+
+
+Started GET "/clubs/byclub/13" for ::1 at 2020-04-14 18:53:49 -0400
+Started GET "/clubs/13/comments" for ::1 at 2020-04-14 18:53:49 -0400
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (1.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"13"}
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 9ms (Views: 0.6ms | ActiveRecord: 1.6ms | Allocations: 1853)
+
+
+Started GET "/clubs/byclub/13/members" for ::1 at 2020-04-14 18:53:49 -0400
+  [1m[36mComment Load (88.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 92ms (Views: 2.3ms | ActiveRecord: 88.8ms | Allocations: 1892)
+
+
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (0.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (17.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 47ms (Views: 0.2ms | ActiveRecord: 17.5ms | Allocations: 1535)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:57:06 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (45.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 53ms (ActiveRecord: 45.8ms | Allocations: 1772)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>6, "username"=>"mike"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:57:09 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (12.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 12.4ms | Allocations: 1770)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>6, "username"=>"mike"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:57:14 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (43.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 43.6ms | Allocations: 1770)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>6, "username"=>"mike"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started POST "/auth/login" for ::1 at 2020-04-14 18:57:17 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 414ms (Views: 0.4ms | ActiveRecord: 4.0ms | Allocations: 1028)
+
+
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-14 18:57:18 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 0.5ms | Allocations: 4505)
+
+
+Started GET "/clubs/12/comments" for ::1 at 2020-04-14 18:57:21 -0400
+Started GET "/clubs/byclub/12" for ::1 at 2020-04-14 18:57:21 -0400
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"12"}
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"12"}
+  [1m[36mClub Load (17.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 20ms (Views: 0.5ms | ActiveRecord: 17.6ms | Allocations: 1853)
+
+
+  [1m[36mComment Load (29.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 12]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 43ms (Views: 13.3ms | ActiveRecord: 29.1ms | Allocations: 3153)
+
+
+Started GET "/clubs/byclub/12/members" for ::1 at 2020-04-14 18:57:22 -0400
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"12"}
+  [1m[36mClub Load (0.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (23.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 12]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 28ms (Views: 0.2ms | ActiveRecord: 24.2ms | Allocations: 1579)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:59:17 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 3.6ms | Allocations: 1771)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:59:21 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (23.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 23.8ms | Allocations: 1770)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:59:28 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (97.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 102ms (ActiveRecord: 97.1ms | Allocations: 1770)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:59:35 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 3.2ms | Allocations: 1770)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:59:39 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.4ms | Allocations: 1770)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:59:41 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (221.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 227ms (ActiveRecord: 221.5ms | Allocations: 1770)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:59:49 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (487.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 495ms (ActiveRecord: 487.8ms | Allocations: 1772)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started GET "/auth/verify" for ::1 at 2020-04-14 18:59:57 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (194.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 201ms (ActiveRecord: 194.7ms | Allocations: 1770)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started GET "/auth/verify" for ::1 at 2020-04-14 19:00:01 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (20.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 20.7ms | Allocations: 1770)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started POST "/auth/login" for ::1 at 2020-04-14 19:00:04 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"likunamatata", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (17.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "likunamatata"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 774ms (Views: 0.6ms | ActiveRecord: 17.6ms | Allocations: 1028)
+
+
+Started GET "/clubs/byuser/1" for ::1 at 2020-04-14 19:00:04 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (19.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 33ms (Views: 10.3ms | ActiveRecord: 20.5ms | Allocations: 4505)
+
+
+Started GET "/clubs/12/comments" for ::1 at 2020-04-14 19:00:10 -0400
+Started GET "/clubs/byclub/12" for ::1 at 2020-04-14 19:00:10 -0400
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"12"}
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"12"}
+  [1m[36mClub Load (13.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 16ms (Views: 0.6ms | ActiveRecord: 13.6ms | Allocations: 1099)
+
+
+Started GET "/clubs/byclub/12/members" for ::1 at 2020-04-14 19:00:10 -0400
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"12"}
+  [1m[36mComment Load (65.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 12]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 74ms (Views: 7.4ms | ActiveRecord: 65.6ms | Allocations: 4622)
+
+
+  [1m[36mClub Load (23.2ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (18.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 12]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 1048ms (Views: 0.2ms | ActiveRecord: 41.7ms | Allocations: 3862)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-14 19:00:30 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (125.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 131ms (ActiveRecord: 125.8ms | Allocations: 1771)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started GET "/auth/verify" for ::1 at 2020-04-14 19:00:48 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 1.0ms | Allocations: 1770)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started GET "/auth/verify" for ::1 at 2020-04-14 19:00:54 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.7ms | Allocations: 1770)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>1, "username"=>"likunamatata"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started POST "/auth/login" for ::1 at 2020-04-14 19:01:03 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"mike", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"mike", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "mike"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 568ms (Views: 1.3ms | ActiveRecord: 1.4ms | Allocations: 1027)
+
+
+Started GET "/clubs/byuser/6" for ::1 at 2020-04-14 19:01:03 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (19.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (21.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 49ms (Views: 6.3ms | ActiveRecord: 40.9ms | Allocations: 1815)
+
+
+Started GET "/clubs/13/comments" for ::1 at 2020-04-14 19:01:10 -0400
+Started GET "/clubs/byclub/13" for ::1 at 2020-04-14 19:01:10 -0400
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"13"}
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (96.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mComment Load (94.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 100ms (Views: 0.5ms | ActiveRecord: 96.3ms | Allocations: 1638)
+
+
+Completed 200 OK in 100ms (Views: 4.7ms | ActiveRecord: 94.6ms | Allocations: 1632)
+
+
+Started GET "/clubs/byclub/13/members" for ::1 at 2020-04-14 19:01:11 -0400
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (18.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 19.1ms | Allocations: 1532)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-14 19:01:37 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 1.1ms | Allocations: 1771)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>6, "username"=>"mike"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started GET "/auth/verify" for ::1 at 2020-04-14 19:01:41 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (170.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 176ms (ActiveRecord: 170.2ms | Allocations: 1770)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>6, "username"=>"mike"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started POST "/auth/login" for ::1 at 2020-04-14 19:01:43 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"mike", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"mike", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "mike"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 634ms (Views: 0.5ms | ActiveRecord: 0.8ms | Allocations: 1025)
+
+
+Started GET "/clubs/byuser/6" for ::1 at 2020-04-14 19:01:44 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (14.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 31ms (Views: 10.1ms | ActiveRecord: 15.1ms | Allocations: 1815)
+
+
+Started GET "/clubs/byclub/13" for ::1 at 2020-04-14 19:01:45 -0400
+Started GET "/clubs/13/comments" for ::1 at 2020-04-14 19:01:45 -0400
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (22.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"13"}
+Completed 200 OK in 28ms (Views: 2.1ms | ActiveRecord: 22.4ms | Allocations: 1661)
+
+
+Started GET "/clubs/byclub/13/members" for ::1 at 2020-04-14 19:01:45 -0400
+  [1m[36mComment Load (44.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 47ms (Views: 2.2ms | ActiveRecord: 44.1ms | Allocations: 1580)
+
+
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (0.5ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (18.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 27ms (Views: 0.3ms | ActiveRecord: 19.3ms | Allocations: 1532)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-14 19:02:09 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (77.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 82ms (ActiveRecord: 77.7ms | Allocations: 1771)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>6, "username"=>"mike"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started GET "/auth/verify" for ::1 at 2020-04-14 19:02:19 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (66.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 66.5ms | Allocations: 1770)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>6, "username"=>"mike"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started GET "/auth/verify" for ::1 at 2020-04-14 19:04:16 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (16.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 500 Internal Server Error in 113ms (ActiveRecord: 65.4ms | Allocations: 4865)
+
+
+  
+NoMethodError (undefined method `join' for {"id"=>6, "username"=>"mike"}:ActiveSupport::HashWithIndifferentAccess):
+  
+app/controllers/application_controller.rb:20:in `authorize_request'
+Started POST "/auth/login" for ::1 at 2020-04-14 19:04:19 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"mike", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"mike", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "mike"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 572ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 4462)
+
+
+Started GET "/clubs/byuser/6" for ::1 at 2020-04-14 19:04:19 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (24.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 89ms (Views: 20.7ms | ActiveRecord: 60.8ms | Allocations: 10267)
+
+
+Started GET "/clubs/13/comments" for ::1 at 2020-04-14 19:04:21 -0400
+Started GET "/clubs/byclub/13" for ::1 at 2020-04-14 19:04:21 -0400
+Processing by CommentsController#index as HTML
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"13"}
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (111.1ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 115ms (Views: 0.6ms | ActiveRecord: 111.1ms | Allocations: 889)
+
+
+Started GET "/clubs/byclub/13/members" for ::1 at 2020-04-14 19:04:21 -0400
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (73.0ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mComment Load (148.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 13]]
+  [1m[36mUser Load (17.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 253ms (Views: 0.4ms | ActiveRecord: 90.4ms | Allocations: 2701)
+
+
+Completed 200 OK in 500ms (Views: 158.3ms | ActiveRecord: 336.5ms | Allocations: 6379)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-14 19:04:24 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (344.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 347ms (Views: 0.3ms | ActiveRecord: 344.4ms | Allocations: 763)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-14 19:05:23 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (22.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 92ms (Views: 0.3ms | ActiveRecord: 62.0ms | Allocations: 3965)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-14 19:05:26 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"mike", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"mike", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "mike"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 544ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 4431)
+
+
+Started GET "/clubs/byuser/6" for ::1 at 2020-04-14 19:05:26 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (17.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 117ms (Views: 36.6ms | ActiveRecord: 71.7ms | Allocations: 10161)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-14 19:05:29 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (42.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 200 OK in 47ms (Views: 0.6ms | ActiveRecord: 42.7ms | Allocations: 767)
+
+
+Started GET "/clubs/byuser/6" for ::1 at 2020-04-14 19:05:29 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (18.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (19.9ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 54ms (Views: 11.9ms | ActiveRecord: 38.1ms | Allocations: 1815)
+
+
+Started GET "/clubs/13/comments" for ::1 at 2020-04-14 19:05:31 -0400
+Started GET "/clubs/byclub/13" for ::1 at 2020-04-14 19:05:31 -0400
+Processing by ClubsController#read_one as HTML
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"13"}
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (12.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 22ms (Views: 2.0ms | ActiveRecord: 12.8ms | Allocations: 2163)
+
+
+Started GET "/clubs/byclub/13/members" for ::1 at 2020-04-14 19:05:31 -0400
+  [1m[36mComment Load (170.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 195ms (Views: 7.2ms | ActiveRecord: 179.5ms | Allocations: 3430)
+
+
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (15.0ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (139.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 169ms (Views: 0.3ms | ActiveRecord: 154.0ms | Allocations: 1948)
+
+
+Started GET "/auth/verify" for ::1 at 2020-04-14 19:05:33 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (19.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 200 OK in 69ms (Views: 45.8ms | ActiveRecord: 19.2ms | Allocations: 770)
+
+
+Started GET "/clubs/13/comments" for ::1 at 2020-04-14 19:05:33 -0400
+Started GET "/clubs/byclub/13" for ::1 at 2020-04-14 19:05:33 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.3ms | Allocations: 883)
+
+
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (44.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 49ms (Views: 0.6ms | ActiveRecord: 44.4ms | Allocations: 788)
+
+
+Started GET "/clubs/byclub/13/members" for ::1 at 2020-04-14 19:05:33 -0400
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (23.1ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (20.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 52ms (Views: 0.7ms | ActiveRecord: 43.9ms | Allocations: 1541)
+
+
