@@ -1,5 +1,4 @@
 .App{
-  background-color: #faf0be;
 }
 
 .App *{
@@ -14,5 +13,14 @@
 
 /* Landing, Login, Register  */
 .public-screens{
-  background-color: lavender;
+  text-align: center;
+  min-height: 50vh;
+  border: solid blue;
 }
+
+.auth-container{
+  border: solid black;
+  height: 100%;
+  margin: 0px;
+}
+

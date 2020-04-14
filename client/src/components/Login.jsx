@@ -11,7 +11,7 @@ const Login = (props) => {
   return (
     <div className="auth-container">
       <h2>Login or Register</h2>
-      <hr />
+
       {props.currentUser ?
         '' :
         <form onSubmit={(e) => {
@@ -23,14 +23,11 @@ const Login = (props) => {
           <input name="username" type="text" value={props.formData.username} onChange={props.handleChange} />
           <p>Password:</p>
           <input name="password" type="password" value={props.formData.password} onChange={props.handleChange} />
-          <hr />
-          {/* <Link to={`users/${props.formData.id}`}> */}
+          <div className='auth-buttons'>
           <button>Login</button>
-          {/* </Link> */}
-
-          <Link to="/register">
-            <button>Register</button>
-          </Link>
+          <Link to="/register"> <button>Register</button> </Link>
+          </div>
+         
         </form>
       }
     </div>

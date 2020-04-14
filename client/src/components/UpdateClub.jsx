@@ -57,7 +57,7 @@ class UpdateClub extends Component {
             />
             <button>Update</button>
           </form>
-          <SearchFunction/>
+          <SearchFunction className='search'/>
         </div>
       </div>
     )

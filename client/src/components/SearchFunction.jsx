@@ -65,7 +65,7 @@ class SearchFunction extends Component {
           <h2>{volumeInfo.title}</h2>
           <p>{volumeInfo.authors ? volumeInfo.authors[0] : 'Author Unknown' }</p>
           <p>{volumeInfo.description}</p>
-          <p>{book.id}</p>
+          <p className='highlight'>COPY THIS: {book.id}</p>
         </div >        
       )
     })
@@ -91,6 +91,7 @@ const Search = ({ onChange, onSubmit, name, value }) => {
   return (
     <form onSubmit={e => onSubmit(e)}>
       <div className="search">
+        <p>Search by Book Title or Author</p>
         <input
           value={value}
           onChange={e => onChange(e)}

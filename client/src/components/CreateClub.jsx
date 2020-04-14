@@ -30,7 +30,7 @@ class CreateClub extends Component {
     }));
   }
 
-  
+
   handleCreate = async (e) => {
     e.preventDefault();
     createClub(this.state.clubFormData, this.props.user_id)
@@ -40,24 +40,34 @@ class CreateClub extends Component {
     return (
       <div>
         <div className="club-create-container">
-          <h3>i'm the form</h3>
-          <h2>Enter club details here</h2>
+          <h2 className='screen-header'>Create A New Club Using This Form</h2>
           <form onSubmit={this.handleCreate} >
-            <p>Club Name:</p>
-            <input name="name" type="text"
-            value={this.state.clubFormData.name} onChange={this.handleChange}
-            />
-             <p>Current Book (Google Books Id):</p>
-            <input name="google_id" type="text"
-            value={this.state.clubFormData.google_id} onChange={this.handleChange}
-            />
-            <p>Rules:</p>
-            <input name="rules" type="text"
-            value={this.state.clubFormData.rules} onChange={this.handleChange}
-            />
+            <div className='form-field'>
+              <p>Club Name</p>
+              <input name="name" type="text" placeholder='XX Century Italian Authors'
+                value={this.state.clubFormData.name} onChange={this.handleChange}
+              />
+              <p className='form-instructions'>Choose wisely, you will not be able to update the name of the club</p>
+            </div>
+
+            <div classname='form-field'>
+              <p>Current Book (Google Books Id):</p>
+              <input name="google_id" type="text" placeholder='6MEdBQAAQBAJ'
+                value={this.state.clubFormData.google_id} onChange={this.handleChange}
+              />
+              <p className='form-instructions'>You can search for book titles and copy their Google Books Id using the search bar below</p>
+            </div>
+            <div className='form-field'>
+              <p>Rules for Commenting</p>
+              <input name="rules" type="text" placeholder='No hate speech, include TW headers, etc.'
+                value={this.state.clubFormData.rules} onChange={this.handleChange}
+              />
+              <p className='form-instructions'>You can search for book titles and copy their Google Books Id using the search bar below</p>
+            </div>
+
             <button>Create</button>
           </form>
-          <SearchFunction/>
+          <SearchFunction className='search' />
         </div>
       </div>
     )

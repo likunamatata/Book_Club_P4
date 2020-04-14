@@ -4,7 +4,7 @@ const MemberForm = (props) => {
   const { username} = props.member
   return (
       <form onSubmit={props.handleSubmit} className='members-form'>
-      <h4>Add a User</h4>
+      <p>Add Members by Username</p>
       <div className='input-container'>
       <input
           placeholder='Username'

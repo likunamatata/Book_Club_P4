@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Link, withRouter } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 import './Styles/App.css';
-// import { readAllUsers, readUserClubs } from './services/api-helper';
+import './Styles/AuthForm.css';
 import ClubsIndex from './components/ClubsIndex';
 import Header from './components/Header';
 import Register from './components/Register'
@@ -32,14 +32,6 @@ class App extends Component {
       }
     }
   }
-
-  async componentDidMount() {
-    // const clubs = await readUserClubs(this.state.currentUser);
-    // this.setState({
-    //   clubs
-    // })
-  }
-
 
   // -------------- AUTH ------------------
 
@@ -83,8 +75,6 @@ class App extends Component {
   render() {
     console.log('currentUser', this.state.currentUser)
     return (
-
-
 
       <div className="App">
         <Header

@@ -22,8 +22,8 @@ class Comments extends Component {
           return (
             <div className="comment" key={comment._id}>
               <p className='comment-text'>"{comment.text}"</p>
-              <p className='comment-user'>says - {comment.username}</p>
-              {user_id == comment.user_id ? <button onClick={() =>deleteComment(club_id, comment.id) }>)}>Delete Comment: {comment.id}</button> : null}
+              <p className='comment-user'>{comment.username}</p>
+              {user_id == comment.user_id ? <button onClick={() =>deleteComment(club_id, comment.id) }>Delete</button> : null}
             </div>
           )
         })
