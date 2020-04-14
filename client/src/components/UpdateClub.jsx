@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { updateClub, readOneClub } from '../services/api-helper';
 import SearchFunction from './SearchFunction';
+import '../Styles/SearchFunction.css'
+import '../Styles/CreateClub.css'
 
 
 
@@ -48,16 +50,18 @@ class UpdateClub extends Component {
     return (
       <div>
         <div className="club-update-container">
-          <h3>You can update the current book for the club here</h3>
-          <h2>Enter club details here</h2>
-          <form onSubmit={this.handleUpdate} >
-             <p>Current Book (Google Books Id):</p>
-            <input name="google_id" type="text"
-            value={this.state.clubFormData.google_id} onChange={this.handleChange}
-            />
+        <h2 className='screen-header'>Update Club Details Using This Form</h2>
+          <form className='club-form' onSubmit={this.handleUpdate} >
+          <div className='form-field'>
+              <p className='form-label'>New Book (Google Books Id):</p>
+              <input name="google_id" type="text" placeholder='6MEdBQAAQBAJ'
+                value={this.state.clubFormData.google_id} onChange={this.handleChange}
+              />
+              <p className='form-instructions'>Just like when first creating the club, you can get the appropriate Google Books Id using the search bar below</p>
+            </div>
             <button>Update</button>
           </form>
-          <SearchFunction className='search'/>
+          <SearchFunction/>
         </div>
       </div>
     )

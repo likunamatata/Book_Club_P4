@@ -1,26 +1,54 @@
-.App{
-}
-
 .App *{
   margin: 0px;
+  color: rgba(49,46,36,0.7);
 }
 
 
 /* About, Clubs, Club, CreateClub, UpdateClub  */
 .user-screens{
-  background-color: white;
+  min-height: 50vh;
+  margin: 20px;
+}
+
+h2.screen-header{
+  text-align: center;
+
 }
 
 /* Landing, Login, Register  */
 .public-screens{
   text-align: center;
-  min-height: 50vh;
-  border: solid blue;
+  min-height: 60vh;
+  margin: 20px;
 }
 
 .auth-container{
-  border: solid black;
-  height: 100%;
   margin: 0px;
 }
 
+.landing{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 30vh;
+}
+
+.search{
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label{
+  font-size: 15px;
+  color: purple;
+}
+
+button{
+  width: 70px;
+  height: 30px;
+  border-radius: 15px 50px;
+  background-color: rgba(49,46,36,0.3);
+  border: solid 1px rgba(255,255,255,0.5);
+  color: white;
+  font-weight: bold; 
+}

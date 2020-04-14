@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import MemberForm from './MemberForm'
 import Members from './Members'
 import { createMember, getMembers } from '../services/api-helper'
+import '../Styles/Members.css'
 
 class MemberCreate extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class MemberCreate extends Component {
       createdMember: null,
       members: ''
     }
-   
+
   }
 
 
@@ -25,7 +26,7 @@ class MemberCreate extends Component {
         { members: members.data }
       )
     } catch (err) {
-        console.error(err)
+      console.error(err)
     }
   }
 
@@ -36,9 +37,9 @@ class MemberCreate extends Component {
   }
 
   addmember = member =>
-  this.setState(prevstate => ({
-    members: [...this.state.members, member]
-  }))
+    this.setState(prevstate => ({
+      members: [...this.state.members, member]
+    }))
 
   handleSubmit = async event => {
     event.preventDefault()
@@ -51,7 +52,7 @@ class MemberCreate extends Component {
       })
     }
     this.getMembers()
-  } 
+  }
 
   async componentDidMount() {
     console.log('membercreate props', this.props)
@@ -63,7 +64,7 @@ class MemberCreate extends Component {
     const { member, members } = this.state
     const { history, user_id, club_id } = this.props
     return (
-        <div className='members-section'>
+      <div className='members-section'>
         <MemberForm
           member={member}
           history={history}
@@ -71,8 +72,8 @@ class MemberCreate extends Component {
           handleSubmit={handleSubmit}
           cancelPath="../"
         />
-        <Members user_id={user_id} club_id={club_id} members={members}/>
-        </div> 
+        <Members user_id={user_id} club_id={club_id} members={members} />
+      </div>
     )
   }
 }

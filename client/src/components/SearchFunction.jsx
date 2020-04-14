@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import axios from "axios"
+import '../Styles/SearchFunction.css'
 
 
 class SearchFunction extends Component {
@@ -56,21 +57,21 @@ class SearchFunction extends Component {
   }
 
   render() {
-    console.log('this state books', this.state.books)
     let books = this.state.books.length !== 0 && this.state.books.items.map((book, index) => {
       const volumeInfo = book.volumeInfo
       return (
-          <div key={index}>
-          <img src={volumeInfo.imageLinks.smallThumbnail} alt={"book cover"} />
-          <h2>{volumeInfo.title}</h2>
-          <p>{volumeInfo.authors ? volumeInfo.authors[0] : 'Author Unknown' }</p>
-          <p>{volumeInfo.description}</p>
-          <p className='highlight'>COPY THIS: {book.id}</p>
-        </div >        
+        <div key={index} className='volume-container'>
+          <img src={volumeInfo.imageLinks ? volumeInfo.imageLinks.thumbnail : 'http://clipart-library.com/images/rinG8dG7T.png'} alt={"book cover"} />
+          <div className='volume-text'><h3>{volumeInfo.title}</h3>
+            <p>{volumeInfo.authors ? volumeInfo.authors[0] : 'Author Unknown'}</p>
+            <p>{volumeInfo.description}</p>
+            <p className='highlight'>COPY THIS: {book.id}</p>
+          </div>
+        </div >
       )
     })
     return (
-      <>
+      <div className='search'>
         <Search
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
@@ -78,8 +79,10 @@ class SearchFunction extends Component {
           name="searchQuery"
           placeholder="Enter Search Query"
         />
-        {books}
-      </>
+        <div className='search-display'>
+          {books}
+        </div>
+      </div>
     )
   }
 }
@@ -89,18 +92,16 @@ export default SearchFunction
 
 const Search = ({ onChange, onSubmit, name, value }) => {
   return (
-    <form onSubmit={e => onSubmit(e)}>
-      <div className="search">
-        <p>Search by Book Title or Author</p>
-        <input
-          value={value}
-          onChange={e => onChange(e)}
-          name={name}
-          type="text"
-          placeholder="Enter Search Query"
-        />
-        <button type="submit">Search</button>
-      </div>
+    <form className="search-form" onSubmit={e => onSubmit(e)}>
+      <p>Search Here</p>
+      <input
+        value={value}
+        onChange={e => onChange(e)}
+        name={name}
+        type="text"
+        placeholder="Book title or author"
+      />
+      <button type="submit">Search</button>
     </form>
   )
 }

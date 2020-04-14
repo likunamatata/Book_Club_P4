@@ -34,9 +34,7 @@ class Comments extends Component {
 
     return (
       <div className='comments-display'>
-        <h4>Member Comments</h4>
-        {!comments ? <h3>No comments at this time.</h3> : null}
-        <div className='comments'>{renderComments()}</div>
+        {!comments ? <h3>No comments at this time.</h3> : renderComments()}
       </div>
     )
 
