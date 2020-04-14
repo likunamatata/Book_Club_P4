@@ -1,0 +1,26 @@
+.App{
+}
+
+.App *{
+  margin: 0px;
+}
+
+
+/* About, Clubs, Club, CreateClub, UpdateClub  */
+.user-screens{
+  background-color: white;
+}
+
+/* Landing, Login, Register  */
+.public-screens{
+  text-align: center;
+  min-height: 50vh;
+  border: solid blue;
+}
+
+.auth-container{
+  border: solid black;
+  height: 100%;
+  margin: 0px;
+}
+

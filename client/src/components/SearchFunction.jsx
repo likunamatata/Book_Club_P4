@@ -13,7 +13,6 @@ class SearchFunction extends Component {
     }
   }
 
-
   fetchInfo = async (searchQuery) => {
     try {
       const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchQuery}`)
@@ -22,7 +21,6 @@ class SearchFunction extends Component {
       })
     }
     catch (error) {
-      alert("We don't have information for that. Refresh the page and try Again!")
     }
   }
 
@@ -58,16 +56,17 @@ class SearchFunction extends Component {
   }
 
   render() {
+    console.log('this state books', this.state.books)
     let books = this.state.books.length !== 0 && this.state.books.items.map((book, index) => {
       const volumeInfo = book.volumeInfo
       return (
-        <div key={index}>
+          <div key={index}>
           <img src={volumeInfo.imageLinks.smallThumbnail} alt={"book cover"} />
           <h2>{volumeInfo.title}</h2>
-          <p>{volumeInfo.authors[0]}</p>
+          <p>{volumeInfo.authors ? volumeInfo.authors[0] : 'Author Unknown' }</p>
           <p>{volumeInfo.description}</p>
-          <p>{book.id}</p>
-        </div>
+          <p className='highlight'>COPY THIS: {book.id}</p>
+        </div >        
       )
     })
     return (
@@ -92,6 +91,7 @@ const Search = ({ onChange, onSubmit, name, value }) => {
   return (
     <form onSubmit={e => onSubmit(e)}>
       <div className="search">
+        <p>Search by Book Title or Author</p>
         <input
           value={value}
           onChange={e => onChange(e)}
