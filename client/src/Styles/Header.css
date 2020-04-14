@@ -1,0 +1,37 @@
+header {
+  background-color: #ecebbd;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+h1{
+  font-size: 65px;
+}
+
+.header-extras{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+nav{
+  width: 25%;
+  display: flex;
+  flex-direction: row;
+}
+
+a{
+  padding: 0px 20px 0px 0px;
+}
+
+.user-info{
+  width: 25%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

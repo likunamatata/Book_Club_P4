@@ -6,16 +6,18 @@ import { Link } from 'react-router-dom';
 
 
 const Login = (props) => {
+  console.log('login props', props.history)
 
   return (
     <div className="auth-container">
-      <h2>login</h2>
+      <h2>Login or Register</h2>
       <hr />
       {props.currentUser ?
         '' :
         <form onSubmit={(e) => {
           e.preventDefault();
           props.handleLogin();
+          props.history.push('/clubs');
         }} >
           <p>Username:</p>
           <input name="username" type="text" value={props.formData.username} onChange={props.handleChange} />

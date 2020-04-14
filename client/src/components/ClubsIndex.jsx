@@ -21,7 +21,7 @@ class ClubsIndex extends Component {
   render() {
     return (
       <div>
-        <h3>Clubs list:</h3>
+        <h2 className='screen-header'>Your Book Clubs</h2>
 
         {this.state.userClubs.map((club) => {
           return (
@@ -31,10 +31,6 @@ class ClubsIndex extends Component {
             </Link>
           )
         })}
-        <Link to={`/users/${this.props.user_id}/create-club`}>
-          <button>New Club</button>
-        </Link>
-        <h3>now WHAT!?</h3>
       </div>
     )
 

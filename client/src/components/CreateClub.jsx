@@ -51,17 +51,9 @@ class CreateClub extends Component {
             <input name="google_id" type="text"
             value={this.state.clubFormData.google_id} onChange={this.handleChange}
             />
-             <p>Read By:</p>
-            <input name="read_by" type="text"
-            value={this.state.clubFormData.read_by} onChange={this.handleChange}
-            />
             <p>Rules:</p>
             <input name="rules" type="text"
             value={this.state.clubFormData.rules} onChange={this.handleChange}
-            />
-             <p>Next Book Up (Title, Author):</p>
-            <input name="next_book_up" type="text"
-            value={this.state.clubFormData.next_book_up} onChange={this.handleChange}
             />
             <button>Create</button>
           </form>

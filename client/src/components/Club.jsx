@@ -30,28 +30,43 @@ class Club extends Component {
     })
   }
 
+  addHTML = (element, html) => {
+    element.innerHTML = html
+    return element
+  }
+
+
   render() {
-    const { volumeInfo } = this.state.bookData
+    console.log('club.jsx props', this.state.clubData)
+    const { clubData, bookData } = this.state
+    const { volumeInfo } = bookData
+    let description = document.createElement("div")
+    const html = volumeInfo ? volumeInfo.description : ''
+    description = this.addHTML(description, html)
+    console.log('description', description)
 
     return (
       <div>
-        <h3>Hi I'm club detail page</h3>
+        <h2 className='screen-header'>{clubData.name}</h2>
         {volumeInfo ?
           <div>
             <img src={volumeInfo.imageLinks.thumbnail} />
-            <h3>Club Name Needs to go here</h3>
             <p>{volumeInfo.title}</p>
             <p>{volumeInfo.authors[0]}</p>
-            <p>{volumeInfo.description}</p>
+            {/* {description} */}
           </div>
           :
           <p>Book info loading</p>
         }
-         <Link to={`/update-club/${this.props.club_id}`}>
-          <button>Edit Club</button>
-        </Link>
+
+        {this.props.currentUser.id == clubData.user_id ?
+          <div className='admin-functions'>
+            <Link to={`/update-club/${this.props.club_id}`}> <button>Edit Club</button> </Link>
+            <MemberCreate username={this.props.currentUser.username} user_id={this.props.user_id} club_id={this.props.club_id} />
+          </div> : ''}
+
         <CommentCreate username={this.props.currentUser.username} user_id={this.props.user_id} club_id={this.props.club_id} />
-        <MemberCreate username={this.props.currentUser.username} user_id={this.props.user_id} club_id={this.props.club_id} />
+
 
       </div>
     )

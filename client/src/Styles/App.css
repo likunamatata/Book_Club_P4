@@ -1,0 +1,18 @@
+.App{
+  background-color: #faf0be;
+}
+
+.App *{
+  margin: 0px;
+}
+
+
+/* About, Clubs, Club, CreateClub, UpdateClub  */
+.user-screens{
+  background-color: white;
+}
+
+/* Landing, Login, Register  */
+.public-screens{
+  background-color: lavender;
+}

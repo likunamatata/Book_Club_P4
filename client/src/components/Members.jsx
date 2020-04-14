@@ -34,7 +34,7 @@ class Members extends Component {
 
   return (
     <div className='members-display'>
-      <h4>Our Movie-Goers Are Saying:</h4>
+      <h4>Club Members</h4>
       {!members ? <h3>No members at this time.</h3> : null}
       <div className='members'>{renderMembers()}</div>
     </div>
