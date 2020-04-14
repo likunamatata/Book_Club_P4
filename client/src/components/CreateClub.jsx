@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { createClub } from '../services/api-helper';
 import SearchFunction from './SearchFunction';
+import '../Styles/CreateClub.css'
 
 
 
@@ -10,12 +11,14 @@ class CreateClub extends Component {
     super(props);
     this.state = {
       clubFormData: {
+        name: '',
         google_id: '',
         rules: '',
-        user_id: props.user_id
+        user_id: props.user_id,
+        read_by: '',
+        next_book_up: ''
       }
     }
-    console.log('clubcreate props', props)
   }
 
   handleChange = async (e) => {
@@ -28,33 +31,44 @@ class CreateClub extends Component {
     }));
   }
 
-  
+
   handleCreate = async (e) => {
-    console.log('handlecreate is running')
     e.preventDefault();
-    console.log(this.state.clubFormData)
     createClub(this.state.clubFormData, this.props.user_id)
   }
 
   render() {
-    console.log('createclub props', this.props)
     return (
-      <div>
+      <div className='create-club'>
+        <h2 className='screen-header'>Create A New Club Using This Form</h2>
         <div className="club-create-container">
-          <h3>i'm the form</h3>
-          <h2>Enter club details here</h2>
-          <form onSubmit={this.handleCreate} >
-            <p>Google Books Id:</p>
-            <input name="google_id" type="text"
-            value={this.state.clubFormData.google_id} onChange={this.handleChange}
-            />
-            <p>Rules:</p>
-            <input name="rules" type="text"
-            value={this.state.clubFormData.rules} onChange={this.handleChange}
-            />
+          <form className='club-form' onSubmit={this.handleCreate} >
+            <div className='form-field'>
+              <p className='form-label'>Club Name</p>
+              <input name="name" type="text" placeholder='XX Century Italian Authors'
+                value={this.state.clubFormData.name} onChange={this.handleChange}
+              />
+              <p className='form-instructions'>Choose wisely, you will not be able to update the name of the club</p>
+            </div>
+
+            <div className='form-field'>
+              <p className='form-label'>Current Book (Google Books Id):</p>
+              <input name="google_id" type="text" placeholder='6MEdBQAAQBAJ'
+                value={this.state.clubFormData.google_id} onChange={this.handleChange}
+              />
+              <p className='form-instructions'>You can search for book titles and copy their Google Books Id using the search bar below</p>
+            </div>
+            <div className='form-field'>
+              <p className='form-label'>Rules for Commenting</p>
+              <input name="rules" type="text" placeholder='No hate speech, include TW headers, etc.'
+                value={this.state.clubFormData.rules} onChange={this.handleChange}
+              />
+              <p className='form-instructions'>You can search for book titles and copy their Google Books Id using the search bar below</p>
+            </div>
+
             <button>Create</button>
           </form>
-          <SearchFunction/>
+          <SearchFunction />
         </div>
       </div>
     )

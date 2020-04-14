@@ -76,7 +76,7 @@ export const createClub = async (clubData) => {
 }
 
 export const updateClub = async (clubData, club_id) => {
-  const response = await api.put(`/clubs/${club_id}`, { club: clubData });
+  const response = await api.put(`/clubs/byclub/${club_id}`, { club: clubData });
   return response.data;
 }
 

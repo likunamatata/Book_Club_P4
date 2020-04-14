@@ -22,8 +22,8 @@ class Comments extends Component {
           return (
             <div className="comment" key={comment._id}>
               <p className='comment-text'>"{comment.text}"</p>
-              <p className='comment-user'>says - {comment.username}</p>
-              {user_id == comment.user_id ? <button onClick={() =>deleteComment(club_id, comment.id) }>)}>Delete Comment: {comment.id}</button> : null}
+              <p className='comment-user'>{comment.username}</p>
+              {user_id == comment.user_id ? <button onClick={() =>deleteComment(club_id, comment.id) }>Delete</button> : null}
             </div>
           )
         })
@@ -34,9 +34,7 @@ class Comments extends Component {
 
     return (
       <div className='comments-display'>
-        <h4>Our Movie-Goers Are Saying:</h4>
-        {!comments ? <h3>No comments at this time.</h3> : null}
-        <div className='comments'>{renderComments()}</div>
+        {!comments ? <h3>No comments at this time.</h3> : renderComments()}
       </div>
     )
 

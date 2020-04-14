@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get 'clubs/byuser/:user_id', to: 'clubs#index'
   get 'clubs/byclub/:club_id', to: 'clubs#read_one'
+  put 'clubs/byclub/:club_id', to: 'clubs#update'
   post 'clubs/byclub/:club_id/members', to: 'clubs#add_member'
   get 'clubs/byclub/:club_id/members', to: 'clubs#get_members'
 

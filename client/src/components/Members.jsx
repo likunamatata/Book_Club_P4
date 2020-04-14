@@ -7,7 +7,6 @@ class Members extends Component {
     this.state = {
       members: []
     }
-    console.log('members props', props)
   }
 
 
@@ -18,14 +17,13 @@ class Members extends Component {
   render() {
   
     const { members } = this.props
-    console.log('members in render', members)
 
   const renderMembers = () => {
     if (members) {
       return members.map(member => {
         return (
           <div className="member" key={member._id}>
-            <p className='member-username'>"{member.username}"</p>
+            <p className='member-username'>🤓{member.username}</p>
           </div>
         )
       })
@@ -36,7 +34,7 @@ class Members extends Component {
 
   return (
     <div className='members-display'>
-      <h4>Our Movie-Goers Are Saying:</h4>
+      <h4>Current Members</h4>
       {!members ? <h3>No members at this time.</h3> : null}
       <div className='members'>{renderMembers()}</div>
     </div>

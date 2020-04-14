@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 import { readOneClub } from '../services/api-helper';
 import axios from 'axios'
 import CommentCreate from './CommentCreate';
 import MemberCreate from './MemberCreate';
+import UpdateClub from './UpdateClub'
+import '../Styles/Club.css'
 
 class Club extends Component {
   constructor(props) {
@@ -29,24 +31,58 @@ class Club extends Component {
     })
   }
 
+  addHTML = (element, html) => {
+    element.innerHTML = html
+    return element
+  }
+
+
   render() {
-    const { volumeInfo } = this.state.bookData
+    console.log('club.jsx props', this.state.clubData)
+    const { clubData, bookData } = this.state
+    const { volumeInfo } = bookData
+    let description = document.createElement("div")
+    const html = volumeInfo ? volumeInfo.description : ''
+    description = this.addHTML(description, html)
+    console.log('description', description)
 
     return (
-      <div>
-        <h3>Hi I'm club detail page</h3>
-        {volumeInfo ?
-          <div>
-            <img src={volumeInfo.imageLinks.thumbnail}/>
-            <h3>{volumeInfo.title}</h3>
-            <p>{volumeInfo.authors[0]}</p>
-            <p>{volumeInfo.description}</p>
+      <div id='club-detail'>
+        <h2 className='screen-header'>{clubData.name}</h2>
+        <div className='club-info'>
+          {volumeInfo ?
+            <div className='volume-info'>
+              <img src={volumeInfo.imageLinks.thumbnail} />
+              <div className='volume-text'>
+                <h3>{volumeInfo.title}</h3>
+                <p>{volumeInfo.authors[0]}</p>
+                {/* {description} */}
+              </div>
+            </div>
+            :
+            <p>Book info loading</p>
+          }
+          <div className='club-rules'>
+            <h3>Rules for Participation</h3>
+            <p className='club-rules'>{clubData.rules}</p>
           </div>
-          :
-          <p>Book info loading</p>
-        }
-        <CommentCreate username={this.props.currentUser.username} user_id={this.props.user_id} club_id={this.props.club_id} />
-        <MemberCreate username={this.props.currentUser.username} user_id={this.props.user_id} club_id={this.props.club_id}/>
+
+
+        </div>
+
+        {this.props.currentUser.id == clubData.user_id ?
+          <div className='admin-functions'>
+            <h2 className='screen-header'>Club Modifications (Admin Only)</h2>
+            <div className='club-update'>
+              <p className='form-label'>Update Club Details</p>
+              <Link to={`/update-club/${this.props.club_id}`}> <button>Update</button> </Link>
+            </div>
+            <MemberCreate username={this.props.currentUser.username} user_id={this.props.user_id} club_id={this.props.club_id} />
+          </div> : ''}
+
+        <CommentCreate className='comments-section' username={this.props.currentUser.username} user_id={this.props.user_id} club_id={this.props.club_id} />
+
+
       </div>
     )
 

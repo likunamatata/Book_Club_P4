@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom'
-import './App.css';
-// import { readAllUsers, readUserClubs } from './services/api-helper';
+import { Route, withRouter } from 'react-router-dom'
+import './Styles/App.css';
+import './Styles/AuthForm.css';
 import ClubsIndex from './components/ClubsIndex';
 import Header from './components/Header';
 import Register from './components/Register'
 import Login from './components/Login'
 import CreateClub from './components/CreateClub'
 import Club from './components/Club'
+import UpdateClub from './components/UpdateClub'
+import Landing from './components/Landing'
+import About from './components/About'
 
 import {
   loginUser,
@@ -28,16 +31,7 @@ class App extends Component {
         password: ""
       }
     }
-    console.log('app.js history', props)
   }
-
-  async componentDidMount() {
-    // const clubs = await readUserClubs(this.state.currentUser);
-    // this.setState({
-    //   clubs
-    // })
-  }
-
 
   // -------------- AUTH ------------------
 
@@ -64,6 +58,7 @@ class App extends Component {
     this.setState({
       currentUser: null
     })
+    this.props.history.push("/");
   }
 
   authHandleChange = (e) => {
@@ -81,32 +76,35 @@ class App extends Component {
     console.log('currentUser', this.state.currentUser)
     return (
 
-
-
       <div className="App">
-        {this.state.currentUser ?
-          <div className='logged in stuff'>
-            <Header
-              handleLoginButton={this.handleLoginButton}
-              handleLogout={this.handleLogout}
-              currentUser={this.state.currentUser}
-            />
+        <Header
+          handleLogout={this.handleLogout}
+          currentUser={this.state.currentUser}
+          history={this.props.history}
+        />
 
+        {this.state.currentUser ?
+          <div className='user-screens'>
             <Route
               exact path="/clubs"
               render={() => (
                 <div>
-
-                  <ClubsIndex clubs={this.state.clubs} user_id={this.state.currentUser.id} currentUser={this.state.currentUser}/>
-
+                  <ClubsIndex clubs={this.state.clubs} user_id={this.state.currentUser.id} currentUser={this.state.currentUser} />
                 </div>
               )}
             />
 
             <Route
-              exact path="/users/:user_id/create-club"
+              exact path="/about"
               render={() => (
-                <CreateClub user_id={this.state.currentUser.id} currentUser={this.state.currentUser}/>
+                <About />
+              )}
+            />
+
+            <Route
+              exact path="/users/:user_id/create-club"
+              render={(props) => (
+                <CreateClub user_id={this.state.currentUser.id} currentUser={this.state.currentUser} history={props} />
               )}
             />
 
@@ -114,41 +112,49 @@ class App extends Component {
               exact path="/clubs/byclub/:club_id"
               render={(props) => {
                 const { club_id } = props.match.params;
-                return <Club club_id={club_id} user_id={this.state.currentUser.id} currentUser={this.state.currentUser}/>
+                return <Club club_id={club_id} user_id={this.state.currentUser.id} currentUser={this.state.currentUser} />
               }}
             />
 
-          </div>
-          :
-          <div className='logged out stuff'>
-            <h1>Hi I'm ur app, u need to log in or register</h1>
-            <Link to='/login'>Login</Link>
+            <Route
+              exact path="/update-club/:club_id"
+              render={(props) => {
+                const { club_id } = props.match.params;
+                return <UpdateClub club_id={club_id} />
+              }}
+            />
+          </div> :
+          <div className='public-screens'>
+            <Route
+              exact path="/"
+              render={() => (
+                <Landing />
+              )}
+            />
+
+            <Route exact path="/login" render={(props) => (
+              <Login
+                history={props.history}
+                handleLogin={this.handleLogin}
+                handleChange={this.authHandleChange}
+                formData={this.state.authFormData}
+                currentUser={this.state.currentUser}
+              />)} />
+
+            <Route exact path="/register" render={() => (
+              <Register
+                handleRegister={this.handleRegister}
+                handleChange={this.authHandleChange}
+                formData={this.state.authFormData} />)} />
           </div>
         }
 
-
-        <Route exact path="/login" render={() => (
-          <Login
-            handleLogin={this.handleLogin}
-            handleChange={this.authHandleChange}
-            formData={this.state.authFormData}
-            currentUser={this.state.currentUser}
-          />)} />
-
-        <Route exact path="/register" render={() => (
-          <Register
-            handleRegister={this.handleRegister}
-            handleChange={this.authHandleChange}
-            formData={this.state.authFormData} />)} />
-
-
-
-
       </div>
+
     );
 
   }
 
 }
 
-export default App;
+export default withRouter(App);

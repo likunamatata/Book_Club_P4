@@ -1,7 +1,7 @@
 import React from 'react';
 
 //likuna: I may not need this component at all
-export default function UsersIndex(props) {
+function UsersIndex(props) {
   return (
     <div>
       <h3>Users list:</h3>

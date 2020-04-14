@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { readUserClubs } from '../services/api-helper';
+import '../Styles/ClubsIndex.css'
 
 class ClubsIndex extends Component {
   constructor(props) {
@@ -20,22 +21,19 @@ class ClubsIndex extends Component {
 
   render() {
     return (
-      <div>
-        <h3>Clubs list:</h3>
+      <div className='clubs-index'>
+        <h2 className='screen-header'>Your Book Clubs</h2>
 
+        <div className='clubs-display'>
         {this.state.userClubs.map((club) => {
           return (
-            <Link to={`/clubs/byclub/${club.id}`}>
-
-              <p>{club.google_id}</p>
-              <p>{club.rules}</p>
+            <Link to={`/clubs/byclub/${club.id}`} className='club-box'>
+              <p className='club-name'>{club.name}</p>
             </Link>
           )
         })}
-        <Link to={`/users/${this.props.user_id}/create-club`}>
-          <button>New Club</button>
-        </Link>
-        <h3>now WHAT!?</h3>
+        </div>
+        
       </div>
     )
 
