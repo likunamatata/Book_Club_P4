@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import CommentForm from './CommentForm'
 import Comments from './Comments'
 import { createComment, getComments } from '../services/api-helper'
+import '../Styles/Comments.css'
 
 class CommentCreate extends Component {
   constructor(props) {
@@ -65,7 +66,8 @@ class CommentCreate extends Component {
     const { comment, comments } = this.state
     const { history, user_id, club_id } = this.props
     return (
-        <div className='comments-section'>
+      <div className='comments-section'>
+        <h2 className='screen-header'>Member Comments</h2>
         <CommentForm
           comment={comment}
           history={history}

@@ -14,7 +14,7 @@ const Login = (props) => {
 
       {props.currentUser ?
         '' :
-        <form onSubmit={(e) => {
+        <form className='auth-form' onSubmit={(e) => {
           e.preventDefault();
           props.handleLogin();
           props.history.push('/clubs');

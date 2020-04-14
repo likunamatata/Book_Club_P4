@@ -4,10 +4,10 @@ import React from 'react';
 const Register = (props) => {
 
   return (
-    <div className="auth-container">
+    <div  className="auth-container">
       <h2>Register</h2>
 
-      <form onSubmit={props.handleRegister} >
+      <form className='auth-form' onSubmit={props.handleRegister} >
         <p>Username:</p>
         <input name="username" type="text" value={props.formData.username} onChange={props.handleChange} />
         <p>Email:</p>

@@ -1,11 +1,46 @@
+.club-info{
+  display: flex;
+  flex-direction: row;
+}
 .volume-info{
-  border: solid black;
+  margin: 20px 0px;
+  display: flex;
+  flex-direction: row;
+  width: 67%;
+}
+
+.volume-info > img {
+  width: 50%;
+  height: 70vh;
+  object-fit: cover;
 }
 
 .admin-functions{
-  border: solid red;
+  border: solid grey 2px;
+  border-style: dotted;
+}
+.admin-functions * {
+  margin: 5px 0px;
 }
 
 .comments-section{
-  border: solid blue;
+}
+
+.club-update{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin: 0px 10px;
+}
+
+.form-label {
+  margin: 0px 20px 0px 0px;
+}
+
+.members-section{
+  margin: 0px 0px 0px 10px;
+}
+
+.club-rules{
+  margin: 20px 0px 0px 0px;
 }

@@ -42,7 +42,7 @@ class CreateClub extends Component {
       <div className='create-club'>
         <h2 className='screen-header'>Create A New Club Using This Form</h2>
         <div className="club-create-container">
-          <form onSubmit={this.handleCreate} >
+          <form className='club-form' onSubmit={this.handleCreate} >
             <div className='form-field'>
               <p className='form-label'>Club Name</p>
               <input name="name" type="text" placeholder='XX Century Italian Authors'

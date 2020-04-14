@@ -93,13 +93,13 @@ export default SearchFunction
 const Search = ({ onChange, onSubmit, name, value }) => {
   return (
     <form className="search-form" onSubmit={e => onSubmit(e)}>
-      <p>Search by Book Title or Author</p>
+      <p>Search Here</p>
       <input
         value={value}
         onChange={e => onChange(e)}
         name={name}
         type="text"
-        placeholder="Enter Search Query"
+        placeholder="Book title or author"
       />
       <button type="submit">Search</button>
     </form>

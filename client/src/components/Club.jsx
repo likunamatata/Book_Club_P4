@@ -49,21 +49,34 @@ class Club extends Component {
     return (
       <div id='club-detail'>
         <h2 className='screen-header'>{clubData.name}</h2>
-        {volumeInfo ?
-          <div className='volume-info'>
-            <img src={volumeInfo.imageLinks.thumbnail} />
-            <p>{volumeInfo.title}</p>
-            <p>{volumeInfo.authors[0]}</p>
-            {/* {description} */}
+        <div className='club-info'>
+          {volumeInfo ?
+            <div className='volume-info'>
+              <img src={volumeInfo.imageLinks.thumbnail} />
+              <div className='volume-text'>
+                <h3>{volumeInfo.title}</h3>
+                <p>{volumeInfo.authors[0]}</p>
+                {/* {description} */}
+              </div>
+            </div>
+            :
+            <p>Book info loading</p>
+          }
+          <div className='club-rules'>
+            <h3>Rules for Participation</h3>
+            <p className='club-rules'>{clubData.rules}</p>
           </div>
-          :
-          <p>Book info loading</p>
-        }
+
+
+        </div>
 
         {this.props.currentUser.id == clubData.user_id ?
           <div className='admin-functions'>
-            <p>Club Modifications</p>
-            <Link to={`/update-club/${this.props.club_id}`}> <button>Update The Book</button> </Link>
+            <h2 className='screen-header'>Club Modifications (Admin Only)</h2>
+            <div className='club-update'>
+              <p className='form-label'>Update Club Details</p>
+              <Link to={`/update-club/${this.props.club_id}`}> <button>Update</button> </Link>
+            </div>
             <MemberCreate username={this.props.currentUser.username} user_id={this.props.user_id} club_id={this.props.club_id} />
           </div> : ''}
 

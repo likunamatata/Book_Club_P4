@@ -8,8 +8,11 @@
   color: grey;
 }
 
-form{
-  border: solid white;
+.club-form{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  margin: 20px 0px;
 }
 
 .form-field{
@@ -20,5 +23,5 @@ form{
 .form-field > input {
   width: 50%;
   height: 20px;
-  margin: 5px 0px;
+  margin: 20px 0px;
 }

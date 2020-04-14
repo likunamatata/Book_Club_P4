@@ -1,0 +1,17 @@
+.members-display, .members, .members-form{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.members-display *, .members * {
+  margin: 0px 5px;
+}
+
+.members-form > input{
+  margin: 0px 20px 0px 0px;
+}
+
+.member {
+  padding: 0px 0px 0px 10px;
+}

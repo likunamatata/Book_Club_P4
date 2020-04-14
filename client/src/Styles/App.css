@@ -1,5 +1,6 @@
 .App *{
   margin: 0px;
+  color: rgba(49,46,36,0.7);
 }
 
 
@@ -7,7 +8,6 @@
 .user-screens{
   min-height: 50vh;
   margin: 20px;
-  border: solid black;
 }
 
 h2.screen-header{
@@ -36,4 +36,19 @@ h2.screen-header{
 .search{
   display: flex;
   flex-direction: column;
+}
+
+.form-label{
+  font-size: 15px;
+  color: purple;
+}
+
+button{
+  width: 70px;
+  height: 30px;
+  border-radius: 15px 50px;
+  background-color: rgba(49,46,36,0.3);
+  border: solid 1px rgba(255,255,255,0.5);
+  color: white;
+  font-weight: bold; 
 }
