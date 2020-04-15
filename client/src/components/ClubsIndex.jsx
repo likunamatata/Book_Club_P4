@@ -25,9 +25,9 @@ class ClubsIndex extends Component {
         <h2 className='screen-header'>Your Book Clubs</h2>
 
         <div className='clubs-display'>
-        {this.state.userClubs.map((club) => {
+        {this.state.userClubs.map((club, index) => {
           return (
-            <Link to={`/clubs/byclub/${club.id}`} className='club-box'>
+            <Link to={`/clubs/byclub/${club.id}`} className='club-box' key={index}>
               <p className='club-name'>{club.name}</p>
             </Link>
           )

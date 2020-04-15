@@ -20,9 +20,9 @@ class Members extends Component {
 
   const renderMembers = () => {
     if (members) {
-      return members.map(member => {
+      return members.map((member, index) => {
         return (
-          <div className="member" key={member._id}>
+          <div className="member" key={index}>
             <p className='member-username'>🤓{member.username}</p>
           </div>
         )

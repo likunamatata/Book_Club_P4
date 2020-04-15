@@ -17,7 +17,6 @@ export const loginUser = async (loginData) => {
 }
 
 export const registerUser = async (registerData) => {
-  console.log('regdata', registerData)
   const response = await api.post('/users/', { user: registerData })
   localStorage.setItem('authToken', response.data.token);
   api.defaults.headers.common.authorization = `Bearer ${response.data.token}`
@@ -56,9 +55,7 @@ export const addClub = async (user_id, club_id) => {
 // ==================================
 
 export const readUserClubs = async (user_id) => {
-  console.log('running the reader function?')
   const response = await api.get(`/clubs/byuser/${user_id}`);
-  console.log('clubsresponse', response)
   return response.data;
 }
 
@@ -97,7 +94,6 @@ export const addUser = async (user_id, club_id) => {
 
 export const createComment = async (club_id, comment) => {
   try {
-    console.log('createcomment', comment)
     const resp = await api.post(`/clubs/${club_id}/comments`, comment)
     return resp
   } catch (error) {
@@ -108,7 +104,6 @@ export const createComment = async (club_id, comment) => {
 
 export const getComments = async (club_id) => {
   try {
-    console.log('get clubs/?/comments', club_id)
     const resp = await api.get(`/clubs/${club_id}/comments`)
     return resp
   } catch (error) {
@@ -131,7 +126,6 @@ export const deleteComment = async (club_id, comment_id) => {
 
 export const createMember = async (club_id, member) => {
   try {
-    console.log('createmember', member)
     const resp = await api.post(`/clubs/byclub/${club_id}/members`, { member: member })
     return resp
   } catch (error) {
@@ -141,7 +135,6 @@ export const createMember = async (club_id, member) => {
 
 export const getMembers = async (club_id) => {
   try {
-    console.log('get clubs/?/comments', club_id)
     const resp = await api.get(`/clubs/byclub/${club_id}/members`)
     return resp
   } catch (error) {

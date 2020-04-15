@@ -44,9 +44,6 @@ class App extends Component {
   handleLogin = async () => {
     const currentUser = await loginUser(this.state.authFormData);
     this.setState({ currentUser });
-    console.log('handle login is running')
-    // this.props.history.push("/login")
-    //likuna-help: I need to also go to homepage from here
   }
 
   handleRegister = async (e) => {
@@ -90,7 +87,6 @@ class App extends Component {
   // -------------------------
 
   render() {
-    console.log('currentUser', this.state.currentUser)
     return (
 
       <div className="App">

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import '../Styles/Header.css'
 
 export default function Header(props) {
-  console.log('header props', props)
   return (
     <header>
       <h1>Book Club</h1>

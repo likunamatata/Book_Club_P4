@@ -55,7 +55,6 @@ class MemberCreate extends Component {
   }
 
   async componentDidMount() {
-    console.log('membercreate props', this.props)
     this.getMembers()
   }
 

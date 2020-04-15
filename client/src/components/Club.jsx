@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { readOneClub } from '../services/api-helper';
 import axios from 'axios'
 import CommentCreate from './CommentCreate';
 import MemberCreate from './MemberCreate';
-import UpdateClub from './UpdateClub'
 import '../Styles/Club.css'
 
 class Club extends Component {
@@ -31,20 +30,12 @@ class Club extends Component {
     })
   }
 
-  addHTML = (element, html) => {
-    element.innerHTML = html
-    return element
-  }
+
 
 
   render() {
-    console.log('club.jsx props', this.state.clubData)
     const { clubData, bookData } = this.state
     const { volumeInfo } = bookData
-    let description = document.createElement("div")
-    const html = volumeInfo ? volumeInfo.description : ''
-    description = this.addHTML(description, html)
-    console.log('description', description, html)
 
     return (
       <div id='club-detail'>
@@ -52,7 +43,7 @@ class Club extends Component {
         <div className='club-info'>
           {volumeInfo ?
             <div className='volume-info'>
-              <img src={volumeInfo.imageLinks.thumbnail} />
+              <img src={volumeInfo.imageLinks.thumbnail} alt='http://clipart-library.com/images/rinG8dG7T.png'/>
               <div className='volume-text'>
                 <h3>{volumeInfo.title}</h3>
                 <p>{volumeInfo.authors[0]}</p>
@@ -71,7 +62,7 @@ class Club extends Component {
 
         </div>
 
-        {this.props.currentUser.id == clubData.user_id ?
+        {this.props.currentUser.id === clubData.user_id ?
           <div className='admin-functions'>
             <h2 className='screen-header'>Club Modifications (Admin Only)</h2>
             <div className='club-update'>

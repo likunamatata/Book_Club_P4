@@ -20,7 +20,6 @@ class UpdateClub extends Component {
         next_book_up: ''
       }
     }
-    console.log('clubcreate props', props)
   }
 
   async componentDidMount() {

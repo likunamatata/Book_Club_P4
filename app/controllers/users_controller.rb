@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    render json: @user
+    render json: @user.frontend_data
   end
 
   # POST /users
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      render json: @user
+      render json: @user.frontend_data
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     @user = User.find(@current_user.id)
     @user.clubs << @club
 
-    render json: @user, include: :clubs
+    render json: @user.frontend_data, include: :clubs
   end
 
   def show_clubs
