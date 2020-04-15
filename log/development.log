@@ -31008,3 +31008,52 @@ Processing by ClubsController#index as HTML
 Completed 200 OK in 8ms (Views: 4.5ms | ActiveRecord: 1.1ms | Allocations: 3006)
 
 
+Started POST "/auth/login" for ::1 at 2020-04-15 08:54:14 -0400
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"mike", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"mike", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "mike"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 277ms (Views: 0.5ms | ActiveRecord: 9.1ms | Allocations: 9248)
+
+
+Started GET "/clubs/byuser/6" for ::1 at 2020-04-15 08:54:15 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 86ms (Views: 20.4ms | ActiveRecord: 5.5ms | Allocations: 14304)
+
+
+Started POST "/clubs" for ::1 at 2020-04-15 08:54:40 -0400
+Processing by ClubsController#create as HTML
+  Parameters: {"club"=>{"name"=>"Wednesday", "google_id"=>"MAIdLh7OYaYC", "rules"=>"dada", "user_id"=>6, "read_by"=>"", "next_book_up"=>""}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:49:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:52:in `create'
+  [1m[36mClub Create (11.8ms)[0m  [1m[32mINSERT INTO "clubs" ("google_id", "rules", "created_at", "updated_at", "user_id", "name", "read_by", "next_book_up") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["google_id", "MAIdLh7OYaYC"], ["rules", "dada"], ["created_at", "2020-04-15 12:54:40.505708"], ["updated_at", "2020-04-15 12:54:40.505708"], ["user_id", 6], ["name", "Wednesday"], ["read_by", ""], ["next_book_up", ""]]
+  ↳ app/controllers/clubs_controller.rb:52:in `create'
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:52:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clubs_controller.rb:53:in `create'
+  [1m[36mClub::HABTM_Users Create (0.7ms)[0m  [1m[32mINSERT INTO "clubs_users" ("user_id", "club_id") VALUES ($1, $2)[0m  [["user_id", 6], ["club_id", 21]]
+  ↳ app/controllers/clubs_controller.rb:53:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clubs_controller.rb:53:in `create'
+Completed 201 Created in 60ms (Views: 0.5ms | ActiveRecord: 18.8ms | Allocations: 9307)
+
+
+Started GET "/clubs/byuser/6" for ::1 at 2020-04-15 08:54:42 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 8ms (Views: 3.9ms | ActiveRecord: 2.3ms | Allocations: 3178)
+
+
