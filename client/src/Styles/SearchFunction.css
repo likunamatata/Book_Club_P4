@@ -32,7 +32,8 @@
 }
 
 .volume-container > img {
-  width: 10%;
+  width: 12%;
+  height: 200px;
   object-fit: cover;
 }
 

@@ -43,7 +43,7 @@ class Club extends Component {
         <div className='club-info'>
           {volumeInfo ?
             <div className='volume-info'>
-              <img src={volumeInfo.imageLinks.thumbnail} alt='http://clipart-library.com/images/rinG8dG7T.png'/>
+              <img src={volumeInfo.imageLinks.thumbnail} alt='https://banner2.cleanpng.com/20180806/tpt/kisspng-clip-art-vector-graphics-comic-book-cartoon-news-avon-ma-5b6901039454c0.6370599315336081956076.jpg'/>
               <div className='volume-text'>
                 <h3>{volumeInfo.title}</h3>
                 <p>{volumeInfo.authors[0]}</p>

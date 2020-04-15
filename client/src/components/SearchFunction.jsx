@@ -59,9 +59,10 @@ class SearchFunction extends Component {
   render() {
     let books = this.state.books.length !== 0 && this.state.books.items.map((book, index) => {
       const volumeInfo = book.volumeInfo
+      console.log('volumeInfo.imageLinks', volumeInfo.imageLinks)
       return (
         <div key={index} className='volume-container'>
-          <img src={volumeInfo.imageLinks ? volumeInfo.imageLinks.thumbnail : 'http://clipart-library.com/images/rinG8dG7T.png'} alt={"book cover"} />
+          <img src={volumeInfo.imageLinks ? volumeInfo.imageLinks.smallThumbnail : 'https://banner2.cleanpng.com/20180806/tpt/kisspng-clip-art-vector-graphics-comic-book-cartoon-news-avon-ma-5b6901039454c0.6370599315336081956076.jpg'} alt={"book cover"} />
           <div className='volume-text'><h3>{volumeInfo.title}</h3>
             <p>{volumeInfo.authors ? volumeInfo.authors[0] : 'Author Unknown'}</p>
             <p>{volumeInfo.description}</p>

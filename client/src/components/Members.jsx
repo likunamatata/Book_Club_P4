@@ -23,7 +23,7 @@ class Members extends Component {
       return members.map((member, index) => {
         return (
           <div className="member" key={index}>
-            <p className='member-username'>🤓{member.username}</p>
+            <p className='member-username'>{member.username}</p>
           </div>
         )
       })
