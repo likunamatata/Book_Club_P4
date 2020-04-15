@@ -53,6 +53,7 @@ You can view the deployed app at (https://online-book-club.surge.sh)
 | Improve create club (add deadline, add users, update book) | Thursday | :white_check_mark: | 
 | Titles and Text Clean Up |Monday|:white_check_mark:| 
 | Styling |Tuesday| :white_check_mark:| 
+| Deployed |Wednesday| :white_check_mark:| 
 
 
 * Post-MVP Timeline 
