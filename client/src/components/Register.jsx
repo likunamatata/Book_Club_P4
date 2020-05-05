@@ -13,7 +13,7 @@ const Register = (props) => {
         <p>Email:</p>
         <input name="email" type="text" value={props.formData.email} onChange={props.handleChange} />
         <p>Password:</p>
-        <input name="password" type="password" value={props.formData.password} onChange={props.handleChange} />
+        <input name="password" type="password" placeholder='8 or more characters' value={props.formData.password} onChange={props.handleChange} />
 
         <button>Register</button>
       </form>
