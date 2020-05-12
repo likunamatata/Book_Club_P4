@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { deleteComment } from '../services/api-helper'
+import SubCommentCreate from './SubCommentCreate';
 
 
 class Comments extends Component {
@@ -14,7 +15,7 @@ class Comments extends Component {
 
   render() {
 
-    const { comments, user_id, club_id } = this.props
+    const { comments, user_id, club_id, username } = this.props
 
     const renderComments = () => {
       if (comments) {
@@ -23,7 +24,8 @@ class Comments extends Component {
             <div className="comment" key={comment._id}>
               <p className='comment-text'>"{comment.text}"</p>
               <p className='comment-user'>{comment.username}</p>
-              {user_id === comment.user_id ? <button onClick={() =>deleteComment(club_id, comment.id) }>Delete</button> : null}
+              {user_id === comment.user_id ? <button onClick={() => deleteComment(club_id, comment.id)}>Delete</button> : null}
+              <SubCommentCreate comment_id={comment.id} user_id={user_id} username={username}/>
             </div>
           )
         })

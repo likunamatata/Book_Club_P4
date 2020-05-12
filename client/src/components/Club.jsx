@@ -11,7 +11,8 @@ class Club extends Component {
     super(props);
     this.state = {
       clubData: '',
-      bookData: ''
+      bookData: '',
+      commentFilter: ''
     }
   }
 
@@ -37,23 +38,24 @@ class Club extends Component {
     const { clubData, bookData } = this.state
     const { volumeInfo } = bookData
 
+
     return (
       <div id='club-detail'>
         <h2 className='screen-header'>{clubData.name}</h2>
         <div className='club-info'>
           {volumeInfo ?
             <div className='volume-info'>
-              <img src={volumeInfo.imageLinks.thumbnail} alt='https://banner2.cleanpng.com/20180806/tpt/kisspng-clip-art-vector-graphics-comic-book-cartoon-news-avon-ma-5b6901039454c0.6370599315336081956076.jpg'/>
+              <img src={volumeInfo.imageLinks.thumbnail} alt='https://banner2.cleanpng.com/20180806/tpt/kisspng-clip-art-vector-graphics-comic-book-cartoon-news-avon-ma-5b6901039454c0.6370599315336081956076.jpg' />
               <div className='volume-text'>
                 <h3>{volumeInfo.title}</h3>
                 <p>{volumeInfo.authors[0]}</p>
-                <div dangerouslySetInnerHTML={{__html: volumeInfo.description}}></div>
-                {/* <>{description}</> */}
+                <div dangerouslySetInnerHTML={{ __html: volumeInfo.description }}></div>
               </div>
             </div>
             :
             <p>Book info loading</p>
           }
+
           <div className='club-rules'>
             <h3>Rules for Participation</h3>
             <p className='club-rules'>{clubData.rules}</p>

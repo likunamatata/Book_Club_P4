@@ -141,3 +141,35 @@ export const getMembers = async (club_id) => {
     throw error
   }
 }
+
+// ==================================
+// ================Comments==========
+// ==================================
+export const createSubComment = async (comment_id, subcomment) => {
+  console.log('comment_id', comment_id)
+  try {
+    const resp = await api.post(`/comments/${comment_id}/subcomments`, subcomment)
+    return resp
+  } catch (error) {
+    throw error
+  }
+}
+
+
+export const getSubComments = async (comment_id) => {
+  try {
+    const resp = await api.get(`/comments/${comment_id}/subcomments`)
+    return resp
+  } catch (error) {
+    throw error
+  }
+}
+
+export const deleteSubComment = async (comment_id, subcomment_id) => {
+  try {
+    const resp = await api.delete(`comments/${comment_id}/subcomments/${subcomment_id}`)
+    return resp
+  } catch (error) {
+    throw error
+  }
+}

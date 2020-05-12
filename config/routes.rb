@@ -5,10 +5,15 @@ Rails.application.routes.draw do
   # get 'clubs/:club_id/users/:user_id', to: 'clubs#add_user'
 
   resources :comments
+ 
 
   post 'clubs/:club_id/comments', to: 'comments#create'
   get 'clubs/:club_id/comments', to: 'comments#index'
   delete 'clubs/:club_id/comments/:comment_id', to: 'comments#destroy'
+
+  post 'comments/:comment_id/subcomments', to: 'subcomments#create'
+  get 'comments/:comment_id/subcomments', to: 'subcomments#index'
+  delete 'comments/:comment_id/subcomments/:subcomment_id', to: 'subcomments#destroy'
 
   get 'clubs/byuser/:user_id', to: 'clubs#index'
   get 'clubs/byclub/:club_id', to: 'clubs#read_one'
