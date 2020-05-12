@@ -1,11 +1,11 @@
 import React from 'react'
 
-const CommentForm = (props) => {
-  const { text} = props.comment
+const SubCommentForm = (props) => {
+  const { text} = props.subComment
   return (
-      <form onSubmit={props.handleSubmit} className='comments-form'>
+      <form onSubmit={props.handleSubmit} className='subcomments-form'>
       <input
-          placeholder='Your comment goes here'
+          placeholder='Your subcomment goes here'
           value={text}
           name='text'
           type='text'
@@ -17,4 +17,4 @@ const CommentForm = (props) => {
   )
 }
 
-export default CommentForm
+export default SubCommentForm

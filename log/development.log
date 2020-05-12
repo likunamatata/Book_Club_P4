@@ -31959,3 +31959,991 @@ Processing by ClubsController#get_members as HTML
 Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 14.1ms | Allocations: 1532)
 
 
+  [1m[35m (8.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6746742726745113120)[0m
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateSubcomments (20200505210754)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6746742726745113120)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6746742726745113120)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateSubcomments (20200505210754)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (118.5ms)[0m  [1m[35mCREATE TABLE "subcomments" ("id" bigserial primary key, "text" character varying, "user_id" integer, "username" character varying, "comment_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_7c87e2401c"
+FOREIGN KEY ("comment_id")
+  REFERENCES "comments" ("id")
+)[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE  INDEX  "index_subcomments_on_comment_id" ON "subcomments"  ("comment_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200505210754"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6746742726745113120)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/auth/verify" for ::1 at 2020-05-05 18:00:59 -0400
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#verify as HTML
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 280)
+
+
+Started POST "/auth/login" for ::1 at 2020-05-05 18:01:02 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"mike", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"mike", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "mike"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 274ms (Views: 0.4ms | ActiveRecord: 6.3ms | Allocations: 9211)
+
+
+Started GET "/clubs/byuser/6" for ::1 at 2020-05-05 18:01:03 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (7.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (1.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 85ms (Views: 30.5ms | ActiveRecord: 13.0ms | Allocations: 14432)
+
+
+Started GET "/clubs/byclub/13" for ::1 at 2020-05-05 18:01:04 -0400
+Started GET "/clubs/13/comments" for ::1 at 2020-05-05 18:01:04 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mComment Load (6.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 49ms (Views: 23.8ms | ActiveRecord: 15.6ms | Allocations: 6687)
+
+
+Started GET "/comments/undefined/subcomments" for ::1 at 2020-05-05 18:01:04 -0400
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"undefined"}
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.0ms | Allocations: 3034)
+
+
+  
+NoMethodError (undefined method `subcomments' for #<Comment::ActiveRecord_Relation:0x00007fdcd10c8f68>):
+  
+app/controllers/subcomments_controller.rb:4:in `index'
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (0.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 6ms (Views: 0.7ms | ActiveRecord: 1.2ms | Allocations: 1759)
+
+
+Started GET "/clubs/byclub/13/members" for ::1 at 2020-05-05 18:01:05 -0400
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 11ms (Views: 0.8ms | ActiveRecord: 1.3ms | Allocations: 3850)
+
+
+Started POST "/comments/undefined/subcomments" for ::1 at 2020-05-05 18:01:21 -0400
+Processing by SubcommentsController#create as HTML
+  Parameters: {"text"=>"what are u laughing at?", "username"=>"mike", "user_id"=>6, "comment_id"=>"undefined", "subcomment"=>{"text"=>"what are u laughing at?", "user_id"=>6, "username"=>"mike"}}
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/subcomments_controller.rb:12:in `create'
+Completed 404 Not Found in 2ms (ActiveRecord: 2.4ms | Allocations: 751)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Comment with 'id'=undefined):
+  
+app/controllers/subcomments_controller.rb:12:in `create'
+Started GET "/auth/verify" for ::1 at 2020-05-05 18:02:24 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (101.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 200 OK in 104ms (Views: 0.3ms | ActiveRecord: 101.3ms | Allocations: 770)
+
+
+Started GET "/clubs/13/comments" for ::1 at 2020-05-05 18:02:24 -0400
+Started GET "/clubs/byclub/13" for ::1 at 2020-05-05 18:02:24 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"13"}
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mComment Load (20.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 23ms (Views: 2.5ms | ActiveRecord: 20.2ms | Allocations: 2030)
+
+
+  [1m[36mClub Load (20.0ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Started GET "/comments/undefined/subcomments" for ::1 at 2020-05-05 18:02:24 -0400
+Completed 200 OK in 88ms (Views: 0.5ms | ActiveRecord: 20.0ms | Allocations: 2347)
+
+
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"undefined"}
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms | Allocations: 1673)
+
+
+Started GET "/clubs/byclub/13/members" for ::1 at 2020-05-05 18:02:24 -0400
+  
+NoMethodError (undefined method `subcomments' for #<Comment::ActiveRecord_Relation:0x00007fdcd09fd558>):
+  
+app/controllers/subcomments_controller.rb:4:in `index'
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (0.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 9741)
+
+
+Started GET "/auth/verify" for ::1 at 2020-05-05 18:02:28 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 200 OK in 92ms (Views: 0.2ms | ActiveRecord: 2.8ms | Allocations: 771)
+
+
+Started GET "/clubs/13/comments" for ::1 at 2020-05-05 18:02:28 -0400
+Started GET "/clubs/byclub/13" for ::1 at 2020-05-05 18:02:28 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"13"}
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 13]]
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.8ms | Allocations: 1786)
+
+
+Completed 200 OK in 4ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 1675)
+
+
+Started GET "/comments/undefined/subcomments" for ::1 at 2020-05-05 18:02:28 -0400
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"undefined"}
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 1556)
+
+
+  
+NoMethodError (undefined method `subcomments' for #<Comment::ActiveRecord_Relation:0x00007fdcd0294898>):
+  
+app/controllers/subcomments_controller.rb:4:in `index'
+Started GET "/clubs/byclub/13/members" for ::1 at 2020-05-05 18:02:29 -0400
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (0.7ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 1.2ms | Allocations: 3056)
+
+
+Started GET "/auth/verify" for ::1 at 2020-05-05 18:02:30 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 767)
+
+
+Started GET "/clubs/13/comments" for ::1 at 2020-05-05 18:02:31 -0400
+Started GET "/clubs/byclub/13" for ::1 at 2020-05-05 18:02:31 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 13]]
+Processing by ClubsController#read_one as HTML
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+  Parameters: {"club_id"=>"13"}
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.4ms | Allocations: 1944)
+
+
+  [1m[36mClub Load (0.7ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+Started GET "/comments/undefined/subcomments" for ::1 at 2020-05-05 18:02:31 -0400
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 97ms (Views: 0.5ms | ActiveRecord: 0.7ms | Allocations: 1464)
+
+
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"undefined"}
+Started GET "/clubs/byclub/13/members" for ::1 at 2020-05-05 18:02:31 -0400
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 0.0ms | Allocations: 2033)
+
+
+Processing by ClubsController#get_members as HTML
+  
+NoMethodError (undefined method `subcomments' for #<Comment::ActiveRecord_Relation:0x00007fdcd030f250>):
+  
+app/controllers/subcomments_controller.rb:4:in `index'
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 2467)
+
+
+Started POST "/comments/undefined/subcomments" for ::1 at 2020-05-05 18:02:37 -0400
+Processing by SubcommentsController#create as HTML
+  Parameters: {"text"=>"fdfd", "username"=>"mike", "user_id"=>6, "comment_id"=>"undefined", "subcomment"=>{"text"=>"fdfd", "user_id"=>6, "username"=>"mike"}}
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/subcomments_controller.rb:12:in `create'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.5ms | Allocations: 629)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Comment with 'id'=undefined):
+  
+app/controllers/subcomments_controller.rb:12:in `create'
+Started GET "/auth/verify" for ::1 at 2020-05-05 18:03:09 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (15.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 15.9ms | Allocations: 766)
+
+
+Started GET "/clubs/13/comments" for ::1 at 2020-05-05 18:03:09 -0400
+Started GET "/clubs/byclub/13" for ::1 at 2020-05-05 18:03:09 -0400
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (6.3ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 6.3ms | Allocations: 787)
+
+
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"13"}
+Started GET "/clubs/byclub/13/members" for ::1 at 2020-05-05 18:03:09 -0400
+  [1m[36mComment Load (33.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 63ms (Views: 28.3ms | ActiveRecord: 33.9ms | Allocations: 1478)
+
+
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"13"}
+Started GET "/comments/undefined/subcomments" for ::1 at 2020-05-05 18:03:10 -0400
+  [1m[36mClub Load (25.0ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"undefined"}
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 1555)
+
+
+  
+NoMethodError (undefined method `subcomments' for #<Comment::ActiveRecord_Relation:0x00007fdcd0d9af30>):
+  
+app/controllers/subcomments_controller.rb:4:in `index'
+  [1m[36mUser Load (30.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 219ms (Views: 0.2ms | ActiveRecord: 55.6ms | Allocations: 86874)
+
+
+Started GET "/auth/verify" for ::1 at 2020-05-05 18:03:43 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (7.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 200 OK in 12ms (Views: 0.5ms | ActiveRecord: 7.4ms | Allocations: 768)
+
+
+Started GET "/clubs/13/comments" for ::1 at 2020-05-05 18:03:43 -0400
+Started GET "/clubs/byclub/13" for ::1 at 2020-05-05 18:03:43 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"13"}
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mComment Load (1.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 13]]
+  [1m[36mClub Load (1.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 8ms (Views: 4.5ms | ActiveRecord: 1.9ms | Allocations: 1553)
+
+
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 1.6ms | Allocations: 1656)
+
+
+Started GET "/comments/43/subcomments" for ::1 at 2020-05-05 18:03:43 -0400
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"43"}
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms | Allocations: 1555)
+
+
+  
+NoMethodError (undefined method `subcomments' for #<Comment::ActiveRecord_Relation:0x00007fdccfc5ca20>):
+  
+app/controllers/subcomments_controller.rb:4:in `index'
+Started GET "/clubs/byclub/13/members" for ::1 at 2020-05-05 18:03:43 -0400
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (7.7ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (8.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 19ms (Views: 0.1ms | ActiveRecord: 16.4ms | Allocations: 15887)
+
+
+Started POST "/comments/43/subcomments" for ::1 at 2020-05-05 18:03:59 -0400
+Processing by SubcommentsController#create as HTML
+  Parameters: {"text"=>"likuna", "username"=>"mike", "comment_id"=>"43", "user_id"=>6, "subcomment"=>{"text"=>"likuna", "user_id"=>6, "username"=>"mike", "comment_id"=>"43"}}
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  ↳ app/controllers/subcomments_controller.rb:12:in `create'
+[31mUnpermitted parameter: :comment_id[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/subcomments_controller.rb:13:in `create'
+  [1m[36mSubcomment Create (3.8ms)[0m  [1m[32mINSERT INTO "subcomments" ("text", "user_id", "username", "comment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "likuna"], ["user_id", 6], ["username", "mike"], ["comment_id", 43], ["created_at", "2020-05-05 22:03:59.697623"], ["updated_at", "2020-05-05 22:03:59.697623"]]
+  ↳ app/controllers/subcomments_controller.rb:13:in `create'
+  [1m[35m (11.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/subcomments_controller.rb:13:in `create'
+Completed 500 Internal Server Error in 113ms (ActiveRecord: 18.1ms | Allocations: 44991)
+
+
+  
+NoMethodError (undefined method `subcomment_url' for #<SubcommentsController:0x00007fdcd0c439e8>
+Did you mean?  comment_url
+               comments_url):
+  
+app/controllers/subcomments_controller.rb:16:in `create'
+Started POST "/comments/43/subcomments" for ::1 at 2020-05-05 18:05:00 -0400
+Processing by SubcommentsController#create as HTML
+  Parameters: {"text"=>"likuna", "username"=>"mike", "comment_id"=>"43", "user_id"=>6, "subcomment"=>{"text"=>"likuna", "user_id"=>6, "username"=>"mike", "comment_id"=>"43"}}
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  ↳ app/controllers/subcomments_controller.rb:12:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/subcomments_controller.rb:13:in `create'
+  [1m[36mSubcomment Create (1.0ms)[0m  [1m[32mINSERT INTO "subcomments" ("text", "user_id", "username", "comment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "likuna"], ["user_id", 6], ["username", "mike"], ["comment_id", 43], ["created_at", "2020-05-05 22:05:01.060784"], ["updated_at", "2020-05-05 22:05:01.060784"]]
+  ↳ app/controllers/subcomments_controller.rb:13:in `create'
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/subcomments_controller.rb:13:in `create'
+Completed 500 Internal Server Error in 86ms (ActiveRecord: 10.5ms | Allocations: 48472)
+
+
+  
+NoMethodError (undefined method `subcomment_url' for #<SubcommentsController:0x00007fdcd0cf4c48>
+Did you mean?  comment_url
+               comments_url):
+  
+app/controllers/subcomments_controller.rb:16:in `create'
+Started POST "/comments/43/subcomments" for ::1 at 2020-05-05 18:09:15 -0400
+Processing by SubcommentsController#create as HTML
+  Parameters: {"text"=>"likuna", "username"=>"mike", "comment_id"=>"43", "user_id"=>6, "subcomment"=>{"text"=>"likuna", "user_id"=>6, "username"=>"mike", "comment_id"=>"43"}}
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  ↳ app/controllers/subcomments_controller.rb:12:in `create'
+[31mUnpermitted parameter: :comment_id[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/subcomments_controller.rb:13:in `create'
+  [1m[36mSubcomment Create (0.6ms)[0m  [1m[32mINSERT INTO "subcomments" ("text", "user_id", "username", "comment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "likuna"], ["user_id", 6], ["username", "mike"], ["comment_id", 43], ["created_at", "2020-05-05 22:09:15.168105"], ["updated_at", "2020-05-05 22:09:15.168105"]]
+  ↳ app/controllers/subcomments_controller.rb:13:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/subcomments_controller.rb:13:in `create'
+Completed 500 Internal Server Error in 90ms (ActiveRecord: 8.8ms | Allocations: 48501)
+
+
+  
+NoMethodError (undefined method `subcomment_url' for #<SubcommentsController:0x00007fdccff0bd48>
+Did you mean?  comment_url
+               comments_url):
+  
+app/controllers/subcomments_controller.rb:16:in `create'
+Started POST "/comments/43/subcomments" for ::1 at 2020-05-05 18:43:42 -0400
+Processing by SubcommentsController#create as HTML
+  Parameters: {"text"=>"likuna", "username"=>"mike", "comment_id"=>"43", "user_id"=>6, "subcomment"=>{"text"=>"likuna", "user_id"=>6, "username"=>"mike", "comment_id"=>"43"}}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1645)
+
+
+  
+NameError (uninitialized constant SubcommentsController::Subomment
+Did you mean?  Comment):
+  
+app/controllers/subcomments_controller.rb:12:in `create'
+Started POST "/comments/43/subcomments" for ::1 at 2020-05-05 18:44:31 -0400
+Processing by SubcommentsController#create as HTML
+  Parameters: {"text"=>"likuna", "username"=>"mike", "comment_id"=>"43", "user_id"=>6, "subcomment"=>{"text"=>"likuna", "user_id"=>6, "username"=>"mike", "comment_id"=>"43"}}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 4.0ms | Allocations: 1640)
+
+
+  
+NameError (uninitialized constant SubcommentsController::Subomment
+Did you mean?  Comment):
+  
+app/controllers/subcomments_controller.rb:12:in `create'
+Started POST "/comments/43/subcomments" for ::1 at 2020-05-05 18:45:02 -0400
+Processing by SubcommentsController#create as HTML
+  Parameters: {"text"=>"likuna", "username"=>"mike", "comment_id"=>"43", "user_id"=>6, "subcomment"=>{"text"=>"likuna", "user_id"=>6, "username"=>"mike", "comment_id"=>"43"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/subcomments_controller.rb:19:in `create'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  ↳ app/controllers/subcomments_controller.rb:19:in `create'
+  [1m[36mSubcomment Create (2.5ms)[0m  [1m[32mINSERT INTO "subcomments" ("text", "user_id", "username", "comment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "likuna"], ["user_id", 6], ["username", "mike"], ["comment_id", 43], ["created_at", "2020-05-05 22:45:02.366959"], ["updated_at", "2020-05-05 22:45:02.366959"]]
+  ↳ app/controllers/subcomments_controller.rb:19:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/subcomments_controller.rb:19:in `create'
+Completed 500 Internal Server Error in 100ms (ActiveRecord: 10.6ms | Allocations: 48531)
+
+
+  
+NoMethodError (undefined method `subcomment_url' for #<SubcommentsController:0x00007fdccfb5cff8>
+Did you mean?  comment_url
+               comments_url):
+  
+app/controllers/subcomments_controller.rb:20:in `create'
+Started POST "/comments/43/subcomments" for ::1 at 2020-05-05 18:51:18 -0400
+Processing by SubcommentsController#create as HTML
+  Parameters: {"text"=>"likuna", "username"=>"mike", "comment_id"=>"43", "user_id"=>6, "subcomment"=>{"text"=>"likuna", "user_id"=>6, "username"=>"mike", "comment_id"=>"43"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/subcomments_controller.rb:15:in `create'
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  ↳ app/controllers/subcomments_controller.rb:15:in `create'
+  [1m[36mSubcomment Create (1.1ms)[0m  [1m[32mINSERT INTO "subcomments" ("text", "user_id", "username", "comment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "likuna"], ["user_id", 6], ["username", "mike"], ["comment_id", 43], ["created_at", "2020-05-05 22:51:19.058070"], ["updated_at", "2020-05-05 22:51:19.058070"]]
+  ↳ app/controllers/subcomments_controller.rb:15:in `create'
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/subcomments_controller.rb:15:in `create'
+Completed 500 Internal Server Error in 107ms (ActiveRecord: 3.3ms | Allocations: 48231)
+
+
+  
+NoMethodError (undefined method `subcomment_url' for #<SubcommentsController:0x00007fdccfa89360>
+Did you mean?  comment_url
+               comments_url):
+  
+app/controllers/subcomments_controller.rb:16:in `create'
+Started POST "/comments/43/subcomments" for ::1 at 2020-05-05 18:54:34 -0400
+  
+SyntaxError (/Users/liakapanadze/Mandalorians/PortfolioMaster/Book_Club_P4/app/controllers/subcomments_controller.rb:13: syntax error, unexpected ')', expecting end
+      )
+      ^):
+  
+app/controllers/subcomments_controller.rb:13: syntax error, unexpected ')', expecting end
+app/controllers/subcomments_controller.rb:13: syntax error, unexpected ')', expecting end
+Started GET "/comments/43/subcomments" for ::1 at 2020-05-05 18:58:41 -0400
+Processing by SubcommentsController#index as */*
+  Parameters: {"comment_id"=>"43"}
+  [1m[36mSubcomment Load (0.4ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 43]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 27ms (Views: 10.3ms | ActiveRecord: 13.0ms | Allocations: 6493)
+
+
+Started POST "/comments/43/subcomments" for ::1 at 2020-05-05 19:01:23 -0400
+Processing by SubcommentsController#create as HTML
+  Parameters: {"text"=>"likuna", "username"=>"mike", "comment_id"=>"43", "user_id"=>6, "subcomment"=>{"text"=>"likuna", "user_id"=>6, "username"=>"mike", "comment_id"=>"43"}}
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  ↳ app/controllers/subcomments_controller.rb:19:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/subcomments_controller.rb:20:in `create'
+  [1m[36mSubcomment Create (0.5ms)[0m  [1m[32mINSERT INTO "subcomments" ("text", "user_id", "username", "comment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "likuna"], ["user_id", 6], ["username", "mike"], ["comment_id", 43], ["created_at", "2020-05-05 23:01:23.790361"], ["updated_at", "2020-05-05 23:01:23.790361"]]
+  ↳ app/controllers/subcomments_controller.rb:20:in `create'
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/subcomments_controller.rb:20:in `create'
+Completed 204 No Content in 30ms (ActiveRecord: 14.3ms | Allocations: 12694)
+
+
+Started GET "/comments/43/subcomments" for ::1 at 2020-05-05 19:01:23 -0400
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"43"}
+  [1m[36mSubcomment Load (0.3ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 43]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 10ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 1678)
+
+
+Started POST "/comments/43/subcomments" for ::1 at 2020-05-05 19:01:41 -0400
+Processing by SubcommentsController#create as HTML
+  Parameters: {"text"=>"that's a funny one hehe", "username"=>"mike", "comment_id"=>"43", "user_id"=>6, "subcomment"=>{"text"=>"that's a funny one hehe", "user_id"=>6, "username"=>"mike", "comment_id"=>"43"}}
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  ↳ app/controllers/subcomments_controller.rb:19:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/subcomments_controller.rb:20:in `create'
+  [1m[36mSubcomment Create (1.2ms)[0m  [1m[32mINSERT INTO "subcomments" ("text", "user_id", "username", "comment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "that's a funny one hehe"], ["user_id", 6], ["username", "mike"], ["comment_id", 43], ["created_at", "2020-05-05 23:01:41.972009"], ["updated_at", "2020-05-05 23:01:41.972009"]]
+  ↳ app/controllers/subcomments_controller.rb:20:in `create'
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/subcomments_controller.rb:20:in `create'
+Completed 204 No Content in 10ms (ActiveRecord: 3.5ms | Allocations: 3216)
+
+
+Started GET "/comments/43/subcomments" for ::1 at 2020-05-05 19:01:41 -0400
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"43"}
+  [1m[36mSubcomment Load (0.5ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 43]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.5ms | Allocations: 1785)
+
+
+Started POST "/clubs/13/comments" for ::1 at 2020-05-05 19:01:49 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"another comment", "username"=>"mike", "club_id"=>"13", "user_id"=>6, "comment"=>{"text"=>"another comment", "user_id"=>6, "club_id"=>"13", "username"=>"mike"}}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mClub Load (0.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[36mComment Create (2.1ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "user_id", "club_id", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "another comment"], ["created_at", "2020-05-05 23:01:49.299758"], ["updated_at", "2020-05-05 23:01:49.299758"], ["user_id", 6], ["club_id", 13], ["username", "mike"]]
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+Completed 201 Created in 43ms (Views: 1.1ms | ActiveRecord: 11.1ms | Allocations: 17837)
+
+
+Started GET "/comments/44/subcomments" for ::1 at 2020-05-05 19:01:49 -0400
+Started GET "/clubs/13/comments" for ::1 at 2020-05-05 19:01:49 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.4ms | Allocations: 1146)
+
+
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"44"}
+  [1m[36mSubcomment Load (0.4ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 44]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.6ms | Allocations: 979)
+
+
+Started POST "/comments/44/subcomments" for ::1 at 2020-05-05 19:01:55 -0400
+Processing by SubcommentsController#create as HTML
+  Parameters: {"text"=>"another sub comment", "username"=>"mike", "comment_id"=>"44", "user_id"=>6, "subcomment"=>{"text"=>"another sub comment", "user_id"=>6, "username"=>"mike", "comment_id"=>"44"}}
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/subcomments_controller.rb:19:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/subcomments_controller.rb:20:in `create'
+  [1m[36mSubcomment Create (0.9ms)[0m  [1m[32mINSERT INTO "subcomments" ("text", "user_id", "username", "comment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "another sub comment"], ["user_id", 6], ["username", "mike"], ["comment_id", 44], ["created_at", "2020-05-05 23:01:55.201430"], ["updated_at", "2020-05-05 23:01:55.201430"]]
+  ↳ app/controllers/subcomments_controller.rb:20:in `create'
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/subcomments_controller.rb:20:in `create'
+Completed 204 No Content in 10ms (ActiveRecord: 3.9ms | Allocations: 3222)
+
+
+Started GET "/comments/44/subcomments" for ::1 at 2020-05-05 19:01:55 -0400
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"44"}
+  [1m[36mSubcomment Load (0.3ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 44]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 1004)
+
+
+Started POST "/comments/44/subcomments" for ::1 at 2020-05-05 19:02:03 -0400
+Processing by SubcommentsController#create as HTML
+  Parameters: {"text"=>"likuna made it work", "username"=>"mike", "comment_id"=>"44", "user_id"=>6, "subcomment"=>{"text"=>"likuna made it work", "user_id"=>6, "username"=>"mike", "comment_id"=>"44"}}
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/subcomments_controller.rb:19:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/subcomments_controller.rb:20:in `create'
+  [1m[36mSubcomment Create (0.5ms)[0m  [1m[32mINSERT INTO "subcomments" ("text", "user_id", "username", "comment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "likuna made it work"], ["user_id", 6], ["username", "mike"], ["comment_id", 44], ["created_at", "2020-05-05 23:02:03.029115"], ["updated_at", "2020-05-05 23:02:03.029115"]]
+  ↳ app/controllers/subcomments_controller.rb:20:in `create'
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/subcomments_controller.rb:20:in `create'
+Completed 204 No Content in 9ms (ActiveRecord: 3.0ms | Allocations: 3215)
+
+
+Started GET "/comments/44/subcomments" for ::1 at 2020-05-05 19:02:03 -0400
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"44"}
+  [1m[36mSubcomment Load (0.7ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 44]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 13ms (Views: 12.3ms | ActiveRecord: 0.7ms | Allocations: 1137)
+
+
+Started POST "/clubs/13/comments" for ::1 at 2020-05-05 19:03:08 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"this is the main", "username"=>"mike", "club_id"=>"13", "user_id"=>6, "comment"=>{"text"=>"this is the main", "user_id"=>6, "club_id"=>"13", "username"=>"mike"}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[36mComment Create (0.6ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "user_id", "club_id", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "this is the main"], ["created_at", "2020-05-05 23:03:08.470294"], ["updated_at", "2020-05-05 23:03:08.470294"], ["user_id", 6], ["club_id", 13], ["username", "mike"]]
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+Completed 201 Created in 11ms (Views: 0.6ms | ActiveRecord: 3.4ms | Allocations: 3511)
+
+
+Started GET "/clubs/13/comments" for ::1 at 2020-05-05 19:03:08 -0400
+Started GET "/comments/45/subcomments" for ::1 at 2020-05-05 19:03:08 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 13]]
+Processing by SubcommentsController#index as HTML
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+  Parameters: {"comment_id"=>"45"}
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 1.0ms | Allocations: 2214)
+
+
+  [1m[36mSubcomment Load (0.5ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 45]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.5ms | Allocations: 1094)
+
+
+Started POST "/clubs/13/comments" for ::1 at 2020-05-05 19:03:21 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"this is the main thread comment", "username"=>"mike", "club_id"=>"13", "user_id"=>6, "comment"=>{"text"=>"this is the main thread comment", "user_id"=>6, "club_id"=>"13", "username"=>"mike"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mClub Load (0.2ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[36mComment Create (0.7ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "user_id", "club_id", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "this is the main thread comment"], ["created_at", "2020-05-05 23:03:21.623545"], ["updated_at", "2020-05-05 23:03:21.623545"], ["user_id", 6], ["club_id", 13], ["username", "mike"]]
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+Completed 201 Created in 10ms (Views: 0.5ms | ActiveRecord: 3.3ms | Allocations: 3506)
+
+
+Started GET "/clubs/13/comments" for ::1 at 2020-05-05 19:03:21 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"13"}
+Started GET "/comments/46/subcomments" for ::1 at 2020-05-05 19:03:21 -0400
+  [1m[36mComment Load (1.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Processing by SubcommentsController#index as HTML
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 1.7ms | Allocations: 2345)
+
+
+  Parameters: {"comment_id"=>"46"}
+  [1m[36mSubcomment Load (0.6ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 46]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.6ms | Allocations: 933)
+
+
+Started POST "/comments/46/subcomments" for ::1 at 2020-05-05 19:03:29 -0400
+Processing by SubcommentsController#create as HTML
+  Parameters: {"text"=>"this is a sub-comment", "username"=>"mike", "comment_id"=>"46", "user_id"=>6, "subcomment"=>{"text"=>"this is a sub-comment", "user_id"=>6, "username"=>"mike", "comment_id"=>"46"}}
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/controllers/subcomments_controller.rb:19:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/subcomments_controller.rb:20:in `create'
+  [1m[36mSubcomment Create (0.5ms)[0m  [1m[32mINSERT INTO "subcomments" ("text", "user_id", "username", "comment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "this is a sub-comment"], ["user_id", 6], ["username", "mike"], ["comment_id", 46], ["created_at", "2020-05-05 23:03:29.909995"], ["updated_at", "2020-05-05 23:03:29.909995"]]
+  ↳ app/controllers/subcomments_controller.rb:20:in `create'
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/subcomments_controller.rb:20:in `create'
+Completed 204 No Content in 13ms (ActiveRecord: 2.9ms | Allocations: 3215)
+
+
+Started GET "/comments/46/subcomments" for ::1 at 2020-05-05 19:03:29 -0400
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"46"}
+  [1m[36mSubcomment Load (0.3ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 46]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.3ms | Allocations: 1004)
+
+
+Started GET "/clubs/byuser/6" for ::1 at 2020-05-05 19:10:40 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (0.5ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 14ms (Views: 7.9ms | ActiveRecord: 3.6ms | Allocations: 4024)
+
+
+Started GET "/clubs/14/comments" for ::1 at 2020-05-05 19:10:41 -0400
+Started GET "/clubs/byclub/14" for ::1 at 2020-05-05 19:10:41 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"14"}
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 14]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.6ms | Allocations: 949)
+
+
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"14"}
+  [1m[36mClub Load (0.5ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 0.7ms | Allocations: 893)
+
+
+Started GET "/clubs/byclub/14/members" for ::1 at 2020-05-05 19:10:41 -0400
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"14"}
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 14]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 1.2ms | Allocations: 1953)
+
+
+Started POST "/clubs/14/comments" for ::1 at 2020-05-05 19:10:47 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"text"=>"thread", "username"=>"mike", "club_id"=>"14", "user_id"=>6, "comment"=>{"text"=>"thread", "user_id"=>6, "club_id"=>"14", "username"=>"mike"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:20:in `create'
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[36mComment Create (2.6ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "user_id", "club_id", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "thread"], ["created_at", "2020-05-05 23:10:47.569838"], ["updated_at", "2020-05-05 23:10:47.569838"], ["user_id", 6], ["club_id", 14], ["username", "mike"]]
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+  [1m[35m (6.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:25:in `create'
+Completed 201 Created in 18ms (Views: 0.5ms | ActiveRecord: 10.3ms | Allocations: 3508)
+
+
+Started GET "/clubs/14/comments" for ::1 at 2020-05-05 19:10:47 -0400
+Started GET "/comments/47/subcomments" for ::1 at 2020-05-05 19:10:47 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"14"}
+Processing by SubcommentsController#index as HTML
+  [1m[36mComment Load (1.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 14]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+  Parameters: {"comment_id"=>"47"}
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 1.9ms | Allocations: 1959)
+
+
+  [1m[36mSubcomment Load (0.7ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 47]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.7ms | Allocations: 1097)
+
+
+Started POST "/comments/47/subcomments" for ::1 at 2020-05-05 19:10:53 -0400
+Processing by SubcommentsController#create as HTML
+  Parameters: {"text"=>"subcomment", "username"=>"mike", "comment_id"=>"47", "user_id"=>6, "subcomment"=>{"text"=>"subcomment", "user_id"=>6, "username"=>"mike", "comment_id"=>"47"}}
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/controllers/subcomments_controller.rb:19:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/subcomments_controller.rb:20:in `create'
+  [1m[36mSubcomment Create (1.0ms)[0m  [1m[32mINSERT INTO "subcomments" ("text", "user_id", "username", "comment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["text", "subcomment"], ["user_id", 6], ["username", "mike"], ["comment_id", 47], ["created_at", "2020-05-05 23:10:53.077329"], ["updated_at", "2020-05-05 23:10:53.077329"]]
+  ↳ app/controllers/subcomments_controller.rb:20:in `create'
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/subcomments_controller.rb:20:in `create'
+Completed 204 No Content in 14ms (ActiveRecord: 4.0ms | Allocations: 3219)
+
+
+Started GET "/comments/47/subcomments" for ::1 at 2020-05-05 19:10:53 -0400
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"47"}
+  [1m[36mSubcomment Load (0.2ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 47]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms | Allocations: 1004)
+
+
+Started GET "/auth/verify" for ::1 at 2020-05-12 16:47:22 -0400
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#verify as HTML
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 279)
+
+
+Started POST "/auth/login" for ::1 at 2020-05-12 16:47:52 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"mike", "email"=>"", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"mike", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "mike"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 329ms (Views: 0.4ms | ActiveRecord: 12.9ms | Allocations: 9213)
+
+
+Started GET "/clubs/byuser/6" for ::1 at 2020-05-12 16:47:53 -0400
+Processing by ClubsController#index as HTML
+  Parameters: {"user_id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:8:in `index'
+  [1m[36mClub Load (1.2ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" INNER JOIN "clubs_users" ON "clubs"."id" = "clubs_users"."club_id" WHERE "clubs_users"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/clubs_controller.rb:11:in `index'
+Completed 200 OK in 48ms (Views: 19.0ms | ActiveRecord: 8.1ms | Allocations: 14436)
+
+
+Started GET "/clubs/13/comments" for ::1 at 2020-05-12 16:47:55 -0400
+Started GET "/clubs/byclub/13" for ::1 at 2020-05-12 16:47:55 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 24ms (Views: 12.1ms | ActiveRecord: 7.9ms | Allocations: 7421)
+
+
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (0.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 7ms (Views: 1.6ms | ActiveRecord: 1.3ms | Allocations: 1007)
+
+
+Started GET "/comments/43/subcomments" for ::1 at 2020-05-12 16:47:55 -0400
+Started GET "/comments/46/subcomments" for ::1 at 2020-05-12 16:47:55 -0400
+Started GET "/comments/44/subcomments" for ::1 at 2020-05-12 16:47:55 -0400
+Started GET "/comments/45/subcomments" for ::1 at 2020-05-12 16:47:55 -0400
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"46"}
+Started GET "/clubs/byclub/13/members" for ::1 at 2020-05-12 16:47:55 -0400
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"43"}
+  [1m[36mSubcomment Load (14.8ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 46]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+  [1m[36mSubcomment Load (9.8ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 43]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 45ms (Views: 29.1ms | ActiveRecord: 15.3ms | Allocations: 6384)
+
+
+Completed 200 OK in 84ms (Views: 9.0ms | ActiveRecord: 70.2ms | Allocations: 9425)
+
+
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"13"}
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"44"}
+  [1m[36mClub Load (6.0ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mSubcomment Load (3.2ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 44]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Processing by SubcommentsController#index as HTML
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 13]]
+  Parameters: {"comment_id"=>"45"}
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 39ms (Views: 0.2ms | ActiveRecord: 23.7ms | Allocations: 6784)
+
+
+Completed 200 OK in 19ms (Views: 14.7ms | ActiveRecord: 4.0ms | Allocations: 4769)
+
+
+  [1m[36mSubcomment Load (2.4ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 45]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 10ms (Views: 5.9ms | ActiveRecord: 2.7ms | Allocations: 1614)
+
+
+Started GET "/auth/verify" for ::1 at 2020-05-12 16:48:51 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 770)
+
+
+Started GET "/auth/verify" for ::1 at 2020-05-12 16:49:05 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 770)
+
+
+Started GET "/auth/verify" for ::1 at 2020-05-12 16:49:06 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (16.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 16.4ms | Allocations: 767)
+
+
+Started GET "/auth/verify" for ::1 at 2020-05-12 16:49:25 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 767)
+
+
+Started GET "/clubs/13/comments" for ::1 at 2020-05-12 16:49:25 -0400
+Started GET "/clubs/byclub/13" for ::1 at 2020-05-12 16:49:25 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"13"}
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (1.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 1.4ms | Allocations: 791)
+
+
+Started GET "/clubs/byclub/13/members" for ::1 at 2020-05-12 16:49:25 -0400
+  [1m[36mComment Load (18.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 13]]
+Processing by ClubsController#get_members as HTML
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+  Parameters: {"club_id"=>"13"}
+Completed 200 OK in 35ms (Views: 15.4ms | ActiveRecord: 18.7ms | Allocations: 4687)
+
+
+  [1m[36mClub Load (47.6ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+Started GET "/comments/43/subcomments" for ::1 at 2020-05-12 16:49:26 -0400
+Started GET "/comments/44/subcomments" for ::1 at 2020-05-12 16:49:26 -0400
+Started GET "/comments/45/subcomments" for ::1 at 2020-05-12 16:49:26 -0400
+Started GET "/comments/46/subcomments" for ::1 at 2020-05-12 16:49:26 -0400
+Processing by SubcommentsController#index as HTML
+Processing by SubcommentsController#index as HTML
+  [1m[36mUser Load (21.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 13]]
+  Parameters: {"comment_id"=>"44"}
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+  Parameters: {"comment_id"=>"43"}
+Completed 200 OK in 183ms (Views: 0.2ms | ActiveRecord: 68.8ms | Allocations: 5252)
+
+
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"46"}
+  [1m[36mSubcomment Load (24.2ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 43]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 28ms (Views: 3.5ms | ActiveRecord: 24.2ms | Allocations: 3124)
+
+
+  [1m[36mSubcomment Load (7.7ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 46]]
+Processing by SubcommentsController#index as HTML
+  [1m[36mSubcomment Load (11.1ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 44]]
+  Parameters: {"comment_id"=>"45"}
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 26ms (Views: 17.8ms | ActiveRecord: 7.7ms | Allocations: 4613)
+
+
+Completed 200 OK in 53ms (Views: 41.0ms | ActiveRecord: 11.1ms | Allocations: 6661)
+
+
+  [1m[36mSubcomment Load (2.3ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 45]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 2.3ms | Allocations: 1944)
+
+
+Started GET "/auth/verify" for ::1 at 2020-05-12 16:49:28 -0400
+Processing by AuthenticationController#verify as HTML
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `authorize_request'
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 4.8ms | Allocations: 770)
+
+
+Started GET "/clubs/13/comments" for ::1 at 2020-05-12 16:49:28 -0400
+Started GET "/clubs/byclub/13" for ::1 at 2020-05-12 16:49:28 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"club_id"=>"13"}
+Processing by ClubsController#read_one as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/comments_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 11.0ms | ActiveRecord: 0.7ms | Allocations: 2425)
+
+
+  [1m[36mClub Load (7.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:17:in `read_one'
+Completed 200 OK in 12ms (Views: 0.8ms | ActiveRecord: 7.8ms | Allocations: 2297)
+
+
+Started GET "/comments/43/subcomments" for ::1 at 2020-05-12 16:49:28 -0400
+Started GET "/comments/44/subcomments" for ::1 at 2020-05-12 16:49:28 -0400
+Started GET "/comments/45/subcomments" for ::1 at 2020-05-12 16:49:28 -0400
+Started GET "/comments/46/subcomments" for ::1 at 2020-05-12 16:49:28 -0400
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"43"}
+  [1m[36mSubcomment Load (0.4ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 43]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 12ms (Views: 11.4ms | ActiveRecord: 0.4ms | Allocations: 1785)
+
+
+Processing by SubcommentsController#index as HTML
+Processing by SubcommentsController#index as HTML
+Processing by SubcommentsController#index as HTML
+  Parameters: {"comment_id"=>"45"}
+  Parameters: {"comment_id"=>"44"}
+  Parameters: {"comment_id"=>"46"}
+  [1m[36mSubcomment Load (1.8ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 45]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 1.8ms | Allocations: 1198)
+
+
+  [1m[36mSubcomment Load (7.3ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 46]]
+Started GET "/clubs/byclub/13/members" for ::1 at 2020-05-12 16:49:28 -0400
+  [1m[36mSubcomment Load (8.4ms)[0m  [1m[34mSELECT "subcomments".* FROM "subcomments" WHERE "subcomments"."comment_id" = $1[0m  [["comment_id", 44]]
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 17ms (Views: 9.3ms | ActiveRecord: 7.3ms | Allocations: 2963)
+
+
+  ↳ app/controllers/subcomments_controller.rb:6:in `index'
+Completed 200 OK in 21ms (Views: 11.9ms | ActiveRecord: 8.4ms | Allocations: 3671)
+
+
+Processing by ClubsController#get_members as HTML
+  Parameters: {"club_id"=>"13"}
+  [1m[36mClub Load (0.9ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/clubs_controller.rb:33:in `get_members'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "clubs_users" ON "users"."id" = "clubs_users"."user_id" WHERE "clubs_users"."club_id" = $1[0m  [["club_id", 13]]
+  ↳ app/controllers/clubs_controller.rb:35:in `map'
+Completed 200 OK in 13ms (Views: 1.0ms | ActiveRecord: 2.0ms | Allocations: 1535)
+
+

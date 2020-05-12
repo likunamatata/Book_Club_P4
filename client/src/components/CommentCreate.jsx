@@ -64,7 +64,7 @@ class CommentCreate extends Component {
   render() {
     const { handleChange, handleSubmit } = this
     const { comment, comments } = this.state
-    const { history, user_id, club_id } = this.props
+    const { history, user_id, club_id, username } = this.props
     return (
       <div className='comments-section'>
         <h2 className='screen-header'>Member Comments</h2>
@@ -75,7 +75,7 @@ class CommentCreate extends Component {
           handleSubmit={handleSubmit}
           cancelPath="../"
         />
-        <Comments user_id={user_id} club_id={club_id} comments={comments}/>
+        <Comments user_id={user_id} club_id={club_id} comments={comments} username={username}/>
         </div> 
     )
   }

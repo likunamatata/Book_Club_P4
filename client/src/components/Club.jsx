@@ -12,7 +12,6 @@ class Club extends Component {
     this.state = {
       clubData: '',
       bookData: '',
-      chapters: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       commentFilter: ''
     }
   }
@@ -38,14 +37,6 @@ class Club extends Component {
   render() {
     const { clubData, bookData } = this.state
     const { volumeInfo } = bookData
-    let worms = this.state.chapters.map((chapter, index) => {
-      return (
-        <Link>
-          <a key={index}>{chapter}</a>
-        </Link>
-
-      )
-    })
 
 
     return (
@@ -64,9 +55,6 @@ class Club extends Component {
             :
             <p>Book info loading</p>
           }
-          <div className='worm-container'>
-            {worms}
-          </div>
 
           <div className='club-rules'>
             <h3>Rules for Participation</h3>
